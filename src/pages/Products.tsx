@@ -6,7 +6,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Search, Download, ArrowRight } from "lucide-react";
+import melservoImage from "@/assets/products/melservo-j5.jpg";
+import hvacImage from "@/assets/products/hvac-controls.jpg";
+import solarImage from "@/assets/products/solar-power.jpg";
+import trainImage from "@/assets/products/train-control.jpg";
+import vfdImage from "@/assets/products/fr-d700-vfd.jpg";
+import elevatorImage from "@/assets/products/elevator-system.jpg";
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,36 +34,42 @@ const Products = () => {
       category: "Factory Automation",
       description: "High-performance servo system with advanced motion control",
       specs: ["500W - 7kW", "EtherCAT/CC-Link IE", "IP67 Rating"],
+      image: melservoImage,
     },
     {
       title: "HVAC Controls",
       category: "Building Systems",
       description: "Intelligent climate control for commercial buildings",
       specs: ["IoT-Enabled", "Energy Efficient", "Cloud Management"],
+      image: hvacImage,
     },
     {
       title: "Solar Power Systems",
       category: "Energy Solutions",
       description: "Complete photovoltaic solutions for sustainable energy",
       specs: ["20+ Year Warranty", "Smart Monitoring", "High Efficiency"],
+      image: solarImage,
     },
     {
       title: "Train Control Systems",
       category: "Transportation",
       description: "Reliable propulsion and control for modern rail networks",
       specs: ["Safety Certified", "Real-time Diagnostics", "Scalable"],
+      image: trainImage,
     },
     {
       title: "FR-D700 VFD Series",
       category: "Factory Automation",
       description: "Variable frequency drives for industrial applications",
       specs: ["0.1-400kW", "Compact Design", "Multi-Function"],
+      image: vfdImage,
     },
     {
       title: "Elevator Systems",
       category: "Building Systems",
       description: "Advanced elevator solutions for high-rise buildings",
       specs: ["Energy Saving", "Smooth Operation", "Smart Destination"],
+      image: elevatorImage,
     },
   ];
 
@@ -134,7 +147,14 @@ const Products = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="h-full hover-lift cursor-pointer group">
+                  <Card className="h-full hover-lift cursor-pointer group overflow-hidden">
+                    <AspectRatio ratio={16 / 9}>
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </AspectRatio>
                     <CardContent className="p-6">
                       <Badge variant="secondary" className="mb-4">
                         {product.category}
