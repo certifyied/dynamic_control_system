@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import dynamicLogo from "@/assets/DYNAMIC LOGO.png";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,8 +22,8 @@ const Navigation = () => {
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Products", path: "/products" },
-    { name: "Case Studies", path: "/case-studies" },
-    { name: "Investors", path: "/investors" },
+    { name: "Blog", path: "/blog" },
+    { name: "Clients", path: "/clients" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -37,11 +38,13 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-sm flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">M</span>
-            </div>
+            <img
+              src={dynamicLogo}
+              alt="Dynamic Control System"
+              className="h-10 w-auto"
+            />
             <span className="font-display font-bold text-xl text-foreground hidden sm:inline">
-              Mitsubishi Electric
+              Dynamic Control System
             </span>
           </Link>
 
@@ -66,7 +69,9 @@ const Navigation = () => {
               </Link>
             ))}
             <Button variant="default" size="sm" asChild>
-              <Link to="/contact">Get in Touch</Link>
+              <a href="https://dcsri.org/" target="_blank" rel="noopener noreferrer">
+                Training Institute
+              </a>
             </Button>
           </div>
 
@@ -106,9 +111,14 @@ const Navigation = () => {
                 </Link>
               ))}
               <Button variant="default" className="w-full" asChild>
-                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Get in Touch
-                </Link>
+                <a 
+                  href="https://dcsri.org/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Training Institute
+                </a>
               </Button>
             </div>
           </motion.div>

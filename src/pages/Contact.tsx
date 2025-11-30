@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Globe } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -61,26 +61,13 @@ const Contact = () => {
     });
   };
 
-  const offices = [
-    {
-      region: "Global Headquarters",
-      address: "Tokyo Bldg., 2-7-3 Marunouchi, Chiyoda-ku, Tokyo 100-8310, Japan",
-      phone: "+81-3-3218-2111",
-      email: "info@mitsubishielectric.com",
-    },
-    {
-      region: "North America",
-      address: "701 Corporate Woods Parkway, Vernon Hills, IL 60061, USA",
-      phone: "+1-847-478-2100",
-      email: "americas@mitsubishielectric.com",
-    },
-    {
-      region: "Europe",
-      address: "Mitsubishi-Electric-Platz 1, 40882 Ratingen, Germany",
-      phone: "+49-2102-486-0",
-      email: "europe@mitsubishielectric.com",
-    },
-  ];
+  const contactInfo = {
+    company: "Dynamic Control Systems",
+    address: "52/3106, Near SBI Bank, NH Bypass, Vyttila, Kochi, Ernakulam Dist., Kerala, 682019",
+    email: "sales@dynamiccontrolsystems.in",
+    phones: ["+91 48440 41177", "+91 94477 07855", "+91 85473 27855"],
+    website: "dynamiccontrolsystems.in",
+  };
 
   return (
     <div className="min-h-screen">
@@ -210,18 +197,19 @@ const Contact = () => {
               >
                 <Card>
                   <CardContent className="p-6">
+                    <h3 className="font-display text-xl font-semibold mb-4">
+                      {contactInfo.company}
+                    </h3>
+                    
                     <div className="flex items-start gap-4 mb-6">
                       <div className="p-3 bg-primary/10 rounded-lg">
-                        <Phone className="text-primary" size={24} />
+                        <MapPin className="text-primary" size={24} />
                       </div>
                       <div>
-                        <h3 className="font-semibold mb-1">Phone</h3>
+                        <h3 className="font-semibold mb-1">Address</h3>
                         <p className="text-sm text-muted-foreground">
-                          Mon-Fri 9am-5pm
+                          {contactInfo.address}
                         </p>
-                        <a href="tel:+18474782100" className="text-primary hover:underline">
-                          +1-847-478-2100
-                        </a>
                       </div>
                     </div>
 
@@ -231,111 +219,59 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold mb-1">Email</h3>
-                        <p className="text-sm text-muted-foreground">
-                          24/7 Support
-                        </p>
                         <a
-                          href="mailto:info@mitsubishielectric.com"
-                          className="text-primary hover:underline"
+                          href={`mailto:${contactInfo.email}`}
+                          className="text-primary hover:underline text-sm"
                         >
-                          info@mitsubishielectric.com
+                          {contactInfo.email}
                         </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="p-3 bg-primary/10 rounded-lg">
+                        <Phone className="text-primary" size={24} />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold mb-1">Phone</h3>
+                        <div className="space-y-1">
+                          {contactInfo.phones.map((phone, index) => (
+                            <a
+                              key={index}
+                              href={`tel:${phone.replace(/\s/g, '')}`}
+                              className="block text-primary hover:underline text-sm"
+                            >
+                              {phone}
+                            </a>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-4">
                       <div className="p-3 bg-primary/10 rounded-lg">
-                        <Clock className="text-primary" size={24} />
+                        <Globe className="text-primary" size={24} />
                       </div>
                       <div>
-                        <h3 className="font-semibold mb-1">Business Hours</h3>
-                        <p className="text-sm text-muted-foreground">
-                          Monday - Friday: 9:00 AM - 5:00 PM
-                          <br />
-                          Saturday - Sunday: Closed
-                        </p>
+                        <h3 className="font-semibold mb-1">Website</h3>
+                        <a
+                          href={`https://${contactInfo.website}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline text-sm"
+                        >
+                          {contactInfo.website}
+                        </a>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card>
-                  <CardContent className="p-6">
-                    <h3 className="font-display text-xl font-semibold mb-4">
-                      Need Immediate Assistance?
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      For urgent technical support or emergency inquiries, please contact 
-                      our 24/7 hotline.
-                    </p>
-                    <Button variant="outline" className="w-full">
-                      Emergency Support
-                    </Button>
-                  </CardContent>
-                </Card>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Office Locations */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="font-display text-4xl font-bold mb-4">
-                Our Offices
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Find a Mitsubishi Electric office near you
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {offices.map((office, index) => (
-                <motion.div
-                  key={office.region}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Card className="h-full">
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-2 mb-4">
-                        <MapPin className="text-primary" size={20} />
-                        <h3 className="font-display font-semibold text-lg">
-                          {office.region}
-                        </h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        {office.address}
-                      </p>
-                      <div className="space-y-2 text-sm">
-                        <div>
-                          <span className="text-muted-foreground">Phone: </span>
-                          <a href={`tel:${office.phone}`} className="text-primary hover:underline">
-                            {office.phone}
-                          </a>
-                        </div>
-                        <div>
-                          <span className="text-muted-foreground">Email: </span>
-                          <a href={`mailto:${office.email}`} className="text-primary hover:underline">
-                            {office.email}
-                          </a>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />

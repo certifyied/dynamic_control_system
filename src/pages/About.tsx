@@ -43,7 +43,7 @@ const About = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-gradient-to-b from-muted/30 to-background">
+        <section className="pt-32 pb-12 bg-gradient-to-b from-muted/30 to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -51,13 +51,31 @@ const About = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <h1 className="font-display text-5xl md:text-6xl font-bold mb-6">
-                About Mitsubishi Electric
+              <h1 className="font-display text-5xl md:text-6xl font-bold mb-8">
+                About Us
               </h1>
-              <p className="text-xl text-muted-foreground">
-                For over 100 years, we've been at the forefront of technological innovation, 
-                creating solutions that power industries and improve lives worldwide.
-              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* About Content Section */}
+        <section className="py-12">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-4xl mx-auto"
+            >
+              <div className="prose prose-lg max-w-none">
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
+                  We are a team of young, dynamic, and experienced engineers specializing in Electrical, Automation, and Instrumentation Engineering. Over the years, we have successfully executed numerous industrial projects across India, including key sectors like Steel, Cement, Power Generation, Automobiles, Pharmaceuticals, and Packaging. Our strong technical support team, always prepared to tackle complex on-site challenges, ensures every project runs efficiently and seamlessly.
+                </p>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                  Dynamic Control Systems – an Authorized Channel Partner for Mitsubishi Electric India Private Limited – is a leading provider of industrial automation in Kochi, especially in Vytilla. Led by Mr. Saji K. Philip, we offer comprehensive sales and service support for Mitsubishi Electric solutions, catering to diverse industrial automation in Kochi. Whether it's new installations, system upgrades, or expansions, our expertise in industrial automation in Kochi helps build long-lasting partnerships with clients who trust us for dependable and innovative solutions.
+                </p>
+              </div>
             </motion.div>
           </div>
         </section>
