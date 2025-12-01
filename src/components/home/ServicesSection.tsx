@@ -1,33 +1,46 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ArrowRight } from "lucide-react";
+
+// Import product images
+const productImages = import.meta.glob<{ default: string }>("/src/assets/products/*.{png,jpg,jpeg,webp,svg}", { eager: true });
+
+// Convert to array
+const availableImages = Object.values(productImages).map(module => module.default);
 
 const ServicesSection = () => {
   const services = [
     {
       title: "Engineering & Design",
       description: "To ensure result-oriented, cost-effective, and time-efficient outcomes, we provide tailored, intelligent, and adaptable engineering solutions delivered within the promised timeframe. Our Industrial Automation Experts offer comprehensive support for PLC, SCADA, HMI, consulting, design, development, maintenance, bug fixing, and third-party interface integration for process industries. With a strong focus on Industrial Automation in Kochi, we deliver end-to-end solutions that drive efficiency and reliability.",
+      image: availableImages[0] || availableImages[Math.floor(Math.random() * availableImages.length)],
     },
     {
       title: "Industrial, Factory & Process Automation",
       description: "Companies in the process and manufacturing sectors need a technology partner who truly understands their operations. At Dynamic Control Systems, we recognise how industrial automation in Kochi can streamline processes, enhance workflow, and boost overall efficiency. With our strong expertise in engineering and controls, we ensure that every automation solution we deliver is accurate, effective, and tailored to your needs.",
+      image: availableImages[1] || availableImages[Math.floor(Math.random() * availableImages.length)],
     },
     {
       title: "SCADA System Integration",
       description: "Dynamic Control Systems designs and builds SCADA (Supervisory Control and Data Acquisition) systems tailored to meet diverse project requirements in Industrial Processes and Machinery. As a key player in Industrial Automation in Kochi, we deliver customized SCADA solutions that enhance control, monitoring, and efficiency across various industrial applications.",
+      image: availableImages[2] || availableImages[Math.floor(Math.random() * availableImages.length)],
     },
     {
       title: "Industrial IoT Solution Development",
       description: "Enables device connectivity, data processing and management, application integration, security, access control, monitoring, alarm management, digital twin, and integration with enterprise applications.",
+      image: availableImages[3] || availableImages[Math.floor(Math.random() * availableImages.length)],
     },
     {
       title: "Embedded System",
       description: "We design and deliver high-quality embedded system solutions for both industrial and residential applications. With our expertise in Industrial Automation in Kochi, we ensure reliable, efficient, and innovative embedded solutions tailored to meet diverse automation needs.",
+      image: availableImages[4] || availableImages[Math.floor(Math.random() * availableImages.length)],
     },
     {
       title: "Project Training",
       description: "Dynamic Control Systems is dedicated to helping fresh graduates gain the skills and expertise needed to advance their careers. Through specialized training focused on Industrial Automation in Kochi, we prepare students to confidently step into real-world industrial automation roles and succeed in the evolving technology landscape.",
+      image: availableImages[5] || availableImages[Math.floor(Math.random() * availableImages.length)],
     },
   ];
 
@@ -60,7 +73,19 @@ const ServicesSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full hover-lift cursor-pointer group">
+              <Card className="h-full hover-lift cursor-pointer group overflow-hidden">
+                <AspectRatio ratio={16 / 9}>
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "/placeholder.svg";
+                    }}
+                  />
+                </AspectRatio>
                 <CardContent className="p-6">
                   <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
                     {service.title}

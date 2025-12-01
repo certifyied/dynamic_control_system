@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 // Import all client images
@@ -67,11 +67,6 @@ const Clients = () => {
                         />
                       </div>
                     </AspectRatio>
-                    <CardContent className="p-6">
-                      <h3 className="font-display text-xl font-semibold text-center group-hover:text-primary transition-colors">
-                        {client.name}
-                      </h3>
-                    </CardContent>
                   </Card>
                 </motion.div>
               ))}
