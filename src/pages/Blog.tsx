@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import {
   Dialog,
   DialogContent,
@@ -14,85 +15,376 @@ import {
 } from "@/components/ui/dialog";
 import { Calendar, ArrowRight, Clock } from "lucide-react";
 
+// Import all product images
+const productImages = import.meta.glob<{ default: string }>("/src/assets/products/*.{png,jpg,jpeg,webp,svg}", { eager: true });
+
+// Convert to array
+const availableImages = Object.values(productImages).map(module => module.default);
+
+// Helper function to get random image
+const getRandomImage = (images: string[]): string => {
+  return images[Math.floor(Math.random() * images.length)];
+};
+
 const Blog = () => {
   const [selectedBlog, setSelectedBlog] = useState<number | null>(null);
+  const [blogImages, setBlogImages] = useState<Record<number, string>>({});
 
-  const blogPosts = [
+  // Assign random images to blog posts on mount
+  useEffect(() => {
+    const images: Record<number, string> = {};
+    for (let i = 1; i <= 6; i++) {
+      images[i] = getRandomImage(availableImages);
+    }
+    setBlogImages(images);
+  }, []);
+
+  const blogPosts = useMemo(() => [
     {
       id: 1,
-      title: "The Future of Industrial Automation",
-      excerpt: "Exploring how AI and machine learning are revolutionizing manufacturing processes and increasing efficiency across industries.",
-      category: "Technology",
+      title: "Top 5 Automation Trends in Kochi Factories & How Dynamic Control Systems Is Helping",
+      excerpt: "Kochi, the bustling industrial hub of Kerala, is witnessing a major transformation fueled by cutting-edge innovations. As factories look to scale, improve productivity, and reduce manual dependency, industrial automation in Kochi is becoming essential.",
+      category: "Automation",
       date: "March 20, 2024",
-      readTime: "5 min read",
-      content: `Industrial automation has come a long way from simple mechanical systems to sophisticated AI-driven solutions. Today's manufacturing facilities are leveraging cutting-edge technologies to optimize production, reduce waste, and improve quality.
+      readTime: "8 min read",
+      content: `Kochi, the bustling industrial hub of Kerala, is witnessing a major transformation fueled by cutting-edge innovations. As factories look to scale, improve productivity, and reduce manual dependency, industrial automation in Kochi is becoming essential. From manufacturing units to food processing industries, automation is reshaping how factories operate. Companies that embrace these trends are proving to be more competitive, efficient, and sustainable.
 
-The integration of artificial intelligence and machine learning in industrial automation is transforming how we approach manufacturing. These technologies enable predictive maintenance, real-time quality control, and adaptive production lines that can respond to changing demands.
+In this blog, we'll explore the top five automation trends in Kochi's industries and how Dynamic Control Systems is leading this technological shift. Their solutions are not only helping businesses modernize production but are shaping the future of industrial operations across Kerala.
 
-Key benefits include:
-- Increased production efficiency by up to 40%
-- Reduced downtime through predictive maintenance
-- Improved product quality with real-time monitoring
-- Enhanced worker safety through automated processes
+1. Integration of IoT and Smart Manufacturing
 
-As we look to the future, the convergence of IoT, AI, and automation will continue to reshape the industrial landscape, creating smarter, more responsive manufacturing ecosystems.`,
+The Internet of Things (IoT) is redefining what a smart factory can do. Industrial devices are no longer just mechanical–they are connected, intelligent, and capable of reporting real-time data. In Kochi, factories are using IoT-enabled sensors for equipment monitoring, predictive maintenance, and optimizing production processes.
+
+Dynamic Control Systems specializes in creating IoT-integrated automation systems that allow factory managers to remotely monitor operations, receive real-time alerts, and access performance analytics. With a single dashboard, factories can now track everything from temperature and pressure to machinery health and energy usage – reducing downtime and boosting efficiency.
+
+2. Rise of Factory Automation and Robotics
+
+Automation no longer stops at conveyors or simple machinery. Modern factories are leveraging robotics for high-speed, precision-based tasks like assembly, packaging, sorting, and quality control. As labor shortages increase and demand grows, robotic systems are being deployed to maintain consistency and meet production targets.
+
+Dynamic Control Systems offers custom robotic and automation solutions tailored to industry needs. Whether it's automating repetitive processes in food processing plants or installing smart assembly lines in automotive units, their expertise allows factories to scale without sacrificing quality.
+
+3. SCADA and PLC-based Process Automation
+
+Supervisory Control and Data Acquisition (SCADA) and Programmable Logic Controllers (PLC) are becoming the foundation of digital manufacturing. These systems enable real-time control, automation, and monitoring of complex processes.
+
+In Kochi's industries – especially in sectors like pharmaceuticals, petrochemicals, and steel – SCADA and PLC systems are critical. Dynamic Control Systems delivers high-performance SCADA/PLC solutions that offer powerful control over multiple operations. Their systems are built for reliability, flexibility, and seamless integration with existing infrastructure.
+
+4. Energy Efficiency and Sustainability Automation
+
+With rising energy costs and increasing emphasis on sustainability, factories in Kochi are adopting energy-efficient automation. From intelligent motor controls to automated lighting systems, energy-saving technologies are becoming essential for reducing operational costs.
+
+Dynamic Control Systems supports energy management through VFDs (Variable Frequency Drives), energy monitoring systems, and automation that reduces waste and optimizes consumption. Their solutions not only enhance efficiency but also help factories comply with environmental standards.
+
+5. Remote Monitoring and Industrial Cybersecurity
+
+In an era where remote operations are the norm, Kochi factories are turning to systems that support remote monitoring and control. This ensures that managers can oversee operations from anywhere, respond to issues quickly, and improve uptime.
+
+However, with increased connectivity comes the need for robust cybersecurity. Dynamic Control Systems incorporates advanced cybersecurity measures within their automation architecture to protect industrial networks from cyber threats. Their secure remote access solutions ensure that operations are safe, encrypted, and compliant with industry standards.
+
+Why Choose Dynamic Control Systems?
+
+As a leading provider of industrial automation in Kochi, Dynamic Control Systems has built a reputation for delivering innovative, reliable, and scalable automation solutions. Their team of experienced engineers brings deep expertise across Electrical, Automation, and Instrumentation engineering.
+
+Some key reasons to work with Dynamic Control Systems include:
+
+● Tailored Automation Solutions: Every solution is customized to the factory's unique needs.
+● End-to-End Support: From designing and programming to installation and training.
+● Advanced Technologies: Integration of IoT, SCADA, robotics, and energy-efficient systems.
+● Proven Expertise: Successful projects across India and multiple industry sectors.
+● Customer-Centric Approach: Dedicated support teams to ensure timely execution and reduced downtime.
+
+Partner with Dynamic Control Systems
+
+Automation is no longer an option—it's a necessity. As factories in Kochi gear up for rapid growth and technological integration, partnering with the right automation expert is critical. Dynamic Control Systems is committed to empowering industries to become smarter, more efficient, and more competitive.`,
     },
     {
       id: 2,
-      title: "Sustainable Energy Solutions for Modern Facilities",
-      excerpt: "Discover how smart energy management systems are helping businesses reduce their carbon footprint while cutting operational costs.",
-      category: "Sustainability",
+      title: "From Manual to Automated: A Case Study of Factory Automation in Kochi with Mitsubishi Electric Solutions",
+      excerpt: "In today's fast-growing industrial environment, many factories are shifting from manual processes to modern automated systems. This transformation not only improves productivity but also ensures better quality, reduced downtime, and safer working conditions.",
+      category: "Case Study",
       date: "March 18, 2024",
-      readTime: "7 min read",
-      content: `Sustainability is no longer just a buzzword—it's a critical component of modern business operations. Companies worldwide are recognizing the importance of reducing their environmental impact while maintaining operational efficiency.
+      readTime: "10 min read",
+      content: `In today's fast-growing industrial environment, many factories are shifting from manual processes to modern automated systems. This transformation not only improves productivity but also ensures better quality, reduced downtime, and safer working conditions. Kochi, one of Kerala's leading industrial hubs, has witnessed a rapid rise in automation adoption. In this blog, we explore how a manufacturing unit upgraded its processes with the support of Dynamic Control Systems and Mitsubishi Electric, showcasing the power of industrial automation in Kochi.
 
-Smart energy management systems are at the forefront of this transformation. These solutions combine real-time monitoring, predictive analytics, and automated controls to optimize energy consumption across facilities.
+The Client: A Growing Manufacturing Unit in Kochi
 
-The results speak for themselves:
-- Average energy cost reduction of 30-45%
-- Significant reduction in carbon emissions
-- Improved compliance with environmental regulations
-- Enhanced brand reputation and stakeholder confidence
+Our case study focuses on a mid-sized manufacturing company in Kochi that produces mechanical components for various industries. For years, the factory depended on manual operations, which created several challenges, such as:
 
-Modern facilities are implementing integrated energy solutions that monitor everything from HVAC systems to production equipment, ensuring optimal energy usage without compromising performance.`,
+● High production time
+● Inconsistent product quality
+● Frequent machine failures
+● Increased labor fatigue
+● Difficulty meeting bulk orders
+
+As the company started receiving more orders, manual processes became a major bottleneck. The management realized it was time to shift to a smarter and more reliable system.
+
+The Challenge: Overcoming Manual Limitations
+
+The factory faced problems that are common in many growing industries:
+
+1. Limited Production Capacity
+
+Workers struggled to maintain consistent output due to repetitive tasks and long working hours.
+
+2. Human Errors
+
+Manual measurement, cutting, and assembly led to inaccuracies.
+
+3. Lack of Real-time Monitoring
+
+Supervisors had no digital visibility of machine performance or production rates.
+
+4. Maintenance Issues
+
+Breakdowns were unpredictable, causing unplanned downtime.
+
+These challenges clearly showed the need for a strong automation system. This is where Dynamic Control Systems, a trusted expert in industrial automation in Kochi, stepped in.
+
+The Solution: Mitsubishi Electric-Based Automation Upgrade
+
+Dynamic Control Systems conducted a detailed study of the factory's workflow, machine layout, and production bottlenecks. Based on this assessment, they designed a complete factory automation solution using Mitsubishi Electric products, known for reliability and advanced technology.
+
+The solution included:
+
+1. PLC Automation
+
+Mitsubishi Electric Programmable Logic Controllers (PLCs) were implemented to automate repetitive machine processes, improving speed and accuracy.
+
+2. HMI Integration
+
+User-friendly Mitsubishi Electric HMIs were installed to help operators easily monitor machine operations.
+
+3. SCADA-Based Monitoring
+
+The factory gained real-time visibility of production data through a SCADA system, allowing supervisors to track performance, downtime, and alarms instantly.
+
+4. VFD Installation
+
+Variable Frequency Drives were added to control motor speeds precisely, reducing energy consumption and improving machine safety.
+
+5. Safety Automation
+
+Safety sensors and interlocks ensured secure operations and minimized risks for workers.
+
+Dynamic Control Systems handled the entire process—from planning and installation to testing and staff training—ensuring a smooth transition from manual to automated operations.
+
+The Results: A Complete Transformation
+
+Within weeks of implementing the automation system, the factory started experiencing remarkable improvements.
+
+Increased Production Efficiency
+
+Automation increased output by nearly 40%. Machines could run faster and more accurately compared to manual operations.
+
+Improved Product Quality
+
+Error rates dropped drastically because the automated machines followed exact parameters every time.
+
+Real-Time Data for Smarter Decisions
+
+SCADA dashboards helped the management track machine performance, schedule maintenance, and avoid costly breakdowns.
+
+Reduced Operational Costs
+
+VFDs and smart controls reduced energy usage, lowering monthly power bills.
+
+Safer Workplace
+
+Automated safety systems minimized accidents and ensured workers were protected during operations.
+
+This case study clearly shows how powerful industrial automation in Kochi can be when supported by the right automation partner and high-quality technology like Mitsubishi Electric.
+
+Why Choose Dynamic Control Systems for Automation in Kochi?
+
+Dynamic Control Systems stands out as one of the leading experts in factory automation. With years of experience, they specialize in:
+
+● Industrial automation
+● Electrical and instrumentation solutions
+● PLC & SCADA integration
+● Mitsubishi Electric automation products
+● Energy-efficient motor control
+● On-site support and troubleshooting
+
+Their team's dedication and technical expertise ensure that factories achieve smooth, reliable, and future-ready operations.
+
+Conclusion
+
+The shift from manual to automated operations is no longer optional—it is essential for factories that want to grow, compete, and deliver quality consistently. This case study shows how a Kochi-based factory successfully modernized its production line with the help of Dynamic Control Systems and Mitsubishi Electric solutions.
+
+If you are looking to upgrade your factory with reliable and advanced industrial automation in Kochi, Dynamic Control Systems is the ideal partner to guide you through every step.`,
     },
     {
       id: 3,
-      title: "Building Smart Cities: Infrastructure for Tomorrow",
-      excerpt: "How advanced control systems are enabling the development of intelligent urban infrastructure that improves quality of life.",
-      category: "Infrastructure",
+      title: "Why Factory Automation Is the Competitive Edge for Indian Manufacturing in 2025",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      category: "Automation",
       date: "March 15, 2024",
-      readTime: "6 min read",
-      content: `Smart cities represent the future of urban living, where technology seamlessly integrates with infrastructure to create more efficient, sustainable, and livable environments. Advanced control systems play a crucial role in making this vision a reality.
+      readTime: "9 min read",
+      content: `In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.
 
-From intelligent traffic management to smart building automation, these systems collect and analyze data to optimize city operations in real-time. The benefits extend beyond efficiency—they create safer, more accessible, and more responsive urban environments.
+Leading this transformation is Dynamic Control Systems, one of India's trusted names in industrial automation. The company provides advanced PLC, SCADA, and HMI solutions that make factories more efficient, safer, and smarter.
 
-Key applications include:
-- Intelligent traffic flow management reducing congestion by up to 25%
-- Smart grid systems optimizing energy distribution
-- Automated building systems improving comfort and efficiency
-- Integrated public safety and emergency response systems
+The Rise of Smart Manufacturing in India
 
-As urban populations continue to grow, smart city technologies will become essential for managing resources, reducing environmental impact, and enhancing the quality of life for millions of residents.`,
+Government initiatives like Make in India and Digital India have encouraged factories to adopt smart technologies. To compete globally, manufacturers need better control, higher efficiency, and real-time data — and that's exactly what automation provides.
+
+Through modern systems such as PLC programming, SCADA software, and custom control panels, Dynamic Control Systems helps industries monitor, control, and optimize every process on the production floor.
+
+Companies that use trusted automation technologies like Mitsubishi Electric in Kochi are already experiencing faster growth and improved results.
+
+Why Automation Is a Game-Changer for Indian Manufacturers
+
+1. Boosts Productivity and Efficiency
+
+Automation allows machines to work non-stop with minimal human help. With PLC and SCADA systems from Dynamic Control Systems, manufacturers can automate repetitive work, reduce downtime, and speed up production — a major advantage for any factory in 2025.
+
+2. Ensures Better Quality and Precision
+
+Manual work often causes small mistakes that affect quality. Automation removes this problem. With accurate and reliable control systems, every product meets the same high standards, helping industries meet both Indian and global expectations.
+
+3. Reduces Operational Costs
+
+While automation requires an initial investment, it saves money in the long run. Less material waste, lower energy use, and fewer breakdowns mean lower overall costs. Dynamic Control Systems also provides predictive maintenance, allowing companies to detect issues before they cause downtime.
+
+4. Improves Safety and Reliability
+
+Automation takes care of risky or repetitive jobs, making factories safer. The company's smart control panels and monitoring systems protect both workers and machines by ensuring smooth, safe operation.
+
+5. Enables Data-Driven Decisions
+
+Using SCADA and IoT technologies, factories can collect real-time performance data. Managers can then make quick, data-based decisions to improve efficiency, plan maintenance, and reduce costs.
+
+Industry 4.0 and the Future of Indian Manufacturing
+
+The world is entering Industry 4.0, a new phase where automation, connectivity, and data analytics work together. Indian manufacturers adopting these technologies are gaining a strong competitive edge.
+
+Dynamic Control Systems helps factories transition into this era by providing IoT-enabled PLC systems, smart control panels, and advanced automation solutions. These tools help businesses stay ahead by reducing errors, saving time, and improving accuracy.
+
+For those exploring Factory Automation in Kochi or Factory Automation in Vytilla, Kochi, technologies like Mitsubishi Electric systems play a key role in creating smarter and more connected manufacturing setups.
+
+Industries Benefiting from Automation
+
+Automation is not just for large factories. Small and medium-sized industries across India are adopting it for better consistency and cost savings.
+
+Dynamic Control Systems has implemented automation projects across various sectors, including:
+
+● Automotive Manufacturing – Automated assembly and robotic integration
+● Pharmaceuticals – Precise control of dosing, temperature, and pressure
+● Food & Beverage – Consistent product quality and hygiene automation
+● Chemical & Water Treatment – Real-time process monitoring and control
+● Power & Energy – Safe load management and system protection
+
+Every industry benefits from reduced downtime, better safety, and greater output.
+
+Why Choose Dynamic Control Systems
+
+As a trusted name in industrial automation, Dynamic Control Systems offers complete services — from design to installation.
+
+Their expertise includes:
+
+● PLC, SCADA, and HMI design and programming
+● Control panel manufacturing (MCC, VFD, AMF panels, etc.)
+● Instrumentation and process automation
+● System upgrades and retrofitting for existing plants
+
+The company's partnership with advanced automation brands like Mitsubishi Electric in Kochi helps deliver world-class automation for industries in and around Vytilla and Kochi.
+
+Conclusion
+
+As we move further into 2025, factory automation will decide which manufacturers stay competitive and which fall behind. Automation improves productivity, ensures quality, reduces costs, and enhances safety — all essential for success in modern manufacturing.
+
+By working with Dynamic Control Systems, businesses in India — especially those exploring Factory Automation in Kochi or Factory Automation in Vytilla — can confidently step into a smarter, safer, and more efficient industrial future.`,
     },
     {
       id: 4,
-      title: "Robotics in Manufacturing: Precision and Efficiency",
-      excerpt: "An in-depth look at how modern robotics are transforming production lines and enabling new levels of precision and automation.",
-      category: "Manufacturing",
+      title: "How Semiconductors & Industrial Devices Are Powering the Future of Factory Automation in Kochi",
+      excerpt: "In today's fast-evolving industrial landscape, semiconductors and advanced industrial devices play a crucial role in shaping the next era of automation. As manufacturing hubs embrace digitisation, factory automation in Kochi is undergoing a massive transformation.",
+      category: "Technology",
       date: "March 12, 2024",
-      readTime: "8 min read",
-      content: `Robotics technology has evolved dramatically, moving from simple repetitive tasks to complex, adaptive systems that can work alongside human operators. Modern manufacturing robots combine precision, speed, and intelligence to revolutionize production processes.
+      readTime: "9 min read",
+      content: `In today's fast-evolving industrial landscape, semiconductors and advanced industrial devices play a crucial role in shaping the next era of automation. As manufacturing hubs embrace digitisation, factory automation in Kochi is undergoing a massive transformation driven by highly efficient electronic components, smart machinery, and intelligent control systems. From precision engineering to seamless data flow, these technologies are redefining how industries in Kochi operate, produce, and compete globally.
 
-Collaborative robots, or cobots, are particularly transformative. These systems are designed to work safely alongside human workers, combining the precision and consistency of automation with human flexibility and problem-solving capabilities.
+The Growing Importance of Semiconductors in Automation
 
-The impact on manufacturing is profound:
-- Precision improvements of up to 99.9% in critical operations
-- Production speed increases of 30-50% in many applications
-- Enhanced worker safety through automation of hazardous tasks
-- Flexibility to adapt to changing production requirements
+Semiconductors are the backbone of all modern electronic and automation systems. Whether it's a basic sensor or a high-tech robotic arm, semiconductors enable the speed, accuracy, and reliability that industries demand.
 
-As robotics technology continues to advance, we're seeing the emergence of more intelligent, adaptable systems that can learn from their environment and optimize their performance over time.`,
+In the context of factory automation in Kochi, semiconductors are essential for:
+
+● Enhancing Machine Intelligence
+
+Smart chips enable real-time decision-making in automated systems. They allow machines to detect issues, adapt operations, and maintain high performance without human intervention.
+
+● Enabling Precision Control
+
+Manufacturing processes like packaging, assembly, and testing require extreme accuracy. Semiconductor-powered devices ensure precise control of motors, valves, and actuators to avoid errors and reduce waste.
+
+● Improving Connectivity and Communication
+
+With IoT and Industry 4.0 becoming standard, semiconductors enable seamless machine-to-machine communication. This increases efficiency and ensures uninterrupted production lines.
+
+As businesses continue adopting factory automation in Kochi, semiconductor technology will shape everything from production speed to energy savings.
+
+Industrial Devices: The Driving Force Behind Automation
+
+Industrial devices such as PLCs, sensors, SCADA systems, HMIs, and industrial robots form the physical and digital infrastructure of automated factories.
+
+● PLCs (Programmable Logic Controllers)
+
+PLCs act as the brain of automation systems. They handle the logic, processes, and movements of machines, responding instantly to signals from sensors and other devices.
+
+● Sensors and Actuators
+
+These devices collect real-time data like temperature, pressure, motion, and vibration. In automated factories, sensors allow early fault detection and predictive maintenance—both crucial for reducing downtime.
+
+● Human-Machine Interfaces (HMIs)
+
+HMIs give operators a clear view of machine performance, system status, and operational data. Modern HMIs are equipped with touchscreens, advanced analytics, and AI-driven alerts.
+
+● Robotics
+
+The rise of robotics is revolutionising factory automation in Kochi as companies invest in robotic arms for welding, packaging, assembly, and material handling. Robots improve safety, productivity, and accuracy, making them a vital part of automated workflows.
+
+How Kochi's Industries Benefit from Semiconductor-Driven Automation
+
+Kochi is rapidly emerging as a major industrial and technology hub. Its manufacturing sector—spanning food processing, electronics, automotive components, marine equipment, and chemicals—relies heavily on robust automation solutions.
+
+Here's how semiconductors and industrial devices are driving growth in the region:
+
+1. Increased Productivity
+
+Automated systems work around the clock without fatigue. With semiconductor-based controllers ensuring smooth operations, manufacturers in Kochi achieve higher throughput with minimal downtime.
+
+2. Improved Safety
+
+Automation reduces direct human involvement in hazardous tasks. Smart safety sensors and emergency systems help prevent accidents and enhance workplace safety.
+
+3. Reduced Operational Costs
+
+With energy-efficient semiconductor devices and optimised process control, industries experience lower power consumption and improved resource management.
+
+4. Better Quality Control
+
+Automated inspection systems powered by semiconductor technology can detect even the smallest defects. This ensures consistently high product quality, something industries in Kochi value deeply.
+
+5. Real-Time Monitoring and Analytics
+
+IoT-enabled devices help track performance, analyse data, and make informed decisions. This digital transformation is redefining the future of factory automation in Kochi.
+
+The Future of Factory Automation in Kochi
+
+The next decade will witness an even deeper integration of semiconductors, AI, and industrial devices. Kochi's industrial sector is expected to embrace:
+
+● AI-integrated robots for flexible manufacturing
+● Smart sensors for deeper predictive insights
+● 5G-powered industrial connectivity
+● Energy-efficient semiconductor solutions
+● Cloud-based factory management systems
+
+These advancements will make factory automation in Kochi smarter, faster, and more sustainable.
+
+Conclusion
+
+Semiconductors and industrial devices are at the heart of modern automation. As industries evolve, Kochi stands at the forefront of this technological transformation. With the rise of intelligent machinery, advanced chips, and smart automation solutions, the future of factory automation in Kochi looks promising, efficient, and innovation-driven.`,
     },
     {
       id: 5,
@@ -132,7 +424,7 @@ Critical security measures include:
 
 The consequences of a security breach in industrial systems can be severe, affecting not just data but physical operations, safety, and public infrastructure. A comprehensive security strategy is essential for protecting these critical systems.`,
     },
-  ];
+  ], []);
 
   const openDialog = (blogId: number) => {
     setSelectedBlog(blogId);
@@ -174,7 +466,7 @@ The consequences of a security breach in industrial systems can be severe, affec
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {blogPosts.map((blog, index) => (
-                <motion.div
+                <motion.article
                   key={blog.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -182,9 +474,23 @@ The consequences of a security breach in industrial systems can be severe, affec
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <Card
-                    className="h-full hover-lift cursor-pointer group"
+                    className="h-full hover-lift cursor-pointer group overflow-hidden"
                     onClick={() => openDialog(blog.id)}
                   >
+                    {blogImages[blog.id] && (
+                      <AspectRatio ratio={16 / 9}>
+                        <img
+                          src={blogImages[blog.id]}
+                          alt={blog.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = "/placeholder.svg";
+                          }}
+                        />
+                      </AspectRatio>
+                    )}
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between mb-4">
                         <Badge variant="secondary">{blog.category}</Badge>
@@ -213,7 +519,7 @@ The consequences of a security breach in industrial systems can be severe, affec
                       </Button>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </motion.article>
               ))}
             </div>
           </div>
@@ -264,4 +570,3 @@ The consequences of a security breach in industrial systems can be severe, affec
 };
 
 export default Blog;
-

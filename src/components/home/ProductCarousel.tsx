@@ -9,25 +9,25 @@ const ProductCarousel = () => {
     {
       icon: Factory,
       title: "Factory Automation",
-      description: "Advanced automation systems for manufacturing excellence",
+      description: "Smart Manufacturing Automation - Harness the power of intelligent PLC, HMI, SCADA, and robotics integration to automate critical manufacturing processes. Our solutions improve accuracy, streamline workflows, and ensure high-quality, repeatable production outcomes across all industrial environments.",
       color: "text-primary",
     },
     {
       icon: Building2,
       title: "Building Systems",
-      description: "Smart building solutions for energy efficiency",
+      description: "Motion Control & Robotics - Enhance speed, precision, and safety with advanced robotic systems and motion control technologies. From assembly and handling to inspection and packaging, we deliver automation that reduces manual effort and boosts overall operational efficiency.",
       color: "text-accent",
     },
     {
       icon: Zap,
       title: "Energy Solutions",
-      description: "Sustainable power generation and distribution",
+      description: "Industrial IoT & Real-Time Monitoring - Transform your factory into a connected ecosystem with IIoT-based data monitoring and smart analytics. Our systems enable real-time visibility, predictive maintenance, and informed decision-making—helping industries minimize downtime and maximize productivity.",
       color: "text-primary",
     },
     {
       icon: Train,
       title: "Transportation",
-      description: "Reliable systems for rail and transit networks",
+      description: "Customized Automation Solutions - Every factory is unique—so are our solutions. We design and implement tailor-made automation systems that align with your production requirements, ensuring seamless integration, reliable performance, and long-term scalability for future growth.",
       color: "text-accent",
     },
   ];
