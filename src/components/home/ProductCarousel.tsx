@@ -49,14 +49,11 @@ const ProductCarousel = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            Our Product Families
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive solutions across diverse industries, powered by decades of expertise
-          </p>
+          <p className="text-xl text-black max-w-2xl mx-auto">
+            "Comprehensive solutions across diverse industries, powered by decades of expertise"
+            </p>
         </motion.div>
-
+``
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product, index) => {
             const IconComponent = product.icon;
