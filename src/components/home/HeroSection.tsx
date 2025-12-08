@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero_banner.jpg";
+import heroImage from "@/assets/new_banner.jpg";
 
 const HeroSection = () => {
   return (
@@ -32,9 +32,9 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight"
           >
-            Building a{" "}
-            <span className="text-gradient-primary">Sustainable</span>{" "}
-            Future Together
+            Powering industries{" "}
+            <span className="text-red-500">with smart, reliable</span>{" "}
+            Automation solutions
           </motion.h1>
 
           <motion.p
@@ -72,16 +72,16 @@ const HeroSection = () => {
             className="grid grid-cols-3 gap-8 mt-16"
           >
             <div>
-              <div className="text-3xl font-bold text-primary mb-1">100+</div>
+              <div className="text-3xl font-bold text-primary mb-1">27+</div>
               <div className="text-sm text-muted-foreground">Years of Innovation</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary mb-1">150+</div>
-              <div className="text-sm text-muted-foreground">Countries Served</div>
+              <div className="text-3xl font-bold text-primary mb-1">100+</div>
+              <div className="text-sm text-muted-foreground">Projects Served</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary mb-1">140K+</div>
-              <div className="text-sm text-muted-foreground">Global Employees</div>
+              <div className="text-3xl font-bold text-primary mb-1">500+</div>
+              <div className="text-sm text-muted-foreground">Global Customers</div>
             </div>
           </motion.div>
         </div>

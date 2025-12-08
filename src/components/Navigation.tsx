@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import dynamicLogo from "@/assets/DYNAMIC LOGO.png";
+import mitsuLogo from "@/assets/MITSU LOGO.png";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,7 +39,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-2">
             <img
-              src={dynamicLogo}
+              src={mitsuLogo}
               alt="Dynamic Control System"
               className="h-10 w-auto"
             />
