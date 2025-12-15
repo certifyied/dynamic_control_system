@@ -76,7 +76,7 @@ const HeroSection = () => {
               <div className="text-sm text-muted-foreground">Years of Innovation</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary mb-1">100+</div>
+              <div className="text-3xl font-bold text-primary mb-1">1000+</div>
               <div className="text-sm text-muted-foreground">Projects Served</div>
             </div>
             <div>

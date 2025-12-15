@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Download, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 // Import all product images from dynamic-products folder structure
 const productImages = import.meta.glob<{ default: string }>(
@@ -396,16 +396,10 @@ const Products = () => {
                                 {product.description}
                               </p>
 
-                              <div className="flex gap-2">
-                                <Button variant="outline" size="sm" className="flex-1">
-                                  <Download className="mr-2 h-4 w-4" />
-                                  Datasheet
-                                </Button>
-                                <Button size="sm" className="flex-1">
-                                  Details
-                                  <ArrowRight className="ml-2 h-4 w-4" />
-                                </Button>
-                              </div>
+                              <Button size="sm" className="w-full">
+                                Details
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
                             </CardContent>
                           </Card>
                         </motion.div>

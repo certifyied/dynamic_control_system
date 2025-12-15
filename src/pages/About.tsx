@@ -1,10 +1,22 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Globe, Award, Users, TrendingUp, ArrowRight } from "lucide-react";
-import heroBanner from "@/assets/hero_banner.jpg";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Award, ArrowRight } from "lucide-react";
+import automationIndustry from "@/assets/automation_industry.jpg";
+import sajiImage from "@/assets/saji.jpg";
+import christoImage from "@/assets/christo.jpg";
+import joeImage from "@/assets/joe.jpg";
 
 const About = () => {
   const timeline = [
@@ -16,28 +28,52 @@ const About = () => {
     { year: "2025", event: "Leading in AI-powered automation" },
   ];
 
-  const values = [
+  const directors = [
     {
-      icon: Globe,
-      title: "Global Reach",
-      description: "Operating in over 150 countries with a commitment to local communities",
+      id: 1,
+      image: sajiImage,
+      name: "Mr. Saji K. Philip",
+      designation: "Technical Director",
+      description: "Leading Dynamic Control Systems with decades of expertise in industrial automation and strategic vision for growth.",
+      fullDescription: `Mr. Saji K. Philip, founder of DCS, is the core of our technical strength and vision. A B.Tech graduate from M.A. College of Engineering, Kothamangalam, Saji gained valuable experience at Concast India Pvt. Ltd., Mumbai, before returning home with a clear mission: to elevate the industrial automation landscape.
+
+With deep expertise in the electrical and automotive industries, he has supported countless industries and machine builders across India. His commitment to continuous learning and hands-on guidance has shaped a technically strong and passionately driven DCS team.`,
     },
     {
-      icon: Award,
-      title: "Quality Excellence",
-      description: "Century-long commitment to superior quality and reliability",
+      id: 2,
+      image: christoImage,
+      name: "Mr. Christo S Kayyalakam",
+      designation: "The Strategy and Network Builder",
+      description: "Driving innovation and excellence in automation solutions with a focus on customer success and technical excellence.",
+      fullDescription: `Our CEO, Cristo S. Kayyalakam, brings strong business acumen built during his corporate career, including his tenure at IBM, Bangalore. A B.Tech graduate from M.A. College of Engineering, he returned to the core family business with a vision to scale, expand, and strengthen customer relationships.
+
+Cristo leads key functions such as marketing, customer relations, and business expansion. Driven by his passion for industry-ready talent, he also founded an industrial automation training institute to bridge the knowledge gap between institutes and industries for the next generation.`,
     },
     {
-      icon: Users,
-      title: "People First",
-      description: "Empowering 140,000+ employees to drive innovation",
-    },
-    {
-      icon: TrendingUp,
-      title: "Sustainable Growth",
-      description: "Balancing business success with environmental responsibility",
+      id: 3,
+      image: joeImage,
+      name: "Mr. Joe",
+      designation: "CTO",
+      description: "Specializing in advanced automation technologies and building strong partnerships with industry leaders.",
+      fullDescription: `Our CTO, Joe, brings global exposure and advanced technical expertise to DCS. A B.Tech graduate in Electrical & Electronics Engineering from NIT Calicut, he has over eight years of experience in Electrical, Instrumentation, and Automation.
+
+Joe began his career in Kerala and later moved to Qatar, where he excelled as an E&I Engineer and Lead Engineer, handling complex EPIC projects across oil & gas, airport operations, and large-scale infrastructure. His skills span system design, process automation, final testing, execution, and large project management.
+
+Since joining DCS in 2023, Joe has been driving our technical direction with strong leadership in manpower management, troubleshooting, and high-level problem-solving.`,
     },
   ];
+
+  const [selectedDirector, setSelectedDirector] = useState<number | null>(null);
+
+  const openDialog = (directorId: number) => {
+    setSelectedDirector(directorId);
+  };
+
+  const closeDialog = () => {
+    setSelectedDirector(null);
+  };
+
+  const currentDirector = directors.find((director) => director.id === selectedDirector);
 
   return (
     <div className="min-h-screen">
@@ -110,7 +146,7 @@ const About = () => {
                 {/* Image Container */}
                 <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
                   <img
-                    src={heroBanner}
+                    src={automationIndustry}
                     alt="Industrial Automation Solutions"
                     className="w-full h-full object-cover"
                   />
@@ -133,7 +169,7 @@ const About = () => {
                           </div>
                           <div>
                             <div className="text-3xl md:text-4xl font-bold text-primary mb-1">
-                              15+
+                              27+
                             </div>
                             <div className="text-sm md:text-base text-muted-foreground font-medium">
                               Years of Excellence
@@ -201,7 +237,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* Values Section */}
+        {/* Directors Section */}
         <section className="py-20 bg-muted/30">
           <div className="container mx-auto px-4">
             <motion.div
@@ -211,33 +247,52 @@ const About = () => {
               className="text-center mb-16"
             >
               <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-                Our Core Values
+                Our Directors
               </h2>
               <p className="text-xl text-muted-foreground">
-                The principles that guide everything we do
+                Meet the leadership team driving innovation and excellence
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {values.map((value, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {directors.map((director, index) => (
                 <motion.div
-                  key={value.title}
+                  key={director.name}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="h-full hover-lift">
+                  <Card 
+                    className="h-full hover-lift cursor-pointer group overflow-hidden"
+                    onClick={() => openDialog(director.id)}
+                  >
+                    <AspectRatio ratio={4 / 3}>
+                      <img
+                        src={director.image}
+                        alt={director.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "/placeholder.svg";
+                        }}
+                      />
+                    </AspectRatio>
                     <CardContent className="p-6 text-center">
-                      <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                        <value.icon size={28} className="text-primary" />
-                      </div>
-                      <h3 className="font-display text-xl font-semibold mb-3">
-                        {value.title}
+                      <h3 className="font-display text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                        {director.name}
                       </h3>
-                      <p className="text-muted-foreground">
-                        {value.description}
+                      <p className="text-primary font-medium mb-3">
+                        {director.designation}
                       </p>
+                      <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                        {director.description}
+                      </p>
+                      <Button variant="ghost" size="sm" className="p-0 h-auto group/btn">
+                        Read more
+                        <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                      </Button>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -245,6 +300,44 @@ const About = () => {
             </div>
           </div>
         </section>
+
+        {/* Director Dialog */}
+        <Dialog open={selectedDirector !== null} onOpenChange={closeDialog}>
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+            {currentDirector && (
+              <>
+                <DialogHeader>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
+                      <img
+                        src={currentDirector.image}
+                        alt={currentDirector.name}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "/placeholder.svg";
+                        }}
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <DialogTitle className="text-2xl md:text-3xl font-display mb-2">
+                        {currentDirector.name}
+                      </DialogTitle>
+                      <DialogDescription className="text-primary font-medium text-base">
+                        {currentDirector.designation}
+                      </DialogDescription>
+                    </div>
+                  </div>
+                </DialogHeader>
+                <div className="mt-6 space-y-4">
+                  <div className="prose prose-sm max-w-none text-muted-foreground leading-relaxed whitespace-pre-line">
+                    {currentDirector.fullDescription}
+                  </div>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
 
         {/* Global Presence */}
         <section className="py-20">
@@ -270,8 +363,8 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="text-4xl font-bold text-primary mb-2">150+</div>
-                <div className="text-sm text-muted-foreground">Countries</div>
+                <div className="text-4xl font-bold text-primary mb-2">27+</div>
+                <div className="text-sm text-muted-foreground">Innovation</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -280,8 +373,8 @@ const About = () => {
                 transition={{ delay: 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl font-bold text-primary mb-2">240+</div>
-                <div className="text-sm text-muted-foreground">Offices Worldwide</div>
+                <div className="text-4xl font-bold text-primary mb-2">1000+</div>
+                <div className="text-sm text-muted-foreground">Projects Served</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -290,8 +383,8 @@ const About = () => {
                 transition={{ delay: 0.2 }}
                 className="text-center"
               >
-                <div className="text-4xl font-bold text-primary mb-2">140K+</div>
-                <div className="text-sm text-muted-foreground">Employees</div>
+                <div className="text-4xl font-bold text-primary mb-2">500+</div>
+                <div className="text-sm text-muted-foreground">customers</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -300,8 +393,8 @@ const About = () => {
                 transition={{ delay: 0.3 }}
                 className="text-center"
               >
-                <div className="text-4xl font-bold text-primary mb-2">100+</div>
-                <div className="text-sm text-muted-foreground">Years of Innovation</div>
+                <div className="text-4xl font-bold text-primary mb-2">70+</div>
+                <div className="text-sm text-muted-foreground">testimonials</div>
               </motion.div>
             </div>
           </div>
