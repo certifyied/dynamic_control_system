@@ -4,162 +4,272 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Search, Download, ArrowRight } from "lucide-react";
-// Placeholder will be handled via onError fallback to public path
+import { Download, ArrowRight } from "lucide-react";
 
-// Import all product images
-const productImages = import.meta.glob<{ default: string }>("/src/assets/products/*.{png,jpg,jpeg,webp,svg}", { eager: true });
+// Import all product images from dynamic-products folder structure
+const productImages = import.meta.glob<{ default: string }>(
+  "/src/assets/dynamic-products/**/*.{png,jpg,jpeg,webp,svg}",
+  { eager: true }
+);
 
-// Helper function to match image to section
-const getSectionForImage = (filename: string): string | null => {
-  const lowerFilename = filename.toLowerCase();
+// Category mapping based on folder structure
+interface Product {
+  image: string;
+  filename: string;
+  name: string;
+  category: string;
+  subcategory?: string;
+  title: string;
+  description: string;
+}
+
+// Helper function to extract category and subcategory from path
+const getCategoryFromPath = (path: string): { category: string; subcategory?: string } => {
+  const pathParts = path.split("/");
+  const dynamicProductIndex = pathParts.findIndex(part => part === "dynamic-products");
   
-  if (lowerFilename.includes("plc") && !lowerFilename.includes("software")) {
-    return "PLC";
+  if (dynamicProductIndex === -1 || dynamicProductIndex === pathParts.length - 1) {
+    return { category: "Other" };
   }
-  if (lowerFilename.includes("hmi")) {
-    return "HMI";
+
+  const categoryFolder = pathParts[dynamicProductIndex + 1];
+  const filename = pathParts[pathParts.length - 1];
+
+  // Normalize category names (case-insensitive)
+  const normalizedCategory = categoryFolder.toLowerCase().trim();
+
+  // Map PLC subcategories (handle various case combinations)
+  if (normalizedCategory.includes("iqf") && normalizedCategory.includes("plc")) {
+    return { category: "PLC", subcategory: "PLC iQF" };
   }
-  if (lowerFilename.includes("inverter") || lowerFilename.includes("invert")) {
-    return "Invertors";
+  if (normalizedCategory.includes("iqr") && normalizedCategory.includes("plc")) {
+    return { category: "PLC", subcategory: "PLC iQR" };
   }
-  if (lowerFilename.includes("motion-control") || lowerFilename.includes("motion control")) {
-    return "Motion control";
+  if ((normalizedCategory.includes("melsec q") || normalizedCategory.includes("q series")) && normalizedCategory.includes("plc")) {
+    return { category: "PLC", subcategory: "PLC MELSEC Q Series" };
   }
-  if (lowerFilename.includes("software")) {
-    return "Software";
+  if ((normalizedCategory.includes("melsec f") || normalizedCategory.includes("f series")) && normalizedCategory.includes("plc")) {
+    return { category: "PLC", subcategory: "PLC MELSEC F Series" };
   }
-  if (lowerFilename.includes("melsec") && !lowerFilename.includes("plc") && !lowerFilename.includes("software")) {
-    return "MELSEC";
+  if (normalizedCategory.includes("mxf") && normalizedCategory.includes("plc")) {
+    return { category: "PLC", subcategory: "PLC MXF Series" };
   }
-  if (lowerFilename.includes("robot")) {
-    return "Robot";
+  if (normalizedCategory.includes("mxr") && normalizedCategory.includes("plc")) {
+    return { category: "PLC", subcategory: "PLC MXR Series" };
   }
-  if (lowerFilename.includes("genesis")) {
-    return "Genesis";
+
+  // Map other categories
+  if (normalizedCategory.includes("hmi")) {
+    return { category: "HMI" };
   }
-  if (lowerFilename.includes("servo")) {
-    return "Servo";
+  if (normalizedCategory.includes("robot")) {
+    return { category: "Robot" };
   }
-  
-  return null;
+  if (normalizedCategory.includes("invertor")) {
+    return { category: "Invertors" };
+  }
+  if (normalizedCategory.includes("servo")) {
+    return { category: "AC Servo" };
+  }
+  if (normalizedCategory.includes("software")) {
+    return { category: "Software" };
+  }
+  if (normalizedCategory.includes("integrated hmi") || normalizedCategory.includes("intergrated hmi")) {
+    return { category: "Integrated HMI" };
+  }
+  if (normalizedCategory.includes("low voltage") || normalizedCategory.includes("power")) {
+    return { category: "Low Voltage Power Distribution" };
+  }
+
+  // Default category based on folder name
+  return { category: categoryFolder };
 };
 
-// Convert to array and group by section
-const allProducts = Object.entries(productImages).map(([path, module]) => {
-  const filename = path.split("/").pop() || "";
+// Generate product title and description
+const generateProductInfo = (filename: string, category: string, subcategory?: string): { title: string; description: string } => {
   const nameWithoutExt = filename.replace(/\.[^/.]+$/, "");
-  const section = getSectionForImage(filename);
   
+  // Remove common category and subcategory prefixes from filename
+  let cleanName = nameWithoutExt
+    .replace(/^(plc|hmi|robot|servo|invertor|software|invertors)\s*/i, "")
+    .replace(/^(plc\s+)?(iqf|iqr|melsec\s+[qf]|mxf|mxr)\s+/i, "")
+    .replace(/^(low\s+voltage\s+power\s+distribution|integrated\s+hmi|intergrated\s+hmi|engineering\s+software|visualization\s+software|ac\s+servo)\s*/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  // Format the product name: capitalize first letter of each word, preserve acronyms and model numbers
+  const formatProductName = (name: string): string => {
+    if (!name) return name;
+    
+    // Split by spaces and format each word
+    return name
+      .split(" ")
+      .map(word => {
+        // Handle model numbers and product codes (e.g., FX5UJ, FR-D700, GOT 2000)
+        // If word contains numbers or dashes with alphanumeric, likely a model number
+        if (/\d/.test(word) || /^[a-z]+\-[A-Z0-9]+/i.test(word) || /^[a-z]{1,3}[A-Z0-9]+/i.test(word)) {
+          return word.toUpperCase();
+        }
+        // Preserve existing acronyms (all caps, 2+ letters)
+        if (/^[A-Z]{2,}$/.test(word)) {
+          return word;
+        }
+        // Preserve mixed case model numbers (e.g., iQF, iQR)
+        if (/^[a-z][A-Z]+/.test(word)) {
+          return word;
+        }
+        // Capitalize first letter, lowercase rest for regular words
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join(" ");
+  };
+
+  // Generate title - only the product name, without category prefix
+  // Fallback to formatted filename if cleanName is empty
+  const title = cleanName ? formatProductName(cleanName) : formatProductName(nameWithoutExt);
+
+  // Generate description based on category and product name
+  const descriptions: Record<string, Record<string, string>> = {
+    "PLC": {
+      "iQF": "Compact and versatile iQ-F series PLC offering high-speed processing and extensive I/O capabilities for mid-range automation applications.",
+      "iQR": "Advanced iQ-R series PLC with modular architecture, supporting complex control systems with high-performance CPUs and extensive module options.",
+      "MELSEC Q Series": "High-performance MELSEC Q Series PLC designed for large-scale automation systems with advanced networking and motion control capabilities.",
+      "MELSEC F Series": "Cost-effective MELSEC F Series PLC providing reliable control for small to medium-scale automation applications with compact design.",
+      "MXF Series": "Next-generation MXF Series PLC featuring advanced processing power and integrated safety functions for modern industrial automation.",
+      "MXR Series": "Scalable MXR Series PLC offering flexible configuration options and robust performance for diverse automation requirements.",
+      "default": "Programmable Logic Controller designed for reliable industrial automation with robust communication and control capabilities.",
+    },
+    "HMI": {
+      "default": "Human-Machine Interface with intuitive touchscreen display for seamless operator interaction and real-time system monitoring.",
+    },
+    "Robot": {
+      "default": "Industrial robot system designed for precision automation, assembly, and material handling applications with high repeatability.",
+    },
+    "Invertors": {
+      "default": "Variable frequency drive for precise motor control, energy efficiency, and smooth operation across various industrial applications.",
+    },
+    "AC Servo": {
+      "default": "High-performance AC servo motor system providing exceptional torque control and precise positioning for automation applications.",
+    },
+    "Software": {
+      "default": "Engineering and visualization software suite for system design, programming, monitoring, and configuration of automation systems.",
+    },
+    "Integrated HMI": {
+      "default": "Integrated HMI solution combining display and control functions in a compact design for space-efficient automation applications.",
+    },
+    "Low Voltage Power Distribution": {
+      "default": "Low voltage power distribution products including circuit breakers and protection devices for safe and reliable electrical systems.",
+    },
+  };
+
+  let description = descriptions[category]?.default || "Industrial automation solution designed for reliability and performance.";
+
+  if (subcategory && descriptions[category]?.[subcategory.replace("PLC ", "")]) {
+    description = descriptions[category][subcategory.replace("PLC ", "")];
+  } else if (descriptions[category]?.[cleanName.toLowerCase()]) {
+    description = descriptions[category][cleanName.toLowerCase()];
+  }
+
+  return { title, description };
+};
+
+// Process all products
+const allProducts: Product[] = Object.entries(productImages).map(([path, module]) => {
+  const filename = path.split("/").pop() || "";
+  const { category, subcategory } = getCategoryFromPath(path);
+  const { title, description } = generateProductInfo(filename, category, subcategory);
+
   return {
     image: module.default,
     filename: filename,
-    name: nameWithoutExt,
-    section: section,
+    name: filename.replace(/\.[^/.]+$/, ""),
+    category: category,
+    subcategory: subcategory,
+    title: title,
+    description: description,
   };
-}).filter(product => product.section !== null);
+});
 
-// Group products by section
-const sections = [
-  "PLC",
-  "HMI",
-  "Invertors",
-  "Motion control",
-  "Software",
-  "MELSEC",
-  "Robot",
-  "Genesis",
-  "Servo",
+// Get all unique categories
+const allCategories = Array.from(new Set(allProducts.map(p => p.category))).sort();
+
+// PLC subcategories
+const plcSubcategories = [
+  "PLC iQF",
+  "PLC iQR",
+  "PLC MELSEC Q Series",
+  "PLC MELSEC F Series",
+  "PLC MXF Series",
+  "PLC MXR Series",
 ];
 
-const productsBySection = sections.map(section => ({
-  name: section,
-  products: allProducts.filter(p => p.section === section),
-}));
+const Products = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-// Generate product descriptions based on section
-const generateDescription = (section: string, filename: string): string => {
-  const descriptions: Record<string, string[]> = {
-    "PLC": [
-      "Compact programmable logic controller for mid-range industrial automation. Supports Ethernet and analog I/O for flexible integration.",
-      "Advanced PLC system with high-speed processing and extensive I/O capabilities. Ideal for complex automation applications.",
-      "Reliable programmable controller designed for scalable manufacturing solutions. Features robust communication protocols.",
-    ],
-    "HMI": [
-      "Intuitive human-machine interface with touchscreen display for seamless operator interaction. Supports multiple protocols.",
-      "High-performance HMI solution with advanced visualization capabilities. Enables real-time monitoring and control.",
-      "Compact HMI panel designed for space-constrained applications. Features responsive touch interface and clear display.",
-    ],
-    "Invertors": [
-      "Energy-efficient variable frequency drive for precise motor control. Reduces energy consumption and extends equipment life.",
-      "Advanced inverter technology with intelligent control algorithms. Optimizes performance across various industrial applications.",
-      "Compact frequency inverter with integrated safety features. Provides smooth motor operation and protection.",
-    ],
-    "Motion control": [
-      "Precision motion control system with high-speed positioning capabilities. Ensures accurate movement in automation applications.",
-      "Advanced motion controller with integrated servo drive technology. Delivers exceptional performance and reliability.",
-      "Flexible motion control solution supporting multiple motor types. Features comprehensive programming and diagnostics.",
-    ],
-    "Software": [
-      "Comprehensive engineering software for system design and configuration. Streamlines development and reduces time to market.",
-      "Integrated software platform for programming and monitoring automation systems. Features intuitive interface and powerful tools.",
-      "Advanced software suite with simulation and debugging capabilities. Accelerates project development and troubleshooting.",
-    ],
-    "MELSEC": [
-      "High-performance MELSEC controller with extensive I/O options. Designed for demanding industrial automation requirements.",
-      "Scalable MELSEC system supporting modular expansion. Provides flexibility for growing automation needs.",
-      "Reliable MELSEC controller with robust communication features. Ensures seamless integration with existing systems.",
-    ],
-    "Robot": [
-      "Versatile industrial robot with high precision and repeatability. Ideal for assembly, welding, and material handling applications.",
-      "Collaborative robot designed for safe human-robot interaction. Features advanced safety sensors and intuitive programming.",
-      "High-speed robotic system optimized for production efficiency. Delivers consistent performance in automated manufacturing.",
-    ],
-    "Genesis": [
-      "Next-generation Genesis platform with advanced processing capabilities. Enables sophisticated automation solutions.",
-      "Scalable Genesis system supporting complex control applications. Features modular architecture and flexible configuration.",
-    ],
-    "Servo": [
-      "High-performance servo motor with exceptional torque and speed control. Provides precise positioning for automation systems.",
-      "Compact servo drive with integrated motion control. Features advanced algorithms for smooth and accurate operation.",
-      "Energy-efficient servo system with regenerative capabilities. Reduces power consumption while maintaining high performance.",
-    ],
+  // Filter products based on selected category
+  const filteredProducts = selectedCategory
+    ? allProducts.filter(p => p.category === selectedCategory)
+    : allProducts;
+
+  // Group products by category and subcategory
+  const groupedProducts = filteredProducts.reduce((acc, product) => {
+    const key = product.subcategory || product.category;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(product);
+    return acc;
+  }, {} as Record<string, Product[]>);
+
+  // Organize PLC products with subsections
+  const organizeProducts = () => {
+    const organized: Array<{ name: string; isSubsection: boolean; products: Product[] }> = [];
+
+    // Handle PLC category separately
+    if (!selectedCategory || selectedCategory === "PLC") {
+      const plcProducts = allProducts.filter(p => p.category === "PLC");
+      
+      if (plcProducts.length > 0) {
+        organized.push({
+          name: "PLC",
+          isSubsection: false,
+          products: [],
+        });
+
+        // Add PLC subsections
+        plcSubcategories.forEach(subcat => {
+          const subcatProducts = plcProducts.filter(p => p.subcategory === subcat);
+          if (subcatProducts.length > 0) {
+            organized.push({
+              name: subcat,
+              isSubsection: true,
+              products: subcatProducts,
+            });
+          }
+        });
+      }
+    }
+
+    // Add other categories
+    allCategories.forEach(category => {
+      if (category !== "PLC" && (!selectedCategory || selectedCategory === category)) {
+        const categoryProducts = filteredProducts.filter(p => p.category === category);
+        if (categoryProducts.length > 0) {
+          organized.push({
+            name: category,
+            isSubsection: false,
+            products: categoryProducts,
+          });
+        }
+      }
+    });
+
+    return organized;
   };
 
-  const sectionDescriptions = descriptions[section] || ["Industrial automation solution designed for reliability and performance."];
-  // Use filename hash to pick a consistent description
-  const index = filename.length % sectionDescriptions.length;
-  return sectionDescriptions[index];
-};
-
-const Products = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  // Flatten all products for search
-  const allProductsWithDetails = productsBySection.flatMap(section =>
-    section.products.map(product => ({
-      ...product,
-      section: section.name,
-      description: generateDescription(section.name, product.filename),
-      title: `${section.name} ${product.name}`,
-    }))
-  );
-
-  const filteredProducts = allProductsWithDetails.filter(
-    (product) =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.section.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  // Group filtered products back by section
-  const filteredSections = sections.map(sectionName => ({
-    name: sectionName,
-    products: filteredProducts.filter(p => p.section === sectionName),
-  })).filter(section => section.products.length > 0);
+  const organizedSections = organizeProducts();
 
   return (
     <div className="min-h-screen">
@@ -186,19 +296,27 @@ const Products = () => {
           </div>
         </section>
 
-        {/* Search */}
-        <section className="py-8 border-b">
+        {/* Category Filter Tabs */}
+        <section className="py-8 border-b bg-background sticky top-0 z-10 shadow-sm">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
-              <div className="relative w-full md:w-96">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
-                <Input
-                  placeholder="Search products..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
+            <div className="flex flex-wrap gap-2 justify-center">
+              <Button
+                variant={selectedCategory === null ? "default" : "outline"}
+                onClick={() => setSelectedCategory(null)}
+                className="rounded-full"
+              >
+                All Products
+              </Button>
+              {allCategories.map((category) => (
+                <Button
+                  key={category}
+                  variant={selectedCategory === category ? "default" : "outline"}
+                  onClick={() => setSelectedCategory(category)}
+                  className="rounded-full"
+                >
+                  {category}
+                </Button>
+              ))}
             </div>
           </div>
         </section>
@@ -206,7 +324,7 @@ const Products = () => {
         {/* Products by Section */}
         <section className="py-20">
           <div className="container mx-auto px-4 space-y-16">
-            {filteredSections.map((section, sectionIndex) => (
+            {organizedSections.map((section, sectionIndex) => (
               <motion.div
                 key={section.name}
                 initial={{ opacity: 0, y: 20 }}
@@ -214,74 +332,94 @@ const Products = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: sectionIndex * 0.1 }}
               >
-                <div className="mb-8">
-                  <h2 className="font-display text-3xl md:text-4xl font-bold mb-2">
+                <div className={`mb-8 ${section.isSubsection ? "ml-8" : ""}`}>
+                  <h2 className={`font-display font-bold mb-2 ${section.isSubsection ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"}`}>
                     {section.name}
                   </h2>
                   <div className="w-20 h-1 bg-primary rounded-full" />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {section.products.map((product, index) => (
-                    <motion.div
-                      key={product.filename}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.05 }}
-                    >
-                      <Card className="h-full hover-lift cursor-pointer group overflow-hidden">
-                        <AspectRatio ratio={16 / 9}>
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            loading="lazy"
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
-                              target.src = "/placeholder.svg";
-                            }}
-                          />
-                        </AspectRatio>
-                        <CardContent className="p-6">
-                          <Badge variant="secondary" className="mb-4">
-                            {product.section}
-                          </Badge>
-                          
-                          <h3 className="font-display text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                            {product.section} {product.name}
-                          </h3>
-                          
-                          <p className="text-muted-foreground mb-4">
-                            {product.description}
-                          </p>
+                {section.products.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {section.products.map((product, index) => {
+                      // Check if this is a PLC iQR product
+                      const isPlcIqr = product.subcategory === "PLC iQR";
+                      
+                      return (
+                        <motion.div
+                          key={`${product.filename}-${index}`}
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: index * 0.05 }}
+                        >
+                          <Card className="h-full hover-lift cursor-pointer group overflow-hidden flex flex-col">
+                            {isPlcIqr ? (
+                              // Fixed height container for PLC iQR products - responsive and consistent
+                              <div className="w-full h-48 sm:h-56 md:h-64 bg-white flex items-center justify-center p-4 overflow-hidden">
+                                <img
+                                  src={product.image}
+                                  alt={product.title}
+                                  loading="lazy"
+                                  className="max-w-full max-h-full w-auto h-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                                  onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.src = "/placeholder.svg";
+                                  }}
+                                />
+                              </div>
+                            ) : (
+                              // Standard aspect ratio container for other products
+                              <AspectRatio ratio={16 / 9} className="bg-white">
+                                <img
+                                  src={product.image}
+                                  alt={product.title}
+                                  loading="lazy"
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                  onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.src = "/placeholder.svg";
+                                  }}
+                                />
+                              </AspectRatio>
+                            )}
+                            <CardContent className="p-6 flex-1 flex flex-col">
+                              <Badge variant="secondary" className="mb-4">
+                                {product.subcategory || product.category}
+                              </Badge>
+                              
+                              <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                                {product.title}
+                              </h3>
+                              
+                              <p className="text-muted-foreground mb-4 text-sm flex-1">
+                                {product.description}
+                              </p>
 
-                          <div className="text-xs text-muted-foreground mb-6">
-                            Image: {product.filename}
-                          </div>
-
-                          <div className="flex gap-2">
-                            <Button variant="outline" size="sm" className="flex-1">
-                              <Download className="mr-2 h-4 w-4" />
-                              Datasheet
-                            </Button>
-                            <Button size="sm" className="flex-1">
-                              Details
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
+                              <div className="flex gap-2">
+                                <Button variant="outline" size="sm" className="flex-1">
+                                  <Download className="mr-2 h-4 w-4" />
+                                  Datasheet
+                                </Button>
+                                <Button size="sm" className="flex-1">
+                                  Details
+                                  <ArrowRight className="ml-2 h-4 w-4" />
+                                </Button>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                )}
               </motion.div>
             ))}
 
-            {filteredSections.length === 0 && (
+            {organizedSections.length === 0 && (
               <div className="text-center py-16">
                 <p className="text-muted-foreground text-lg">
-                  No products found matching your criteria.
+                  No products found in this category.
                 </p>
               </div>
             )}

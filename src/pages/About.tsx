@@ -2,16 +2,18 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Globe, Award, Users, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Globe, Award, Users, TrendingUp, ArrowRight } from "lucide-react";
+import heroBanner from "@/assets/hero_banner.jpg";
 
 const About = () => {
   const timeline = [
-    { year: "1921", event: "Mitsubishi Electric Corporation established" },
-    { year: "1954", event: "Started production of heavy electric equipment" },
-    { year: "1980", event: "Launched first industrial robot" },
-    { year: "2000", event: "Expanded into renewable energy solutions" },
-    { year: "2020", event: "Achieved major sustainability milestones" },
-    { year: "2024", event: "Leading in AI-powered automation" },
+    { year: "1998", event: "Dynamic Control Systems established" },
+    { year: "2000", event: "Associated with Mitsubushi Systems" },
+    { year: "2013", event: "Launched panel manufacturing with MAC " },
+    { year: "2015", event: "Started a college wing for IoT automation students" },
+    { year: "2019", event: "Registerd a new training institute DCSRI " },
+    { year: "2025", event: "Leading in AI-powered automation" },
   ];
 
   const values = [
@@ -58,25 +60,92 @@ const About = () => {
           </div>
         </section>
 
-        {/* About Content Section */}
-        <section className="py-12">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="max-w-4xl mx-auto"
-            >
-              <div className="prose prose-lg max-w-none">
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
-                  We are a team of young, dynamic, and experienced engineers specializing in Electrical, Automation, and Instrumentation Engineering. Over the years, we have successfully executed numerous industrial projects across India, including key sectors like Steel, Cement, Power Generation, Automobiles, Pharmaceuticals, and Packaging. Our strong technical support team, always prepared to tackle complex on-site challenges, ensures every project runs efficiently and seamlessly.
-                </p>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                  Dynamic Control Systems – an Authorized Channel Partner for Mitsubishi Electric India Private Limited – is a leading provider of industrial automation in Kochi, especially in Vytilla. Led by Mr. Saji K. Philip, we offer comprehensive sales and service support for Mitsubishi Electric solutions, catering to diverse industrial automation in Kochi. Whether it's new installations, system upgrades, or expansions, our expertise in industrial automation in Kochi helps build long-lasting partnerships with clients who trust us for dependable and innovative solutions.
-                </p>
-              </div>
-            </motion.div>
+        {/* About Content Section - Two Column Layout */}
+        <section className="py-20 md:py-24">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="grid grid-cols-1 lg:grid-cols-[48%_52%] gap-8 lg:gap-12 xl:gap-16 items-center">
+              {/* Left Column: Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="order-1 lg:order-none"
+              >
+                {/* Section Label */}
+                <div className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
+                  About Dynamic Control Systems
+                </div>
+                
+                {/* Main Heading */}
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+                  Leading Industrial Automation Solutions
+                </h2>
+                
+                {/* Description */}
+                <div className="space-y-4 mb-8 max-w-[600px]">
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                    We are a team of young, dynamic, and experienced engineers specializing in Electrical, Automation, and Instrumentation Engineering. Over the years, we have successfully executed numerous industrial projects across India, including key sectors like Steel, Cement, Power Generation, Automobiles, Pharmaceuticals, and Packaging.
+                  </p>
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                    Dynamic Control Systems – an Authorized Channel Partner for Mitsubishi Electric India Private Limited – is a leading provider of industrial automation in Kochi, especially in Vytilla. Led by Mr. Saji K. Philip, we offer comprehensive sales and service support for Mitsubishi Electric solutions, catering to diverse industrial automation needs.
+                  </p>
+                </div>
+                
+                {/* CTA Button */}
+                <Button size="lg" className="group">
+                  Learn More About Us
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
+
+              {/* Right Column: Image Container */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative order-2 lg:order-none"
+              >
+                {/* Image Container */}
+                <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-xl">
+                  <img
+                    src={heroBanner}
+                    alt="Industrial Automation Solutions"
+                    className="w-full h-full object-cover"
+                  />
+                  
+                  {/* Highlight/Stat Card Overlay */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="absolute bottom-6 left-6 right-6 md:right-auto md:w-auto"
+                  >
+                    <Card className="bg-background/95 backdrop-blur-sm shadow-lg border-2 border-primary/20">
+                      <CardContent className="p-6">
+                        <div className="flex items-center gap-4">
+                          <div className="flex-shrink-0">
+                            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                              <Award className="h-8 w-8 text-primary" />
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-3xl md:text-4xl font-bold text-primary mb-1">
+                              15+
+                            </div>
+                            <div className="text-sm md:text-base text-muted-foreground font-medium">
+                              Years of Excellence
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 

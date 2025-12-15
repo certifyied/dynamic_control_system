@@ -38,14 +38,14 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-2">
+            <span className="font-display text-sm sm:text-base font-semibold text-foreground">
+              Authorized partnership with
+            </span>
             <img
               src={mitsuLogo}
-              alt="Dynamic Control System"
+              alt="Mitsubishi Electric"
               className="h-10 w-auto"
             />
-            <span className="font-display font-bold text-xl text-foreground hidden sm:inline">
-              Dynamic Control System
-            </span>
           </Link>
 
           {/* Desktop Navigation */}

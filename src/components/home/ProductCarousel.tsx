@@ -1,41 +1,70 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Factory, Building2, Zap, Train, LucideIcon } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import pharmaIndustryImage from "@/assets/pharama_industry.jpg";
+import foodIndustryImage from "@/assets/food_industry.jpg";
+import automationIndustryImage from "@/assets/automation_industry.jpg";
+import marineIndustryImage from "@/assets/marine_industry.jpg";
 
 interface Product {
-  icon: LucideIcon;
+  image: string;
   title: string;
   description: string;
-  color: string;
+  bulletPoints: string[];
 }
 
 const ProductCarousel = () => {
   const products: Product[] = [
     {
-      icon: Factory,
-      title: "Factory Automation",
-      description: "Smart Manufacturing Automation - Harness the power of intelligent PLC, HMI, SCADA, and robotics integration to automate critical manufacturing processes. Our solutions improve accuracy, streamline workflows, and ensure high-quality, repeatable production outcomes across all industrial environments.",
-      color: "text-primary",
+      image: pharmaIndustryImage,
+      title: "Pharma Industry",
+      description: "We deliver precise automation for safe and reliable pharma production.",
+      bulletPoints: [
+        "Blood bag manufacturing automation",
+        "Autoclave system control",
+        "Heart valve production systems",
+        "Secure packing solutions",
+        "End-to-end traceability and cleanroom-friendly automation",
+      ],
     },
     {
-      icon: Building2,
-      title: "Motion Control & Robotics",
-      description: "Motion Control & Robotics - Enhance speed, precision, and safety with advanced robotic systems and motion control technologies. From assembly and handling to inspection and packaging, we deliver automation that reduces manual effort and boosts overall operational efficiency.",
-      color: "text-accent",
+      image: foodIndustryImage,
+      title: "Food & Beverages",
+      description: "Automation that enhances hygiene, speed, and consistency.",
+      bulletPoints: [
+        "Retort machine automation",
+        "Food & spice plant control systems",
+        "Bottle filling automation",
+        "Packaging line integration",
+        "Systems for hygiene compliance and continuous output",
+      ],
     },
     {
-      icon: Zap,
-      title: "Real-Time Monitoring",
-      description: "Industrial IoT & Real-Time Monitoring - Transform your factory into a connected ecosystem with IIoT-based data monitoring and smart analytics. Our systems enable real-time visibility, predictive maintenance, and informed decision-making—helping industries minimize downtime and maximize productivity.",
-      color: "text-primary",
+      image: automationIndustryImage,
+      title: "Automotive Industry",
+      description: "Automation that improves speed, accuracy, and quality in automotive plants.",
+      bulletPoints: [
+        "Assembly line automation",
+        "Testing & inspection integration",
+        "Motor and drive control systems",
+        "Paint shop and welding station control",
+        "Energy-efficient plant automation",
+      ],
     },
     {
-      icon: Train,
-      title: "Automation Solutions",
-      description: "Customized Automation Solutions - Every factory is unique—so are our solutions. We design and implement tailor-made automation systems that align with your production requirements, ensuring seamless integration, reliable performance, and long-term scalability for future growth.",
-      color: "text-accent",
+      image: marineIndustryImage,
+      title: "Marine & Defence",
+      description: "Robust systems built for harsh marine and defence environments.",
+      bulletPoints: [
+        "Corrosion-resistant control panels",
+        "Automation for vessels and docks",
+        "Pump and engine monitoring",
+        "Power management systems",
+        "Rugged, vibration-proof solutions",
+      ],
     },
   ];
 
@@ -53,40 +82,54 @@ const ProductCarousel = () => {
             "Comprehensive solutions across diverse industries, powered by decades of expertise"
             </p>
         </motion.div>
-``
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => {
-            const IconComponent = product.icon;
-            return (
-              <motion.div
-                key={product.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="h-full hover-lift cursor-pointer group">
-                  <CardContent className="p-6">
-                    <div className={`${product.color} mb-4`}>
-                      <IconComponent size={40} strokeWidth={1.5} />
-                    </div>
-                    <h3 className="font-display text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                      {product.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      {product.description}
-                    </p>
-                    <Button variant="ghost" size="sm" className="p-0 h-auto group/btn" asChild>
-                      <Link to="/products">
-                        Learn more
-                        <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            );
-          })}
+          {products.map((product, index) => (
+            <motion.div
+              key={product.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card className="h-full hover-lift cursor-pointer group overflow-hidden">
+                <AspectRatio ratio={16 / 9}>
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "/placeholder.svg";
+                    }}
+                  />
+                </AspectRatio>
+                <CardContent className="p-6">
+                  <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                    {product.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    {product.description}
+                  </p>
+                  <ul className="text-sm text-muted-foreground mb-4 space-y-1.5">
+                    {product.bulletPoints.map((point, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <span className="text-primary mr-2 mt-1.5">•</span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button variant="ghost" size="sm" className="p-0 h-auto group/btn" asChild>
+                    <Link to="/products">
+                      Learn more
+                      <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
