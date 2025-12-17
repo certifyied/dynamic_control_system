@@ -43,7 +43,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-xl text-muted-foreground mb-8 max-w-2xl"
           >
-            Leading the way in electrical and electronic equipment manufacturing with cutting-edge solutions for automation, energy, and smart infrastructure.
+            Empowering industries through innovative electrical and electronic manufacturing solutions in automation, energy management, and smart infrastructure.
           </motion.p>
 
           <motion.div

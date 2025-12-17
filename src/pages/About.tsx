@@ -20,12 +20,12 @@ import joeImage from "@/assets/joe.jpg";
 
 const About = () => {
   const timeline = [
-    { year: "1998", event: "Dynamic Control Systems established" },
-    { year: "2000", event: "Associated with Mitsubushi Systems" },
-    { year: "2013", event: "Launched panel manufacturing with MAC " },
-    { year: "2015", event: "Started a college wing for IoT automation students" },
-    { year: "2019", event: "Registerd a new training institute DCSRI " },
-    { year: "2025", event: "Leading in AI-powered automation" },
+    { year: "1998", event: "Dynamic Control System was founded, delivering reliable control and automation solutions to industrial clients." },
+    { year: "2000", event: "Partnered with Messung Systems as an authorized channel partner, expanding capabilities in industrial automation." },
+    { year: "2012", event: "Became the initial and sole authorized Mitsubishi Electric channel partner for the Kerala region. " },
+    { year: "2013", event: "Launched a parallel manufacturing unit, MAC Machines and Controls, to support customized automation solutions." },
+    { year: "2019", event: "Established Dynamic Control System Research Institute (DCSRI) to train professionals in automation technologies. " },
+    { year: "2022", event: "Expanded into IoT, robotics, and AI-powered automation to meet evolving industry and smart factory demands." },
   ];
 
   const directors = [
@@ -33,7 +33,7 @@ const About = () => {
       id: 1,
       image: sajiImage,
       name: "Mr. Saji K. Philip",
-      designation: "Technical Director",
+      designation: "Founder & Director",
       description: "Leading Dynamic Control Systems with decades of expertise in industrial automation and strategic vision for growth.",
       fullDescription: `Mr. Saji K. Philip, founder of DCS, is the core of our technical strength and vision. A B.Tech graduate from M.A. College of Engineering, Kothamangalam, Saji gained valuable experience at Concast India Pvt. Ltd., Mumbai, before returning home with a clear mission: to elevate the industrial automation landscape.
 
@@ -42,8 +42,8 @@ With deep expertise in the electrical and automotive industries, he has supporte
     {
       id: 2,
       image: christoImage,
-      name: "Mr. Christo S Kayyalakam",
-      designation: "The Strategy and Network Builder",
+      name: "Mr. Cristo S Kayyalakam",
+      designation: "CEO",
       description: "Driving innovation and excellence in automation solutions with a focus on customer success and technical excellence.",
       fullDescription: `Our CEO, Cristo S. Kayyalakam, brings strong business acumen built during his corporate career, including his tenure at IBM, Bangalore. A B.Tech graduate from M.A. College of Engineering, he returned to the core family business with a vision to scale, expand, and strengthen customer relationships.
 
@@ -81,7 +81,7 @@ Since joining DCS in 2023, Joe has been driving our technical direction with str
       
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-12 bg-gradient-to-b from-muted/30 to-background">
+        <section className="pt-32 pb-6 bg-gradient-to-b from-muted/30 to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ Since joining DCS in 2023, Joe has been driving our technical direction with str
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <h1 className="font-display text-5xl md:text-6xl font-bold mb-8">
+              <h1 className="font-display text-5xl md:text-6xl font-bold mb-6">
                 About Us
               </h1>
             </motion.div>
@@ -97,7 +97,7 @@ Since joining DCS in 2023, Joe has been driving our technical direction with str
         </section>
 
         {/* About Content Section - Two Column Layout */}
-        <section className="py-20 md:py-24">
+        <section className="pt-12 md:pt-16 pb-20 md:pb-24">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-[48%_52%] gap-8 lg:gap-12 xl:gap-16 items-center">
               {/* Left Column: Text Content */}

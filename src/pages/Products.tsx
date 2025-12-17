@@ -277,7 +277,7 @@ const Products = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-gradient-to-b from-muted/30 to-background">
+        <section className="pt-32 pb-6 bg-gradient-to-b from-muted/30 to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -285,19 +285,15 @@ const Products = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <h1 className="font-display text-5xl md:text-6xl font-bold mb-6">
+              <h1 className="font-display text-5xl md:text-6xl font-bold mb-0">
                 Products & Solutions
               </h1>
-              <p className="text-xl text-muted-foreground">
-                Discover our comprehensive range of innovative solutions designed 
-                to enhance efficiency and sustainability across industries.
-              </p>
             </motion.div>
           </div>
         </section>
 
         {/* Category Filter Tabs */}
-        <section className="py-8 border-b bg-background sticky top-0 z-10 shadow-sm">
+        <section className="pt-6 pb-8 border-b bg-background sticky top-0 z-10 shadow-sm">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap gap-2 justify-center">
               <Button
@@ -322,7 +318,7 @@ const Products = () => {
         </section>
 
         {/* Products by Section */}
-        <section className="py-20">
+        <section className="pt-12 md:pt-16 pb-20">
           <div className="container mx-auto px-4 space-y-16">
             {organizedSections.map((section, sectionIndex) => (
               <motion.div

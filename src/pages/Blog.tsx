@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -14,30 +14,25 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Calendar, ArrowRight, Clock } from "lucide-react";
+import blog1Image from "@/assets/blog1.jpg";
+import blog2Image from "@/assets/blog2.jpg";
+import blog3Image from "@/assets/blog3.jpg";
+import blog4Image from "@/assets/blog4.jpg";
+import blog5Image from "@/assets/blog5.jpg";
+import blog6Image from "@/assets/blog6.jpg";
 
-// Import all product images
-const productImages = import.meta.glob<{ default: string }>("/src/assets/products/*.{png,jpg,jpeg,webp,svg}", { eager: true });
-
-// Convert to array
-const availableImages = Object.values(productImages).map(module => module.default);
-
-// Helper function to get random image
-const getRandomImage = (images: string[]): string => {
-  return images[Math.floor(Math.random() * images.length)];
+// Map blog IDs to their specific images
+const blogImageMap: Record<number, string> = {
+  1: blog1Image,
+  2: blog2Image,
+  3: blog3Image,
+  4: blog4Image,
+  5: blog5Image,
+  6: blog6Image,
 };
 
 const Blog = () => {
   const [selectedBlog, setSelectedBlog] = useState<number | null>(null);
-  const [blogImages, setBlogImages] = useState<Record<number, string>>({});
-
-  // Assign random images to blog posts on mount
-  useEffect(() => {
-    const images: Record<number, string> = {};
-    for (let i = 1; i <= 6; i++) {
-      images[i] = getRandomImage(availableImages);
-    }
-    setBlogImages(images);
-  }, []);
 
   const blogPosts = useMemo(() => [
     {
@@ -460,7 +455,7 @@ The consequences of a security breach in industrial systems can be severe, affec
 
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-gradient-to-b from-muted/30 to-background">
+        <section className="pt-32 pb-6 bg-gradient-to-b from-muted/30 to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -468,39 +463,34 @@ The consequences of a security breach in industrial systems can be severe, affec
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <h1 className="font-display text-5xl md:text-6xl font-bold mb-6">
+              <h1 className="font-display text-5xl md:text-6xl font-bold mb-0">
                 Blog
               </h1>
-              <p className="text-xl text-muted-foreground">
-                Insights, trends, and updates on industrial automation, technology, 
-                and innovation shaping the future of manufacturing.
-              </p>
             </motion.div>
           </div>
         </section>
 
         {/* Blog Grid */}
-        <section className="py-20">
+        <section className="pt-12 md:pt-16 pb-20">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {blogPosts.map((blog, index) => (
                 <motion.article
                   key={blog.id}
                   initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <Card
                     className="h-full hover-lift cursor-pointer group overflow-hidden"
                     onClick={() => openDialog(blog.id)}
                   >
-                    {blogImages[blog.id] && (
+                    {blogImageMap[blog.id] && (
                       <AspectRatio ratio={16 / 9}>
                         <img
-                          src={blogImages[blog.id]}
+                          src={blogImageMap[blog.id]}
                           alt={blog.title}
-                          loading="lazy"
+                          loading="eager"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
