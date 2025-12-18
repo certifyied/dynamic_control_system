@@ -4,43 +4,66 @@ import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ArrowRight } from "lucide-react";
 
-// Import product images
-const productImages = import.meta.glob<{ default: string }>("/src/assets/products/*.{png,jpg,jpeg,webp,svg}", { eager: true });
+// Import service-specific images from services folder
+const serviceImages = import.meta.glob<{ default: string }>(
+  "/src/assets/services/*.{png,jpg,jpeg,webp,svg}",
+  { eager: true }
+);
 
-// Convert to array
-const availableImages = Object.values(productImages).map(module => module.default);
+const getImageForService = (title: string): string => {
+  const entries = Object.entries(serviceImages);
+
+  // Normalize both title and filename for robust matching
+  const normalize = (value: string) =>
+    value.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+  const match = entries.find(([path]) => {
+    const filename = path.split("/").pop() || "";
+    const nameWithoutExt = filename.replace(/\.[^/.]+$/, "");
+    return normalize(nameWithoutExt) === normalize(title);
+  });
+
+  // Fallback: first service image or placeholder
+  return match?.[1].default || entries[0]?.[1].default || "/placeholder.svg";
+};
 
 const ServicesSection = () => {
   const services = [
     {
       title: "Engineering & Design",
-      description: "To ensure result-oriented, cost-effective, and time-efficient outcomes, we provide tailored, intelligent, and adaptable engineering solutions delivered within the promised timeframe. Our Industrial Automation Experts offer comprehensive support for PLC, SCADA, HMI, consulting, design, development, maintenance, bug fixing, and third-party interface integration for process industries. With a strong focus on Industrial Automation in Kochi, we deliver end-to-end solutions that drive efficiency and reliability.",
-      image: availableImages[0] || availableImages[Math.floor(Math.random() * availableImages.length)],
+      description:
+        "To ensure result-oriented, cost-effective, and time-efficient outcomes, we provide tailored, intelligent, and adaptable engineering solutions delivered within the promised timeframe. Our Industrial Automation Experts offer comprehensive support for PLC, SCADA, HMI, consulting, design, development, maintenance, bug fixing, and third-party interface integration for process industries. With a strong focus on Industrial Automation in Kochi, we deliver end-to-end solutions that drive efficiency and reliability.",
+      image: getImageForService("Engineering & Design"),
     },
     {
       title: "Industrial, Factory & Process Automation",
-      description: "Companies in the process and manufacturing sectors need a technology partner who truly understands their operations. At Dynamic Control Systems, we recognise how industrial automation in Kochi can streamline processes, enhance workflow, and boost overall efficiency. With our strong expertise in engineering and controls, we ensure that every automation solution we deliver is accurate, effective, and tailored to your needs.",
-      image: availableImages[1] || availableImages[Math.floor(Math.random() * availableImages.length)],
+      description:
+        "Companies in the process and manufacturing sectors need a technology partner who truly understands their operations. At Dynamic Control Systems, we recognise how industrial automation in Kochi can streamline processes, enhance workflow, and boost overall efficiency. With our strong expertise in engineering and controls, we ensure that every automation solution we deliver is accurate, effective, and tailored to your needs.",
+      image: getImageForService("Industrial, Factory & Process Automation"),
     },
     {
       title: "SCADA System Integration",
-      description: "Dynamic Control Systems designs and builds SCADA (Supervisory Control and Data Acquisition) systems tailored to meet diverse project requirements in Industrial Processes and Machinery. As a key player in Industrial Automation in Kochi, we deliver customized SCADA solutions that enhance control, monitoring, and efficiency across various industrial applications.",
-      image: availableImages[2] || availableImages[Math.floor(Math.random() * availableImages.length)],
+      description:
+        "Dynamic Control Systems designs and builds SCADA (Supervisory Control and Data Acquisition) systems tailored to meet diverse project requirements in Industrial Processes and Machinery. As a key player in Industrial Automation in Kochi, we deliver customized SCADA solutions that enhance control, monitoring, and efficiency across various industrial applications.",
+      image: getImageForService("SCADA System Integration"),
     },
     {
       title: "Industrial IoT Solution Development",
-      description: "Enables device connectivity, data processing and management, application integration, security, access control, monitoring, alarm management, digital twin, and integration with enterprise applications.",
-      image: availableImages[3] || availableImages[Math.floor(Math.random() * availableImages.length)],
+      description:
+        "Enables device connectivity, data processing and management, application integration, security, access control, monitoring, alarm management, digital twin, and integration with enterprise applications.",
+      image: getImageForService("Industrial IoT Solution Development"),
     },
     {
       title: "Embedded System",
-      description: "We design and deliver high-quality embedded system solutions for both industrial and residential applications. With our expertise in Industrial Automation in Kochi, we ensure reliable, efficient, and innovative embedded solutions tailored to meet diverse automation needs.",
-      image: availableImages[4] || availableImages[Math.floor(Math.random() * availableImages.length)],
+      description:
+        "We design and deliver high-quality embedded system solutions for both industrial and residential applications. With our expertise in Industrial Automation in Kochi, we ensure reliable, efficient, and innovative embedded solutions tailored to meet diverse automation needs.",
+      image: getImageForService("Embedded System"),
     },
     {
       title: "Project Training",
-      description: "Dynamic Control Systems is dedicated to helping fresh graduates gain the skills and expertise needed to advance their careers. Through specialized training focused on Industrial Automation in Kochi, we prepare students to confidently step into real-world industrial automation roles and succeed in the evolving technology landscape.",
-      image: availableImages[5] || availableImages[Math.floor(Math.random() * availableImages.length)],
+      description:
+        "Dynamic Control Systems is dedicated to helping fresh graduates gain the skills and expertise needed to advance their careers. Through specialized training focused on Industrial Automation in Kochi, we prepare students to confidently step into real-world industrial automation roles and succeed in the evolving technology landscape.",
+      image: getImageForService("Project Training"),
     },
   ];
 

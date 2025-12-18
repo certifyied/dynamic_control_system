@@ -3,7 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import mitsuLogo from "@/assets/MITSU LOGO.png";
+import dynamicLogo from "@/assets/DYNAMIC LOGO.png";
+import authorizedLogo from "@/assets/authorized_logo.png";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,6 +14,7 @@ const Navigation = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -38,13 +40,16 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-display text-sm sm:text-base font-semibold text-foreground">
-              Authorized partnership with
-            </span>
             <img
-              src={mitsuLogo}
-              alt="Mitsubishi Electric"
-              className="h-10 w-auto"
+              src={dynamicLogo}
+              alt="Dynamic Control Systems"
+              className="h-10 w-auto flex-shrink-0"
+            />
+            {/* Mobile authorized logo for visibility on small screens */}
+            <img
+              src={authorizedLogo}
+              alt="Authorized Mitsubishi Electric Partner"
+              className="h-7 w-auto flex-shrink-0 md:hidden"
             />
           </Link>
 
@@ -73,6 +78,11 @@ const Navigation = () => {
                 Training Institute
               </a>
             </Button>
+            <img
+              src={authorizedLogo}
+              alt="Authorized Mitsubishi Electric Partner"
+              className="h-10 md:h-10 lg:h-10 w-auto max-h-10 flex-shrink-0 object-contain"
+            />
           </div>
 
           {/* Mobile Menu Button */}

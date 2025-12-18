@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Globe, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
-import dynamicLogo from "@/assets/DYNAMIC LOGO.png";
+import dynamicLogo from "@/assets/dynamic_logo.png";
 
 const Footer = () => {
   const navLinks = [

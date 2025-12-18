@@ -64,8 +64,8 @@ const Contact = () => {
   const contactInfo = {
     company: "Dynamic Control Systems",
     address: "52/3106, Near SBI Bank, NH Bypass, Vyttila, Kochi, Ernakulam Dist., Kerala, 682019",
-    email: "sales@dynamiccontrolsystems.in",
-    phones: ["+91 48440 41177", "+91 94477 07855", "+91 85473 27855"],
+    email: "admin@dynamiccontrolsystems.in",
+    phones: [ "+91 85473 27855","+91 94477 07855" ,"+91 48440 41177"],
     website: "dynamiccontrolsystems.in",
   };
 
