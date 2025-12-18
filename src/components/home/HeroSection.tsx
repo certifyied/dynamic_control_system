@@ -33,7 +33,7 @@ const HeroSection = () => {
             className="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight"
           >
             Powering industries{" "}
-            <span className="text-red-500">with smart, reliable</span>{" "}
+            <span className="text-red-500">with smart, reliable </span>{" "}
             Automation solutions
           </motion.h1>
 
@@ -43,7 +43,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-xl text-muted-foreground mb-8 max-w-2xl"
           >
-            Empowering industries through innovative electrical and electronic manufacturing solutions in automation, energy management, and smart infrastructure.
+            Empowering industries with innovative electrical and electronic manufacturing solutions, delivering advanced factory automation in Kochi, efficient energy management, and smart infrastructure systems.
           </motion.p>
 
           <motion.div
@@ -80,7 +80,7 @@ const HeroSection = () => {
               <div className="text-sm text-muted-foreground">Projects Served</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary mb-1">500+</div>
+              <div className="text-3xl font-bold text-primary mb-1">400+</div>
               <div className="text-sm text-muted-foreground">Global Customers</div>
             </div>
           </motion.div>

@@ -1,57 +1,107 @@
 import { useState, useEffect } from "react";
+
 import { Link, useLocation } from "react-router-dom";
+
 import { Button } from "@/components/ui/button";
+
 import { Menu, X } from "lucide-react";
+
 import { motion, AnimatePresence } from "framer-motion";
-import dynamicLogo from "@/assets/DYNAMIC LOGO.png";
+
+import dynamicLogo from "@/assets/new_dynamic_logo.png";
+
 import authorizedLogo from "@/assets/authorized_logo.png";
 
+
+
 const Navigation = () => {
+
   const [isScrolled, setIsScrolled] = useState(false);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const location = useLocation();
 
+
+
   useEffect(() => {
+
     const handleScroll = () => {
+
       setIsScrolled(window.scrollY > 20);
+
       
+
     };
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
+
   }, []);
 
+
+
   const navLinks = [
+
     { name: "Home", path: "/" },
+
     { name: "About Us", path: "/about" },
+
     { name: "Products", path: "/products" },
+
     { name: "Blog", path: "/blog" },
+
     { name: "Clients", path: "/clients" },
+
     { name: "Contact", path: "/contact" },
+
   ];
 
+
+
   return (
+
     <motion.nav
+
       initial={{ y: -100 }}
+
       animate={{ y: 0 }}
+
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+
         isScrolled ? "bg-background/95 backdrop-blur-md shadow-md" : "bg-transparent"
+
       }`}
+
     >
+
       <div className="container mx-auto px-4">
+
         <div className="flex items-center justify-between h-20">
+
           <Link to="/" className="flex items-center gap-2">
             <img
               src={dynamicLogo}
               alt="Dynamic Control Systems"
-              className="h-10 w-auto flex-shrink-0"
+              className="h-16 md:h-20 lg:h-24 w-auto max-h-24 flex-shrink-0 object-contain"
             />
+
             {/* Mobile authorized logo for visibility on small screens */}
+
             <img
+
               src={authorizedLogo}
+
               alt="Authorized Mitsubishi Electric Partner"
+
               className="h-7 w-auto flex-shrink-0 md:hidden"
+
             />
+
           </Link>
+
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -78,64 +128,115 @@ const Navigation = () => {
                 Training Institute
               </a>
             </Button>
-            <img
-              src={authorizedLogo}
-              alt="Authorized Mitsubishi Electric Partner"
-              className="h-10 md:h-10 lg:h-10 w-auto max-h-10 flex-shrink-0 object-contain"
-            />
           </div>
 
+
+
           {/* Mobile Menu Button */}
+
           <button
+
             className="md:hidden p-2"
+
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+
             aria-label="Toggle menu"
+
           >
+
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+
           </button>
+
         </div>
+
       </div>
 
+
+
       {/* Mobile Menu */}
+
       <AnimatePresence>
+
         {isMobileMenuOpen && (
+
           <motion.div
+
             initial={{ opacity: 0, height: 0 }}
+
             animate={{ opacity: 1, height: "auto" }}
+
             exit={{ opacity: 0, height: 0 }}
+
             className="md:hidden bg-card border-t"
+
           >
+
             <div className="container mx-auto px-4 py-4 space-y-2">
+
               {navLinks.map((link) => (
+
                 <Link
+
                   key={link.path}
+
                   to={link.path}
+
                   onClick={() => setIsMobileMenuOpen(false)}
+
                   className={`block px-4 py-3 rounded-md transition-colors ${
+
                     location.pathname === link.path
+
                       ? "bg-primary text-primary-foreground"
+
                       : "hover:bg-muted"
+
                   }`}
+
                 >
+
                   {link.name}
+
                 </Link>
+
               ))}
+
               <Button variant="default" className="w-full" asChild>
+
                 <a 
+
                   href="https://dcsri.org/" 
+
                   target="_blank" 
+
                   rel="noopener noreferrer"
+
                   onClick={() => setIsMobileMenuOpen(false)}
+
                 >
+
                   Training Institute
+
                 </a>
+
               </Button>
+
             </div>
+
           </motion.div>
+
         )}
+
       </AnimatePresence>
+
     </motion.nav>
+
   );
+
 };
 
+
+
 export default Navigation;
+
