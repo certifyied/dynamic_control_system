@@ -10,10 +10,6 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import dynamicLogo from "@/assets/new_dynamic_logo.png";
 
-import authorizedLogo from "@/assets/authorized_logo.png";
-
-
-
 const Navigation = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,21 +80,8 @@ const Navigation = () => {
             <img
               src={dynamicLogo}
               alt="Dynamic Control Systems"
-              className="h-16 md:h-20 lg:h-24 w-auto max-h-24 flex-shrink-0 object-contain"
+              className="h-20 md:h-24 lg:h-32 w-auto max-h-32 flex-shrink-0 object-contain"
             />
-
-            {/* Mobile authorized logo for visibility on small screens */}
-
-            <img
-
-              src={authorizedLogo}
-
-              alt="Authorized Mitsubishi Electric Partner"
-
-              className="h-7 w-auto flex-shrink-0 md:hidden"
-
-            />
-
           </Link>
 
 
