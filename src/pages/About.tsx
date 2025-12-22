@@ -349,10 +349,10 @@ Since joining DCS in 2023, Joe has been driving our technical direction with str
               className="text-center mb-16"
             >
               <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-                Global Presence
+                Our Presence
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                With operations spanning six continents, we bring innovation to communities worldwide
+              Driving innovation that connects industries and communities across regions.
               </p>
             </motion.div>
 
@@ -383,7 +383,7 @@ Since joining DCS in 2023, Joe has been driving our technical direction with str
                 transition={{ delay: 0.2 }}
                 className="text-center"
               >
-                <div className="text-4xl font-bold text-primary mb-2">500+</div>
+                <div className="text-4xl font-bold text-primary mb-2">400+</div>
                 <div className="text-sm text-muted-foreground">customers</div>
               </motion.div>
               <motion.div

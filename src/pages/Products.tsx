@@ -92,7 +92,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
   const nameWithoutExt = filename.replace(/\.[^/.]+$/, "");
   
   // Remove common category and subcategory prefixes from filename
-  let cleanName = nameWithoutExt
+  const cleanName = nameWithoutExt
     .replace(/^(plc|hmi|robot|servo|invertor|software|invertors)\s*/i, "")
     .replace(/^(plc\s+)?(iqf|iqr|melsec\s+[qf]|mxf|mxr)\s+/i, "")
     .replace(/^(low\s+voltage\s+power\s+distribution|integrated\s+hmi|intergrated\s+hmi|engineering\s+software|visualization\s+software|ac\s+servo)\s*/i, "")
@@ -109,7 +109,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
       .map(word => {
         // Handle model numbers and product codes (e.g., FX5UJ, FR-D700, GOT 2000)
         // If word contains numbers or dashes with alphanumeric, likely a model number
-        if (/\d/.test(word) || /^[a-z]+\-[A-Z0-9]+/i.test(word) || /^[a-z]{1,3}[A-Z0-9]+/i.test(word)) {
+        if (/\d/.test(word) || /^[a-z]+-[A-Z0-9]+/i.test(word) || /^[a-z]{1,3}[A-Z0-9]+/i.test(word)) {
           return word.toUpperCase();
         }
         // Preserve existing acronyms (all caps, 2+ letters)
@@ -277,7 +277,7 @@ const Products = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-6 bg-gradient-to-b from-muted/30 to-background">
+        <section className="pt-32 pb-2 bg-gradient-to-b from-muted/30 to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -293,7 +293,7 @@ const Products = () => {
         </section>
 
         {/* Category Filter Tabs */}
-        <section className="pt-6 pb-8 border-b bg-background sticky top-0 z-10 shadow-sm">
+        <section className="pt-3 pb-4 border-b bg-background sticky top-0 z-10 shadow-sm">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap gap-2 justify-center">
               <Button
@@ -318,8 +318,8 @@ const Products = () => {
         </section>
 
         {/* Products by Section */}
-        <section className="pt-12 md:pt-16 pb-20">
-          <div className="container mx-auto px-4 space-y-16">
+        <section className="pt-4 md:pt-6 pb-20">
+          <div className="container mx-auto px-4 space-y-8 md:space-y-10">
             {organizedSections.map((section, sectionIndex) => (
               <motion.div
                 key={section.name}
@@ -328,8 +328,8 @@ const Products = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: sectionIndex * 0.1 }}
               >
-                <div className={`mb-8 ${section.isSubsection ? "ml-8" : ""}`}>
-                  <h2 className={`font-display font-bold mb-2 ${section.isSubsection ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"}`}>
+                <div className={`mb-4 md:mb-5 ${section.isSubsection ? "ml-8" : ""}`}>
+                  <h2 className={`font-display font-bold mb-1.5 ${section.isSubsection ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"}`}>
                     {section.name}
                   </h2>
                   <div className="w-20 h-1 bg-primary rounded-full" />

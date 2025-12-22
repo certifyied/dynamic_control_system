@@ -26,16 +26,25 @@ const HeroSection = () => {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight"
-          >
-            Powering industries{" "}
-            <span className="text-red-500">with smart, reliable </span>{" "}
-            Automation solutions
-          </motion.h1>
+        <motion.h1
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  className="
+    font-display 
+    text-4xl 
+    sm:text-5xl 
+    md:text-6xl 
+    lg:text-6xl 
+    font-bold 
+    mb-6 
+    leading-tight
+  "
+>
+  Powering industries{" "}
+  <span className="text-red-500">with smart, reliable </span>
+  Automation solutions
+</motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}

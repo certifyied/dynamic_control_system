@@ -464,7 +464,7 @@ The consequences of a security breach in industrial systems can be severe, affec
               className="max-w-3xl mx-auto text-center"
             >
               <h1 className="font-display text-5xl md:text-6xl font-bold mb-0">
-                Blog
+              Our Case-Studies
               </h1>
             </motion.div>
           </div>
