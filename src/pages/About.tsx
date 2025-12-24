@@ -121,7 +121,7 @@ Since joining DCS in 2023, Joe has been driving our technical direction with str
                 {/* Description */}
                 <div className="space-y-4 mb-8 max-w-[600px]">
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    We are a team of young, dynamic, and experienced engineers specializing in Electrical, Automation, and Instrumentation Engineering. Over the years, we have successfully executed numerous industrial projects across India, including key sectors like Steel, Cement, Power Generation, Automobiles, Pharmaceuticals, and Packaging.
+                   We are a team of young, dynamic, and experienced engineers specializing in Electrical, Automation, and Instrumentation Engineering. Over the years, we have successfully executed numerous industrial projects across India, serving key sectors such as Power Generation, Automobiles, Marine & Defence, Pharmaceuticals, and Packaging.
                   </p>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                     Dynamic Control Systems – an Authorized Channel Partner for Mitsubishi Electric India Private Limited – is a leading provider of industrial automation in Kochi, especially in Vytilla. Led by Mr. Saji K. Philip, we offer comprehensive sales and service support for Mitsubishi Electric solutions, catering to diverse industrial automation needs.

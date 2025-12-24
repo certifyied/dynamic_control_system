@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ArrowRight } from "lucide-react";
+import embeddedSystemImage from "@/assets/services/embeded_system.jpg";
 
 // Import service-specific images from services folder
 const serviceImages = import.meta.glob<{ default: string }>(
@@ -57,7 +58,7 @@ const ServicesSection = () => {
       title: "Embedded System",
       description:
         "We design and deliver high-quality embedded system solutions for both industrial and residential applications. With our expertise in Industrial Automation in Kochi, we ensure reliable, efficient, and innovative embedded solutions tailored to meet diverse automation needs.",
-      image: getImageForService("Embedded System"),
+      image: embeddedSystemImage,
     },
     {
       title: "Project Training",
