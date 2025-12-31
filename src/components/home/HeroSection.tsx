@@ -52,7 +52,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-xl text-muted-foreground mb-8 max-w-2xl"
           >
-            Empowering industries with smart electrical and electronic solutions for automation and energy efficiency.
+          Empowering industries with smart automation and energy solutions from Mitsubishi Electric in Kochi.
           </motion.p>
 
           <motion.div
