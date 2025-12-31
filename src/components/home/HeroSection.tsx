@@ -52,7 +52,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-xl text-muted-foreground mb-8 max-w-2xl"
           >
-            Empowering industries with innovative electrical and electronic manufacturing solutions, delivering advanced factory automation in Kochi, efficient energy management, and smart infrastructure systems.
+            Empowering industries with smart electrical and electronic solutions for automation and energy efficiency.
           </motion.p>
 
           <motion.div
