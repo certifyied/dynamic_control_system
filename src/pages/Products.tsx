@@ -277,7 +277,7 @@ const Products = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="pt-36 pb-2 md:pt-32 bg-gradient-to-b from-muted/30 to-background">
+        <section className="pt-[calc(var(--header-height-mobile)+4rem)] pb-2 md:pt-32 bg-gradient-to-b from-muted/30 to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

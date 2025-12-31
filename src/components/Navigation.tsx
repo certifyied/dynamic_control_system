@@ -47,7 +47,7 @@ const Navigation = () => {
               src={dynamicLogo}
               alt="Dynamic Control Systems"
               className="
-                h-24
+                h-27
                 sm:h-28
                 md:h-32
                 lg:h-40
