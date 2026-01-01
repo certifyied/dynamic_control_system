@@ -205,6 +205,116 @@ const plcSubcategories = [
   "PLC MXR Series",
 ];
 
+// Function to get product URL based on category, subcategory, and title
+const getProductUrl = (product: Product): string => {
+  const { category, subcategory, title, filename } = product;
+  const titleLower = title.toLowerCase();
+  const filenameLower = filename.toLowerCase();
+
+  // PLC iQ-F
+  if (subcategory === "PLC iQF") {
+    return "https://www.mitsubishielectric.com/fa/products/cnt/plcf/pmerit/concept/index.html";
+  }
+
+  // PLC iQ-R sub-products
+  if (subcategory === "PLC iQR") {
+    // Check for specific PLC iQ-R sub-products
+    if (titleLower.includes("general control cpu") || filenameLower.includes("general control cpu")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/cpu.html";
+    }
+    if (titleLower.includes("analog modules") || filenameLower.includes("analog modules")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/analog/";
+    }
+    if (titleLower.includes("io modules") || titleLower.includes("i/o modules") || filenameLower.includes("io modules")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/io/";
+    }
+    if (titleLower.includes("motion control cpu") || filenameLower.includes("motion control cpu")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/motion.html";
+    }
+    if (titleLower.includes("motion modules") || filenameLower.includes("motion modules")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/motion/";
+    }
+    if (titleLower.includes("process control cpu") || titleLower.includes("position control cpu") || filenameLower.includes("process control cpu")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/process.html";
+    }
+    if (titleLower.includes("safety control cpu") || filenameLower.includes("safety control cpu")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/safety.html";
+    }
+    if (titleLower.includes("network modules") || filenameLower.includes("network modules")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/network/";
+    }
+    // Default for PLC iQ-R (General Control CPU)
+    return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/cpu.html";
+  }
+
+  // PLC MELSEC Q Series
+  if (subcategory === "PLC MELSEC Q Series") {
+    return "https://www.mitsubishielectric.com/fa/products/cnt/plcq/pmerit/concept/index.html";
+  }
+
+  // PLC MELSEC F Series
+  if (subcategory === "PLC MELSEC F Series") {
+    return "https://www.mitsubishielectric.com/fa/products/cnt/plc_fx/pmerit/contents/index.html";
+  }
+
+  // PLC MX-R Series
+  if (subcategory === "PLC MXR Series") {
+    return "https://www.mitsubishielectric.com/fa/products/cnt/mxc/items/mxcr/index.html";
+  }
+
+  // AC Servo
+  if (category === "AC Servo") {
+    return "https://www.mitsubishielectric.com/fa/products/drv/servo/";
+  }
+
+  // HMI sub-products
+  if (category === "HMI") {
+    if (titleLower.includes("got2000") || titleLower.includes("got 2000") || filenameLower.includes("got 2000")) {
+      return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got2000/index.html";
+    }
+    if (titleLower.includes("got3000") || titleLower.includes("got 3000") || filenameLower.includes("got3000")) {
+      return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got3000/index.html";
+    }
+    if (titleLower.includes("got simple") || titleLower.includes("simple") || filenameLower.includes("simple")) {
+      return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got_simple/index.html";
+    }
+    if (titleLower.includes("softgot") || titleLower.includes("soft got") || filenameLower.includes("softgot")) {
+      return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/sgt/index.html";
+    }
+    // Default for HMI (GOT2000)
+    return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got2000/index.html";
+  }
+
+  // Inverters
+  if (category === "Invertors") {
+    return "https://www.mitsubishielectric.com/fa/products/drv/inv/pmerit/index.html";
+  }
+
+  // Low Voltage Power Distribution
+  if (category === "Low Voltage Power Distribution") {
+    return "https://www.mitsubishielectric.com/fa/in_en/products/lvd/index.html";
+  }
+
+  // Robot
+  if (category === "Robot") {
+    return "https://www.mitsubishielectric.com/fa/products/rbt/robot/";
+  }
+
+  // Integrated HMI
+  if (category === "Integrated HMI") {
+    // Use HMI GOT2000 as fallback for Integrated HMI
+    return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got2000/index.html";
+  }
+
+  // Software
+  if (category === "Software") {
+    return "https://www.mitsubishielectric.com/fa/products/software/visualisation/genesis64/index.html";
+  }
+
+  // Default fallback (should not happen, but safe fallback)
+  return "https://www.mitsubishielectric.com/fa/";
+};
+
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
@@ -392,9 +502,19 @@ const Products = () => {
                                 {product.description}
                               </p>
 
-                              <Button size="sm" className="w-full">
-                                Details
-                                <ArrowRight className="ml-2 h-4 w-4" />
+                              <Button 
+                                size="sm" 
+                                className="w-full"
+                                asChild
+                              >
+                                <a
+                                  href={getProductUrl(product)}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  Details
+                                  <ArrowRight className="ml-2 h-4 w-4" />
+                                </a>
                               </Button>
                             </CardContent>
                           </Card>
