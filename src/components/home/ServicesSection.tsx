@@ -33,37 +33,37 @@ const ServicesSection = () => {
     {
       title: "Engineering & Design",
       description:
-        "To ensure result-oriented, cost-effective, and time-efficient outcomes, we provide tailored, intelligent, and adaptable engineering solutions delivered within the promised timeframe. Our Industrial Automation Experts offer comprehensive support for PLC, SCADA, HMI, consulting, design, development, maintenance, bug fixing, and third-party interface integration for process industries. With a strong focus on Industrial Automation in Kochi, we deliver end-to-end solutions that drive efficiency and reliability.",
+        "At our company, we deliver result-oriented, cost-effective, and time-efficient engineering solutions, tailored to your needs, with intelligent and adaptable approaches, proudly utilizing Mitsubishi Electric in Kochi for optimal performance.",
       image: getImageForService("Engineering & Design"),
     },
     {
       title: "Industrial, Factory & Process Automation",
       description:
-        "Companies in the process and manufacturing sectors need a technology partner who truly understands their operations. At Dynamic Control Systems, we recognise how industrial automation in Kochi can streamline processes, enhance workflow, and boost overall efficiency. With our strong expertise in engineering and controls, we ensure that every automation solution we deliver is accurate, effective, and tailored to your needs.",
+        "Companies in the process and manufacturing sectors need a technology partner who truly understands their operations. At Dynamic Control Systems, we leverage Mitsubishi Electric in Kochi to deliver advanced industrial automation solutions that optimise efficiency and productivity.",
       image: getImageForService("Industrial, Factory & Process Automation"),
     },
     {
       title: "SCADA System Integration",
       description:
-        "Dynamic Control Systems designs and builds SCADA (Supervisory Control and Data Acquisition) systems tailored to meet diverse project requirements in Industrial Processes and Machinery. As a key player in Industrial Automation in Kochi, we deliver customized SCADA solutions that enhance control, monitoring, and efficiency across various industrial applications.",
+        "Dynamic Control Systems specializes in designing and building SCADA (Supervisory Control and Data Acquisition) systems, customized to meet diverse industrial process requirements, with strong expertise in Mitsubishi Electric in Kochi solutions.",
       image: getImageForService("SCADA System Integration"),
     },
     {
       title: "Industrial IoT Solution Development",
       description:
-        "Enables device connectivity, data processing and management, application integration, security, access control, monitoring, alarm management, digital twin, and integration with enterprise applications.",
+        "Enables seamless device connectivity, data processing and management, application integration, security, access control, monitoring, alarm management, digital twin capabilities, and enterprise integration — all powered by solutions featuring Mitsubishi Electric in Kochi.",
       image: getImageForService("Industrial IoT Solution Development"),
     },
     {
       title: "Embedded System",
       description:
-        "We design and deliver high-quality embedded system solutions for both industrial and residential applications. With our expertise in Industrial Automation in Kochi, we ensure reliable, efficient, and innovative embedded solutions tailored to meet diverse automation needs.",
+        "We design and deliver high-quality embedded system solutions for both industrial and residential applications. Leveraging our expertise in Mitsubishi Electric in Kochi, we provide reliable, efficient, and innovative embedded solutions tailored to meet diverse automation requirements.",
       image: embeddedSystemImage,
     },
     {
       title: "Project Training",
       description:
-        "Dynamic Control Systems is dedicated to helping fresh graduates gain the skills and expertise needed to advance their careers. Through specialized training focused on Industrial Automation in Kochi, we prepare students to confidently step into real-world industrial automation roles and succeed in the evolving technology landscape.",
+        "Dynamic Control Systems is committed to helping fresh graduates acquire the skills and expertise needed to advance their careers. Through specialized training in Mitsubishi Electric in Kochi, we equip students to confidently step into real-world industrial automation roles and excel in the evolving technology landscape.",
       image: getImageForService("Project Training"),
     },
   ];
@@ -83,7 +83,7 @@ const ServicesSection = () => {
               Our Services
             </h2>
             <p className="text-xl text-muted-foreground">
-              Comprehensive solutions for industrial automation and control systems
+              Comprehensive solutions for industrial automation and control systems powered by Mitsubishi Electric in Kochi.
             </p>
           </div>
         </motion.div>

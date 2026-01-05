@@ -6,17 +6,17 @@ const MissionSection = () => {
     {
       icon: Target,
       title: "Our Mission",
-      description: "To contribute to the realization of a vibrant and sustainable society through continuous technological innovation.",
+      description: "To contribute to the creation of a vibrant and sustainable society through continuous technological innovation with Mitsubishi Electric in Kochi.",
     },
     {
       icon: Users,
       title: "Our Values",
-      description: "Integrity, respect, and collaboration drive everything we do as we work together for the greater good.",
+      description: "Driven by integrity, respect, and teamwork, we collaborate for a greater purpose with Mitsubishi Electric in Kochi.",
     },
     {
       icon: Lightbulb,
       title: "Our Vision",
-      description: "To be the leading global provider of innovative solutions that enhance quality of life worldwide.",
+      description: "To be a leading global provider of innovative solutions that enhance quality of life worldwide with Mitsubishi Electric in Kochi.",
     },
   ];
 

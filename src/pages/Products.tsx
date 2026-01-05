@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -130,47 +130,189 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
   // Fallback to formatted filename if cleanName is empty
   const title = cleanName ? formatProductName(cleanName) : formatProductName(nameWithoutExt);
 
-  // Generate description based on category and product name
-  const descriptions: Record<string, Record<string, string>> = {
-    "PLC": {
-      "iQF": "Compact and versatile iQ-F series PLC offering high-speed processing and extensive I/O capabilities for mid-range automation applications.",
-      "iQR": "Advanced iQ-R series PLC with modular architecture, supporting complex control systems with high-performance CPUs and extensive module options.",
-      "MELSEC Q Series": "High-performance MELSEC Q Series PLC designed for large-scale automation systems with advanced networking and motion control capabilities.",
-      "MELSEC F Series": "Cost-effective MELSEC F Series PLC providing reliable control for small to medium-scale automation applications with compact design.",
-      "MXF Series": "Next-generation MXF Series PLC featuring advanced processing power and integrated safety functions for modern industrial automation.",
-      "MXR Series": "Scalable MXR Series PLC offering flexible configuration options and robust performance for diverse automation requirements.",
-      "default": "Programmable Logic Controller designed for reliable industrial automation with robust communication and control capabilities.",
-    },
-    "HMI": {
-      "default": "Human-Machine Interface with intuitive touchscreen display for seamless operator interaction and real-time system monitoring.",
-    },
-    "Robot": {
-      "default": "Industrial robot system designed for precision automation, assembly, and material handling applications with high repeatability.",
-    },
-    "Invertors": {
-      "default": "Variable frequency drive for precise motor control, energy efficiency, and smooth operation across various industrial applications.",
-    },
-    "AC Servo": {
-      "default": "High-performance AC servo motor system providing exceptional torque control and precise positioning for automation applications.",
-    },
-    "Software": {
-      "default": "Engineering and visualization software suite for system design, programming, monitoring, and configuration of automation systems.",
-    },
-    "Integrated HMI": {
-      "default": "Integrated HMI solution combining display and control functions in a compact design for space-efficient automation applications.",
-    },
-    "Low Voltage Power Distribution": {
-      "default": "Low voltage power distribution products including circuit breakers and protection devices for safe and reliable electrical systems.",
-    },
+  // Generate description based on category, subcategory, and specific product title
+  const getProductDescription = (productTitle: string, category: string, subcategory?: string, productCleanName: string, productFilename: string): string => {
+    const titleUpper = productTitle.toUpperCase();
+    const titleLower = productTitle.toLowerCase();
+    const cleanNameLower = productCleanName.toLowerCase();
+    const filenameLower = productFilename.toLowerCase();
+
+    // PLC iQ-F Series specific products
+    if (subcategory === "PLC iQF") {
+      if (titleUpper.includes("FX5S") || filenameLower.includes("fx5s")) {
+        return "Mitsubishi Electric in Kochi offers the iQ-F series PLC, a compact and versatile solution with high-speed processing and wide I/O capabilities for mid-range automation needs.";
+      }
+      if ((titleUpper.includes("FX5U") && !titleUpper.includes("FX5UC") && !titleUpper.includes("FX5UJ")) || (filenameLower.includes("fx5u") && !filenameLower.includes("fx5uc") && !filenameLower.includes("fx5uj"))) {
+        return "Mitsubishi Electric in Kochi presents the iQ-F series PLC, a compact and versatile solution offering high-speed processing and wide I/O support for mid-range automation needs.";
+      }
+      if (titleUpper.includes("FX5UC") || filenameLower.includes("fx5uc")) {
+        return "Mitsubishi Electric in Kochi presents the iQ-F series PLC, a compact and versatile solution with high-speed processing and broad I/O support for mid-range automation needs.";
+      }
+      if (titleUpper.includes("FX5UJ") || filenameLower.includes("fx5uj")) {
+        return "The compact and versatile iQ-F series PLC from Mitsubishi Electric in Kochi delivers high-speed processing and extensive I/O capabilities, ideal for mid-range automation applications.";
+      }
+      return "Mitsubishi Electric in Kochi offers the iQ-F series PLC, a compact and versatile solution with high-speed processing and wide I/O capabilities for mid-range automation needs.";
+    }
+
+    // PLC iQ-R Series specific products
+    if (subcategory === "PLC iQR") {
+      if (titleUpper.includes("ANALOG MODULES") || cleanNameLower.includes("analog") || filenameLower.includes("analog")) {
+        return "The advanced iQ-R series PLC from Mitsubishi Electric in Kochi features a modular architecture, supporting complex control systems with high-performance CPUs and a wide range of module options.";
+      }
+      if (titleUpper.includes("GENERAL CONTROL CPU") || cleanNameLower.includes("general control cpu") || filenameLower.includes("general control cpu")) {
+        return "The advanced iQ-R series PLC from Mitsubishi Electric in Kochi offers modular architecture, enabling complex control systems with high-performance CPUs and a comprehensive range of module options.";
+      }
+      if (titleUpper.includes("IO MODULES") || titleUpper.includes("I/O MODULES") || cleanNameLower.includes("io modules") || filenameLower.includes("io modules")) {
+        return "The advanced iQ-R series PLC from Mitsubishi Electric in Kochi features a modular architecture, delivering high-performance CPUs and extensive module options to support complex control systems.";
+      }
+      if (titleUpper.includes("MOTION CONTROL CPU") || cleanNameLower.includes("motion control cpu") || filenameLower.includes("motion control cpu")) {
+        return "The advanced iQ-R series PLC from Mitsubishi Electric in Kochi provides modular architecture, high-performance CPUs, and extensive module options to efficiently manage complex control systems.";
+      }
+      if (titleUpper.includes("MOTION MODULES") || cleanNameLower.includes("motion modules") || filenameLower.includes("motion modules")) {
+        return "The advanced iQ-R series PLC from Mitsubishi Electric in Kochi offers a modular architecture, high-performance CPUs, and extensive module options, ideal for managing complex control systems.";
+      }
+      if (titleUpper.includes("PROCESS CONTROL CPU") || titleUpper.includes("POSITION CONTROL CPU") || cleanNameLower.includes("process control cpu") || filenameLower.includes("process control cpu")) {
+        return "The advanced iQ-R series PLC from Mitsubishi Electric in Kochi features modular architecture, high-performance CPUs, and a wide range of modules to support complex control systems.";
+      }
+      if (titleUpper.includes("SAFETY CONTROL CPU") || cleanNameLower.includes("safety control cpu") || filenameLower.includes("safety control cpu")) {
+        return "The advanced iQ-R series PLC from Mitsubishi Electric in Kochi offers modular architecture, high-performance CPUs, and extensive module options, designed to support complex control systems.";
+      }
+      return "The advanced iQ-R series PLC from Mitsubishi Electric in Kochi features a modular architecture, supporting complex control systems with high-performance CPUs and a wide range of module options.";
+    }
+
+    // PLC MELSEC Q Series specific products
+    if (subcategory === "PLC MELSEC Q Series") {
+      if (titleUpper.includes("ANALOG MODULES") || cleanNameLower.includes("analog") || filenameLower.includes("analog")) {
+        return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control capabilities.";
+      }
+      if (titleUpper.includes("CPU MODULES") || cleanNameLower.includes("cpu") || filenameLower.includes("cpu")) {
+        return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is engineered for large-scale automation systems, featuring advanced networking and motion control capabilities.";
+      }
+      if (titleUpper.includes("MOTION MODULES") || cleanNameLower.includes("motion") || filenameLower.includes("motion")) {
+        return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control features.";
+      }
+      if (titleUpper.includes("NETWORK MODULES") || cleanNameLower.includes("network") || filenameLower.includes("network")) {
+        return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control capabilities.";
+      }
+      return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control capabilities.";
+    }
+
+    // PLC MELSEC F Series specific products
+    if (subcategory === "PLC MELSEC F Series") {
+      if (titleUpper.includes("FX3S") || cleanNameLower.includes("fx3s") || filenameLower.includes("fx3s")) {
+        return "The cost-effective MELSEC F Series PLC from Mitsubishi Electric in Kochi delivers reliable control for small to medium-scale automation applications, featuring a compact and efficient design.";
+      }
+      if (titleUpper.includes("FX3U") || cleanNameLower.includes("fx3u") || filenameLower.includes("fx3u")) {
+        return "The cost-effective MELSEC F Series PLC from Mitsubishi Electric in Kochi delivers reliable control for small to medium-scale automation applications, featuring a compact and efficient design.";
+      }
+      return "The cost-effective MELSEC F Series PLC from Mitsubishi Electric in Kochi delivers reliable control for small to medium-scale automation applications, featuring a compact and efficient design.";
+    }
+
+    // PLC MXF Series
+    if (subcategory === "PLC MXF Series") {
+      return "The cost-effective MELSEC F Series PLC from Mitsubishi Electric in Kochi delivers reliable control for small to medium-scale automation applications, featuring a compact and efficient design.";
+    }
+
+    // PLC MXR Series
+    if (subcategory === "PLC MXR Series") {
+      return "The scalable MXR Series PLC from Mitsubishi Electric in Kochi offers flexible configuration options and robust performance to meet diverse automation requirements.";
+    }
+
+    // AC Servo specific products
+    if (category === "AC Servo") {
+      if (titleUpper.includes("J4") || cleanNameLower.includes("j4") || filenameLower.includes("j4")) {
+        return "The high-performance AC servo motor system from Mitsubishi Electric in Kochi delivers exceptional torque control and precise positioning for advanced automation applications.";
+      }
+      if (titleUpper.includes("JE") || cleanNameLower.includes("je") || filenameLower.includes("je")) {
+        return "The high-performance AC servo motor system from Mitsubishi Electric in Kochi delivers exceptional torque control and precise positioning for advanced automation applications.";
+      }
+      if (titleUpper.includes("JET") || cleanNameLower.includes("jet") || filenameLower.includes("jet")) {
+        return "The high-performance AC servo motor system from Mitsubishi Electric in Kochi delivers exceptional torque control and precise positioning for advanced automation applications.";
+      }
+      return "The high-performance AC servo motor system from Mitsubishi Electric in Kochi delivers exceptional torque control and precise positioning for advanced automation applications.";
+    }
+
+    // HMI specific products
+    if (category === "HMI" || category === "Integrated HMI") {
+      if (titleUpper.includes("GOT 2000") || titleUpper.includes("GOT2000") || cleanNameLower.includes("got 2000") || cleanNameLower.includes("got2000") || filenameLower.includes("got 2000") || filenameLower.includes("got2000")) {
+        return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display, enabling seamless operator interaction and real-time system monitoring.";
+      }
+      if (titleUpper.includes("GOT 3000") || titleUpper.includes("GOT3000") || cleanNameLower.includes("got 3000") || cleanNameLower.includes("got3000") || filenameLower.includes("got 3000") || filenameLower.includes("got3000")) {
+        return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display, enabling seamless operator interaction and real-time system monitoring.";
+      }
+      if (titleUpper.includes("SIMPLE") || cleanNameLower.includes("simple") || filenameLower.includes("simple")) {
+        return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display, enabling seamless operator interaction and real-time system monitoring.";
+      }
+      if (titleUpper.includes("SOFTGOT") || titleUpper.includes("SOFT GOT") || cleanNameLower.includes("softgot") || filenameLower.includes("softgot")) {
+        return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display, enabling seamless operator interaction and real-time system monitoring.";
+      }
+      if (titleUpper.includes("GOC 35") || titleUpper.includes("GOC35") || cleanNameLower.includes("goc 35") || filenameLower.includes("goc 35")) {
+        return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display, enabling seamless operator interaction and real-time system monitoring.";
+      }
+      if (titleUpper.includes("GOC 43") || titleUpper.includes("GOC43") || cleanNameLower.includes("goc 43") || filenameLower.includes("goc 43")) {
+        return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display, enabling seamless operator interaction and real-time system monitoring.";
+      }
+      return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display, enabling seamless operator interaction and real-time system monitoring.";
+    }
+
+    // Inverters specific products
+    if (category === "Invertors") {
+      if (titleUpper.includes("FR-D700") || cleanNameLower.includes("fr-d700") || filenameLower.includes("fr-d700")) {
+        return "The variable frequency drive from Mitsubishi Electric in Kochi delivers precise motor control, improved energy efficiency, and smooth operation across a wide range of industrial applications.";
+      }
+      if (titleUpper.includes("FR-D800") || cleanNameLower.includes("fr-d800") || filenameLower.includes("fr-d800")) {
+        return "The variable frequency drive from Mitsubishi Electric in Kochi delivers precise motor control, improved energy efficiency, and smooth operation across a wide range of industrial applications.";
+      }
+      if (titleUpper.includes("FR-E800") || cleanNameLower.includes("fr-e800") || filenameLower.includes("fr-e800")) {
+        return "The variable frequency drive from Mitsubishi Electric in Kochi delivers precise motor control, improved energy efficiency, and smooth operation across a wide range of industrial applications.";
+      }
+      if (titleUpper.includes("FR-CS") || cleanNameLower.includes("fr-cs") || filenameLower.includes("fr-cs")) {
+        return "The variable frequency drive from Mitsubishi Electric in Kochi delivers precise motor control, improved energy efficiency, and smooth operation across a wide range of industrial applications.";
+      }
+      if (titleUpper.includes("FR-800") || cleanNameLower.includes("fr800") || cleanNameLower.includes("fr-800") || filenameLower.includes("fr800") || filenameLower.includes("fr-800")) {
+        return "The variable frequency drive from Mitsubishi Electric in Kochi delivers precise motor control, improved energy efficiency, and smooth operation across a wide range of industrial applications.";
+      }
+      return "The variable frequency drive from Mitsubishi Electric in Kochi delivers precise motor control, improved energy efficiency, and smooth operation across a wide range of industrial applications.";
+    }
+
+    // Low Voltage Power Distribution
+    if (category === "Low Voltage Power Distribution") {
+      if (titleUpper.includes("ACB") || cleanNameLower.includes("acb") || filenameLower.includes("acb")) {
+        return "Low-voltage power distribution products from Mitsubishi Electric in Kochi, including circuit breakers and protection devices, ensure safe, reliable, and efficient electrical systems.";
+      }
+      if (titleUpper.includes("ELCB") || titleUpper.includes("MCB") || titleUpper.includes("MCCB") || titleUpper.includes("ME96") || titleUpper.includes("MPCB") || titleUpper.includes("OVERLOAD RELAY") || cleanNameLower.includes("elcb") || cleanNameLower.includes("mcb") || cleanNameLower.includes("mccb") || cleanNameLower.includes("me96") || cleanNameLower.includes("mpcb") || cleanNameLower.includes("overload") || filenameLower.includes("elcb") || filenameLower.includes("mcb") || filenameLower.includes("mccb") || filenameLower.includes("me96") || filenameLower.includes("mpcb") || filenameLower.includes("overload")) {
+        return "Low-voltage power distribution products from Mitsubishi Electric in Kochi, including circuit breakers and protection devices, ensure safe, reliable, and efficient electrical systems.";
+      }
+      return "Low-voltage power distribution products from Mitsubishi Electric in Kochi, including circuit breakers and protection devices, ensure safe, reliable, and efficient electrical systems.";
+    }
+
+    // Robot specific products
+    if (category === "Robot") {
+      if (titleUpper.includes("VERTICAL") || cleanNameLower.includes("vertical") || filenameLower.includes("vertical")) {
+        return "The industrial robot system from Mitsubishi Electric in Kochi is designed for precision automation, assembly, and material handling applications, delivering high repeatability and consistent performance.";
+      }
+      if (titleUpper.includes("COLLABORATIVE") || titleUpper.includes("HORIZONTAL") || titleUpper.includes("MELFA SMART") || cleanNameLower.includes("collaborative") || cleanNameLower.includes("horizontal") || cleanNameLower.includes("melfa") || filenameLower.includes("collaborative") || filenameLower.includes("horizontal") || filenameLower.includes("melfa")) {
+        return "The industrial robot system from Mitsubishi Electric in Kochi is designed for precision automation, assembly, and material handling applications, delivering high repeatability and consistent performance.";
+      }
+      return "The industrial robot system from Mitsubishi Electric in Kochi is designed for precision automation, assembly, and material handling applications, delivering high repeatability and consistent performance.";
+    }
+
+    // Software specific products
+    if (category === "Software") {
+      if (titleUpper.includes("GT WORKS 3") || cleanNameLower.includes("gt works 3") || filenameLower.includes("gt works 3")) {
+        return "The engineering and visualization software suite from Mitsubishi Electric in Kochi enables efficient system design, programming, monitoring, and configuration of automation systems.";
+      }
+      if (titleUpper.includes("FR-CONFIGURATOR") || titleUpper.includes("GX WORKS 2") || titleUpper.includes("GX WORKS 3") || titleUpper.includes("MR CONFIGURATOR") || titleUpper.includes("GENESIS 64") || titleUpper.includes("VIRTUALIZATION") || cleanNameLower.includes("fr-configurator") || cleanNameLower.includes("gx works") || cleanNameLower.includes("mr configurator") || cleanNameLower.includes("genesis") || cleanNameLower.includes("virtualization") || filenameLower.includes("fr-configurator") || filenameLower.includes("gx works") || filenameLower.includes("mr configurator") || filenameLower.includes("genesis") || filenameLower.includes("virtualization")) {
+        return "The engineering and visualization software suite from Mitsubishi Electric in Kochi enables efficient system design, programming, monitoring, and configuration of automation systems.";
+      }
+      return "The engineering and visualization software suite from Mitsubishi Electric in Kochi enables efficient system design, programming, monitoring, and configuration of automation systems.";
+    }
+
+    // Default fallback
+    return "Industrial automation solution from Mitsubishi Electric in Kochi designed for reliability and performance.";
   };
 
-  let description = descriptions[category]?.default || "Industrial automation solution designed for reliability and performance.";
-
-  if (subcategory && descriptions[category]?.[subcategory.replace("PLC ", "")]) {
-    description = descriptions[category][subcategory.replace("PLC ", "")];
-  } else if (descriptions[category]?.[cleanName.toLowerCase()]) {
-    description = descriptions[category][cleanName.toLowerCase()];
-  }
+  const description = getProductDescription(title, category, subcategory, cleanName, nameWithoutExt);
 
   return { title, description };
 };
@@ -317,6 +459,61 @@ const getProductUrl = (product: Product): string => {
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  // Update SEO metadata for Products page
+  useEffect(() => {
+    // Update document title
+    document.title = "Automation Products & Solutions | Mitsubishi Electric in Kochi";
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "Discover reliable automation products from Mitsubishi Electric in Kochi, offering PLCs, servo systems, drives, HMIs, robotics, and power solutions."
+      );
+    }
+
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute(
+        "content",
+        "Automation Products & Solutions | Mitsubishi Electric in Kochi"
+      );
+    }
+
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute(
+        "content",
+        "Discover reliable automation products from Mitsubishi Electric in Kochi, offering PLCs, servo systems, drives, HMIs, robotics, and power solutions."
+      );
+    }
+
+    // Cleanup function to restore default meta tags when component unmounts
+    return () => {
+      document.title = "Dynamic Control Systems | Mitsubishi Electric in Kochi";
+      if (metaDescription) {
+        metaDescription.setAttribute(
+          "content",
+          "Dynamic Control Systems delivers advanced industrial automation, SCADA, and energy solutions powered by Mitsubishi Electric in Kochi."
+        );
+      }
+      if (ogTitle) {
+        ogTitle.setAttribute(
+          "content",
+          "Dynamic Control Systems | Mitsubishi Electric in Kochi"
+        );
+      }
+      if (ogDescription) {
+        ogDescription.setAttribute(
+          "content",
+          "Dynamic Control Systems delivers advanced industrial automation, SCADA, and energy solutions powered by Mitsubishi Electric in Kochi."
+        );
+      }
+    };
+  }, []);
 
   // Filter products based on selected category
   const filteredProducts = selectedCategory

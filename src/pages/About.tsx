@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -20,12 +20,12 @@ import joeImage from "@/assets/joe.jpg";
 
 const About = () => {
   const timeline = [
-    { year: "1998", event: "Dynamic Control System was founded, delivering reliable control and automation solutions to industrial clients." },
-    { year: "2000", event: "Partnered with Messung Systems as an authorized channel partner, expanding capabilities in industrial automation." },
-    { year: "2012", event: "Became the initial and sole authorized Mitsubishi Electric channel partner for the Kerala region. " },
-    { year: "2013", event: "Launched a parallel manufacturing unit, MAC Machines and Controls, to support customized automation solutions." },
-    { year: "2019", event: "Established Dynamic Control System Research Institute (DCSRI) to train professionals in automation technologies. " },
-    { year: "2022", event: "Expanded into IoT, robotics, and AI-powered automation to meet evolving industry and smart factory demands." },
+    { year: "1998", event: "Dynamic Control System was founded with a vision to provide dependable control and automation solutions using Mitsubishi Electric in Kochi." },
+    { year: "2000", event: "Partnered with Messung Systems as an authorized channel partner to enhance industrial automation offerings with Mitsubishi Electric in Kochi." },
+    { year: "2012", event: "Became the first and exclusive authorized channel partner for Mitsubishi Electric in Kochi and across the Kerala region." },
+    { year: "2013", event: "Established a parallel manufacturing unit, MAC Machines and Controls, to deliver customized automation solutions powered by Mitsubishi Electric in Kochi." },
+    { year: "2019", event: "Established the Dynamic Control System Research Institute (DCSRI) to train professionals in advanced automation technologies, aligned with Mitsubishi Electric in Kochi." },
+    { year: "2022", event: "Expanded into IoT, robotics, and AI-powered automation solutions to meet evolving industry and smart factory demands with Mitsubishi Electric in Kochi." },
   ];
 
   const directors = [
@@ -34,32 +34,32 @@ const About = () => {
       image: sajiImage,
       name: "Mr. Saji K. Philip",
       designation: "Founder & Director",
-      description: "Leading Dynamic Control Systems with decades of expertise in industrial automation and strategic vision for growth.",
-      fullDescription: `Mr. Saji K. Philip, founder of DCS, is the core of our technical strength and vision. A B.Tech graduate from M.A. College of Engineering, Kothamangalam, Saji gained valuable experience at Concast India Pvt. Ltd., Mumbai, before returning home with a clear mission: to elevate the industrial automation landscape.
+      description: "Driving force behind technical excellence and long-term vision, building DCS as a trusted partner for Mitsubishi Electric in Kochi.",
+      fullDescription: `Mr. Saji K. Philip, Founder of DCS, is the driving force behind the company's technical excellence and long-term vision. A B.Tech graduate from M.A. College of Engineering, Kothamangalam, he gained valuable industry experience at Concast India Pvt. Ltd., Mumbai, before returning with a clear mission to strengthen the industrial automation ecosystem.
 
-With deep expertise in the electrical and automotive industries, he has supported countless industries and machine builders across India. His commitment to continuous learning and hands-on guidance has shaped a technically strong and passionately driven DCS team.`,
+With extensive expertise across the electrical and automotive sectors, he has supported numerous industries and machine builders throughout India. His strong focus on continuous learning, practical innovation, and hands-on leadership has been instrumental in building a highly skilled DCS team and establishing DCS as a trusted partner for Mitsubishi Electric in Kochi.`,
     },
     {
       id: 2,
       image: christoImage,
-      name: "Mr. Cristo S Kayyalakam",
+      name: "Mr. Cristo S. Kayyalakam",
       designation: "CEO",
-      description: "Driving innovation and excellence in automation solutions with a focus on customer success and technical excellence.",
-      fullDescription: `Our CEO, Cristo S. Kayyalakam, brings strong business acumen built during his corporate career, including his tenure at IBM, Bangalore. A B.Tech graduate from M.A. College of Engineering, he returned to the core family business with a vision to scale, expand, and strengthen customer relationships.
+      description: "Leading business strategy and growth, strengthening DCS's position as a trusted partner for Mitsubishi Electric in Kochi.",
+      fullDescription: `Our CEO, Mr. Cristo S. Kayyalakam, brings strong business leadership and strategic insight shaped through his corporate experience, including his tenure at IBM, Bangalore. A B.Tech graduate from M.A. College of Engineering, he returned to the family business with a clear vision to scale operations, expand market presence, and build long-term customer partnerships.
 
-Cristo leads key functions such as marketing, customer relations, and business expansion. Driven by his passion for industry-ready talent, he also founded an industrial automation training institute to bridge the knowledge gap between institutes and industries for the next generation.`,
+He leads critical functions such as marketing, customer engagement, and business development. Driven by a commitment to nurturing industry-ready talent, he also established an industrial automation training institute, strengthening the talent pipeline and reinforcing DCS's position as a trusted partner for Mitsubishi Electric in Kochi.`,
     },
     {
       id: 3,
       image: joeImage,
       name: "Mr. Joe",
       designation: "CTO",
-      description: "Specializing in advanced automation technologies and building strong partnerships with industry leaders.",
-      fullDescription: `Our CTO, Joe, brings global exposure and advanced technical expertise to DCS. A B.Tech graduate in Electrical & Electronics Engineering from NIT Calicut, he has over eight years of experience in Electrical, Instrumentation, and Automation.
+      description: "Leading technical strategy with global expertise, strengthening delivery excellence for Mitsubishi Electric in Kochi.",
+      fullDescription: `Our CTO, Mr. Joe, brings valuable global exposure and advanced technical expertise to DCS. A B.Tech graduate in Electrical & Electronics Engineering from NIT Calicut, he has over eight years of hands-on experience in Electrical, Instrumentation, and Automation.
 
-Joe began his career in Kerala and later moved to Qatar, where he excelled as an E&I Engineer and Lead Engineer, handling complex EPIC projects across oil & gas, airport operations, and large-scale infrastructure. His skills span system design, process automation, final testing, execution, and large project management.
+He began his career in Kerala and later worked in Qatar, where he excelled as an E&I Engineer and Lead Engineer, successfully managing complex EPIC projects across oil & gas, airport operations, and large-scale infrastructure. His expertise covers system design, process automation, testing and commissioning, execution, and large-scale project management.
 
-Since joining DCS in 2023, Joe has been driving our technical direction with strong leadership in manpower management, troubleshooting, and high-level problem-solving.`,
+Since joining DCS in 2023, Joe has been leading the company's technical strategy with strong capabilities in manpower management, advanced troubleshooting, and high-level problem-solving, further strengthening DCS's delivery excellence for Mitsubishi Electric in Kochi.`,
     },
   ];
 
@@ -74,6 +74,61 @@ Since joining DCS in 2023, Joe has been driving our technical direction with str
   };
 
   const currentDirector = directors.find((director) => director.id === selectedDirector);
+
+  // Update SEO metadata for About page
+  useEffect(() => {
+    // Update document title
+    document.title = "Industrial Automation Experts | Mitsubishi Electric in Kochi";
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "Learn about Dynamic Control Systems, an authorized partner for Mitsubishi Electric in Kochi, delivering advanced industrial automation solutions and expert support."
+      );
+    }
+
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute(
+        "content",
+        "Industrial Automation Experts | Mitsubishi Electric in Kochi"
+      );
+    }
+
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute(
+        "content",
+        "Learn about Dynamic Control Systems, an authorized partner for Mitsubishi Electric in Kochi, delivering advanced industrial automation solutions and expert support."
+      );
+    }
+
+    // Cleanup function to restore default meta tags when component unmounts
+    return () => {
+      document.title = "Dynamic Control Systems | Mitsubishi Electric in Kochi";
+      if (metaDescription) {
+        metaDescription.setAttribute(
+          "content",
+          "Dynamic Control Systems delivers advanced industrial automation, SCADA, and energy solutions powered by Mitsubishi Electric in Kochi."
+        );
+      }
+      if (ogTitle) {
+        ogTitle.setAttribute(
+          "content",
+          "Dynamic Control Systems | Mitsubishi Electric in Kochi"
+        );
+      }
+      if (ogDescription) {
+        ogDescription.setAttribute(
+          "content",
+          "Dynamic Control Systems delivers advanced industrial automation, SCADA, and energy solutions powered by Mitsubishi Electric in Kochi."
+        );
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -121,10 +176,10 @@ Since joining DCS in 2023, Joe has been driving our technical direction with str
                 {/* Description */}
                 <div className="space-y-4 mb-8 max-w-[600px]">
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                   We are a team of young, dynamic, and experienced engineers specializing in Electrical, Automation, and Instrumentation Engineering. Over the years, we have successfully executed numerous industrial projects across India, serving key sectors such as Power Generation, Automobiles, Marine & Defence, Pharmaceuticals, and Packaging.
+                    We are a team of young, dynamic, and experienced engineers with strong expertise in Electrical, Automation, and Instrumentation Engineering. Over the years, we have successfully delivered a wide range of industrial projects across India, serving major sectors such as Power Generation, Automobiles, Marine & Defence, Pharmaceuticals, and Packaging.
                   </p>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Dynamic Control Systems – an Authorized Channel Partner for Mitsubishi Electric India Private Limited – is a leading provider of industrial automation in Kochi, especially in Vytilla. Led by Mr. Saji K. Philip, we offer comprehensive sales and service support for Mitsubishi Electric solutions, catering to diverse industrial automation needs.
+                    Dynamic Control Systems, an Authorized Channel Partner of Mitsubishi Electric India Private Limited, is a trusted name for Mitsubishi Electric in Kochi, with a strong presence in Vytilla. Under the leadership of Mr. Saji K. Philip, we provide end-to-end sales and service support for Mitsubishi Electric automation solutions, delivering reliable, efficient, and customized industrial automation systems to meet diverse industry requirements.
                   </p>
                 </div>
                 
@@ -250,7 +305,7 @@ Since joining DCS in 2023, Joe has been driving our technical direction with str
                 Our Directors
               </h2>
               <p className="text-xl text-muted-foreground">
-                Meet the leadership team driving innovation and excellence
+                Meet the Leadership Team Powering Innovation with Mitsubishi Electric in Kochi
               </p>
             </motion.div>
 
@@ -352,7 +407,7 @@ Since joining DCS in 2023, Joe has been driving our technical direction with str
                 Our Presence
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Driving innovation that connects industries and communities across regions.
+              Driving innovation to connect industries and communities across regions through Mitsubishi Electric in Kochi
               </p>
             </motion.div>
 

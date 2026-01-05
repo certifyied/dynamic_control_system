@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -19,6 +20,61 @@ const clients = Object.entries(clientImages).map(([path, module]) => {
 });
 
 const Clients = () => {
+  // Update SEO metadata for Clients page
+  useEffect(() => {
+    // Update document title
+    document.title = "Our Clients & Partners | Mitsubishi Electric in Kochi";
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "Discover our trusted clients and industry partners who rely on Mitsubishi Electric in Kochi for reliable industrial automation solutions and expert support."
+      );
+    }
+
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute(
+        "content",
+        "Our Clients & Partners | Mitsubishi Electric in Kochi"
+      );
+    }
+
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute(
+        "content",
+        "Discover our trusted clients and industry partners who rely on Mitsubishi Electric in Kochi for reliable industrial automation solutions and expert support."
+      );
+    }
+
+    // Cleanup function to restore default meta tags when component unmounts
+    return () => {
+      document.title = "Dynamic Control Systems | Mitsubishi Electric in Kochi";
+      if (metaDescription) {
+        metaDescription.setAttribute(
+          "content",
+          "Dynamic Control Systems delivers advanced industrial automation, SCADA, and energy solutions powered by Mitsubishi Electric in Kochi."
+        );
+      }
+      if (ogTitle) {
+        ogTitle.setAttribute(
+          "content",
+          "Dynamic Control Systems | Mitsubishi Electric in Kochi"
+        );
+      }
+      if (ogDescription) {
+        ogDescription.setAttribute(
+          "content",
+          "Dynamic Control Systems delivers advanced industrial automation, SCADA, and energy solutions powered by Mitsubishi Electric in Kochi."
+        );
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -37,8 +93,7 @@ const Clients = () => {
                 Our Clients
               </h1>
               <p className="text-xl text-muted-foreground">
-                Trusted by leading organizations across industries. We're proud to partner with 
-                companies that drive innovation and excellence.
+                Trusted by leading industries, delivering innovation with Mitsubishi Electric in Kochi.
               </p>
             </motion.div>
           </div>
