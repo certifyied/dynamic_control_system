@@ -21,6 +21,8 @@ import blog3Image from "@/assets/blog3.jpg";
 import blog4Image from "@/assets/blog4.jpg";
 import blog5Image from "@/assets/blog5.jpg";
 import blog6Image from "@/assets/blog6.jpg";
+import blog7Image from "@/assets/blog7.jpg";
+import blog8Image from "@/assets/blog8.jpg";
 
 // Map blog IDs to their specific images
 const blogImageMap: Record<number, string> = {
@@ -30,6 +32,8 @@ const blogImageMap: Record<number, string> = {
   4: blog4Image,
   5: blog5Image,
   6: blog6Image,
+  7: blog7Image,
+  8: blog8Image,
 };
 
 const Blog = () => {
@@ -493,6 +497,149 @@ Critical security measures include:
 - Employee training on cybersecurity best practices
 
 The consequences of a security breach in industrial systems can be severe, affecting not just data but physical operations, safety, and public infrastructure. A comprehensive security strategy is essential for protecting these critical systems.`,
+    },
+    {
+      id: 7,
+      title: "Powering Industries in Kochi with Smart Factory Automation Solutions",
+      excerpt: "Powering industries in Kochi with smart, reliable factory automation solutions that enhance efficiency, accuracy, and operational performance through advanced industrial automation.",
+      category: "Automation",
+      date: "March 5, 2024",
+      readTime: "11 min read",
+      content: `<p>Powering industries in Kochi with smart, reliable factory automation solutions that enhance efficiency, accuracy, and operational performance. Empowering industries through innovative electrical and electronic manufacturing solutions, delivering advanced industrial automation in Kochi, efficient energy management, and smart infrastructure systems.</p>
+
+<p>Comprehensive solutions across diverse industries, backed by decades of expertise in industrial automation in Kochi.</p>
+
+<h4>Pharma Industry</h4>
+
+<p>Delivering precise automation solutions to ensure safe and reliable pharmaceutical production through advanced industrial automation in Kochi.</p>
+
+<ul>
+<li>Blood bag manufacturing automation</li>
+<li>Autoclave system control</li>
+<li>Heart valve production systems</li>
+<li>Secure and compliant packing solutions</li>
+<li>End-to-end traceability with cleanroom-friendly automation</li>
+</ul>
+
+<h4>Food & Beverages</h4>
+
+<p>Automation solutions designed to improve hygiene, speed, and consistency using advanced industrial automation in Kochi.</p>
+
+<ul>
+<li>Retort machine automation</li>
+<li>Food and spice plant control systems</li>
+<li>Bottle filling automation</li>
+<li>Packaging line integration</li>
+<li>Systems designed for hygiene compliance and continuous output</li>
+</ul>
+
+<h4>Automotive Industry</h4>
+
+<p>High-performance automation solutions that improve speed, accuracy, and quality in automotive plants through advanced industrial automation in Kochi.</p>
+
+<ul>
+<li>Assembly line automation</li>
+<li>Testing and inspection integration</li>
+<li>Motor and drive control systems</li>
+<li>Paint shop and welding station control</li>
+<li>Energy-efficient plant automation</li>
+</ul>
+
+<h4>Marine & Defence</h4>
+
+<p>Robust automation systems engineered for harsh marine and defence environments, supported by advanced industrial automation in Kochi.</p>
+
+<ul>
+<li>Corrosion-resistant control panels</li>
+<li>Automation solutions for vessels and docks</li>
+<li>Pump and engine monitoring systems</li>
+<li>Integrated power management systems</li>
+<li>Rugged, vibration-proof automation solutions</li>
+</ul>
+
+<p>Our commitment to excellence and innovation drives smarter, sustainable industrial automation in Kochi, shaping a better tomorrow.</p>
+
+<h4>Mission & Values</h4>
+
+<p><strong>Mission:</strong> To contribute to the growth of a vibrant and sustainable society through continuous technological innovation in industrial automation in Kochi.</p>
+
+<p><strong>Vision:</strong> To be a leading global provider of innovative solutions that enhance quality of life worldwide through advanced industrial automation in Kochi.</p>
+
+<p><strong>Values:</strong> Integrity, respect, and collaboration guide everything we do as we advance industrial automation in Kochi for the greater good.</p>
+
+<h4>Services</h4>
+
+<ul>
+<li>Engineering & Design</li>
+<li>Industrial, Factory & Process Automation</li>
+<li>SCADA System Integration</li>
+<li>Industrial IoT Solution Development</li>
+<li>Embedded System Solutions</li>
+<li>Project Training</li>
+</ul>
+
+<h4>Product Highlights</h4>
+
+<p>The compact and versatile iQ-F series PLC delivers high-speed processing and extensive I/O capabilities, making it ideal for mid-range factory automation in Kochi applications.</p>
+
+<p>The advanced iQ-R series PLC (PLC iQR) features a modular architecture with high-performance CPUs and extensive module options, ideal for complex factory automation in Kochi solutions.</p>`,
+    },
+    {
+      id: 8,
+      title: "Choosing the Right Semiconductor Devices for Factory Automation in Kochi: A Complete Guide",
+      excerpt: "In today's rapidly evolving industrial landscape, factory automation has become essential for improving efficiency, productivity, and safety. Industries in Kochi are increasingly adopting advanced automation technologies to streamline operations.",
+      category: "Technology",
+      date: "March 3, 2024",
+      readTime: "10 min read",
+      content: `<p>In today's rapidly evolving industrial landscape, factory automation has become essential for improving efficiency, productivity, and safety. Industries in Kochi are increasingly adopting advanced automation technologies to streamline operations, reduce human error, and enhance production quality. A key factor in successful industrial automation in Kochi is selecting the right semiconductor devices, which form the foundation of modern industrial control systems.</p>
+
+<h4>Understanding Semiconductor Devices in Automation</h4>
+
+<p>Semiconductor devices such as transistors, diodes, integrated circuits (ICs), and thyristors play a crucial role in controlling electrical signals within automated machinery. These components manage power flow, regulate voltage, and enable data processing, ensuring reliable and efficient factory automation in Kochi.</p>
+
+<h4>Key Considerations for Selecting Semiconductor Devices</h4>
+
+<p><strong>1. Performance Specifications</strong></p>
+
+<p>Evaluate switching speed, power-handling capacity, voltage ratings, and thermal stability. High-speed production lines in Kochi require semiconductor devices with fast switching to ensure smooth and uninterrupted automation.</p>
+
+<p><strong>2. Compatibility with Automation Systems</strong></p>
+
+<p>Ensure the selected semiconductor devices are fully compatible with PLCs, sensors, actuators, and motor drives used in factory automation systems to avoid failures and improve reliability.</p>
+
+<p><strong>3. Environmental Factors</strong></p>
+
+<p>Considering Kochi's humid coastal climate, choose semiconductor devices with corrosion resistance, protective coatings, and high thermal tolerance to ensure long-term performance.</p>
+
+<p><strong>4. Energy Efficiency</strong></p>
+
+<p>Energy-efficient semiconductor devices help reduce power consumption, operational costs, and support sustainable industrial automation in Kochi.</p>
+
+<p><strong>5. Vendor Support and Quality Assurance</strong></p>
+
+<p>Partner with reliable manufacturers and authorized distributors such as Dynamic Control Systems (<a href="https://www.dynamiccontrolsystems.in/" target="_blank" rel="noopener noreferrer">www.dynamiccontrolsystems.in</a>) to ensure product quality, warranties, and technical support.</p>
+
+<h4>Common Semiconductor Devices Used in Factory Automation</h4>
+
+<ul>
+<li><strong>Diodes</strong> – Used for current regulation and circuit protection in power supplies, motor drives, and sensors.</li>
+<li><strong>Transistors (BJTs & MOSFETs)</strong> – Act as switches and amplifiers for precise control in automated production lines.</li>
+<li><strong>Thyristors & SCRs</strong> – Ideal for high-power applications like motor drives and heating systems.</li>
+<li><strong>Integrated Circuits (ICs)</strong> – Microcontrollers and operational amplifiers that enable intelligent automation and real-time monitoring.</li>
+</ul>
+
+<h4>Tips for Optimizing Semiconductor Selection</h4>
+
+<ul>
+<li>Evaluate machine load requirements before selection</li>
+<li>Implement proper thermal management solutions</li>
+<li>Consult automation experts for updated standards</li>
+<li>Maintain stock of critical semiconductor components</li>
+</ul>
+
+<h4>Conclusion</h4>
+
+<p>Choosing the right semiconductor devices is vital for building efficient, reliable, and future-ready factory automation in Kochi. By focusing on performance, environmental suitability, energy efficiency, and trusted vendors, manufacturers can significantly enhance industrial automation systems. Working with experienced partners like Dynamic Control Systems ensures access to high-quality components and expert guidance for long-term success.</p>`,
     },
   ], []);
 
