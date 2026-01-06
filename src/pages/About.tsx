@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useCanonical } from "@/hooks/useCanonical";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,6 +20,8 @@ import christoImage from "@/assets/christo.jpg";
 import joeImage from "@/assets/joe.jpg";
 
 const About = () => {
+  useCanonical();
+
   const timeline = [
     { year: "1998", event: "Dynamic Control System was founded with a vision to provide dependable control and automation solutions using Mitsubishi Electric in Kochi." },
     { year: "2000", event: "Partnered with Messung Systems as an authorized channel partner to enhance industrial automation offerings with Mitsubishi Electric in Kochi." },

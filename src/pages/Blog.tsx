@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useCanonical } from "@/hooks/useCanonical";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -32,6 +33,7 @@ const blogImageMap: Record<number, string> = {
 };
 
 const Blog = () => {
+  useCanonical();
   const [selectedBlog, setSelectedBlog] = useState<number | null>(null);
 
   // Update SEO metadata for Blog page

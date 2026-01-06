@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useCanonical } from "@/hooks/useCanonical";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { MapPin, Phone, Mail, Globe } from "lucide-react";
 
 const Contact = () => {
+  useCanonical();
   const { toast } = useToast();
 
   // Update SEO metadata for Contact page

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useCanonical } from "@/hooks/useCanonical";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -458,6 +459,7 @@ const getProductUrl = (product: Product): string => {
 };
 
 const Products = () => {
+  useCanonical();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   // Update SEO metadata for Products page

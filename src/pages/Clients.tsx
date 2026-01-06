@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useCanonical } from "@/hooks/useCanonical";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -20,6 +21,8 @@ const clients = Object.entries(clientImages).map(([path, module]) => {
 });
 
 const Clients = () => {
+  useCanonical();
+
   // Update SEO metadata for Clients page
   useEffect(() => {
     // Update document title

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Globe, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, Instagram, Linkedin, Youtube } from "lucide-react";
 import dynamicLogo from "@/assets/dynamic_logo.png";
 
 const Footer = () => {
@@ -38,16 +38,29 @@ const Footer = () => {
               Leading provider of industrial automation solutions in Kochi. Authorized Channel Partner for Mitsubishi Electric India Private Limited.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="hover:text-primary transition-colors" aria-label="Facebook">
-                <Facebook size={20} />
+              <a 
+                href="https://www.instagram.com/dynamiccontrolsystems?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors" 
+                aria-label="Instagram"
+              >
+                <Instagram size={20} />
               </a>
-              <a href="#" className="hover:text-primary transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="hover:text-primary transition-colors" aria-label="LinkedIn">
+              <a 
+                href="https://www.linkedin.com/company/110205638/admin/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3B4zfSZZBgR6ub8Fnn0osTMw%3D%3D" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors" 
+                aria-label="LinkedIn"
+              >
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="hover:text-primary transition-colors" aria-label="YouTube">
+              <a 
+                href="#" 
+                className="hover:text-primary transition-colors" 
+                aria-label="YouTube"
+              >
                 <Youtube size={20} />
               </a>
             </div>
@@ -137,9 +150,14 @@ const Footer = () => {
 
         <div className="border-t border-secondary-foreground/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-secondary-foreground/60">
-              © {new Date().getFullYear()} Dynamic Control Systems. All rights reserved.
-            </p>
+            <div className="flex flex-col items-center md:items-start gap-1">
+              <p className="text-sm text-secondary-foreground/60">
+                © {new Date().getFullYear()} Dynamic Control Systems. All rights reserved.
+              </p>
+              <p className="text-sm text-secondary-foreground/60">
+                Designed and developed by Fawas A Shemeer.
+              </p>
+            </div>
             <div className="flex gap-6 text-sm">
               <Link
                 to="/about"

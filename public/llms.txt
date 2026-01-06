@@ -1,0 +1,54 @@
+# llms.txt - Information for AI/LLM Crawlers
+
+# About Dynamic Control Systems
+Dynamic Control Systems is an authorized channel partner for Mitsubishi Electric India Private Limited, specializing in industrial automation solutions in Kochi, Kerala, India.
+
+# Company Information
+Company Name: Dynamic Control Systems
+Founded: 1998
+Location: Kochi, Kerala, India
+Address: 52/3106, Near SBI Bank, NH Bypass, Vyttila, Kochi, Ernakulam Dist., Kerala, 682019
+Website: https://dynamiccontrolsystems.in
+Email: admin@dynamiccontrolsystems.in, sales@dynamiccontrolsystems.in
+Phone: +91 48440 41177, +91 94477 07855, +91 85473 27855
+
+# Business Focus
+- Industrial Automation Solutions
+- SCADA System Integration
+- Factory & Process Automation
+- Industrial IoT Solutions
+- Embedded Systems
+- Project Training
+- Mitsubishi Electric Products & Services
+
+# Key Services
+1. Engineering & Design
+2. Industrial, Factory & Process Automation
+3. SCADA System Integration
+4. Industrial IoT Solution Development
+5. Embedded System Development
+6. Project Training
+
+# Industries Served
+- Power Generation
+- Automobiles
+- Marine & Defence
+- Pharmaceuticals
+- Food & Beverages
+- Packaging
+
+# Website Structure
+Main Pages:
+- Home: /
+- About Us: /about
+- Products: /products
+- Blog: /blog
+- Clients: /clients
+- Contact: /contact
+
+# Key Information
+- Authorized Channel Partner for Mitsubishi Electric in Kochi and Kerala region
+- Established in 1998
+- Strong expertise in Electrical, Automation, and Instrumentation Engineering
+- Serves major sectors across India
+
