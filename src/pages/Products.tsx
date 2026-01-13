@@ -352,109 +352,223 @@ const plcSubcategories = [
 const getProductUrl = (product: Product): string => {
   const { category, subcategory, title, filename } = product;
   const titleLower = title.toLowerCase();
+  const titleUpper = title.toUpperCase();
   const filenameLower = filename.toLowerCase();
 
-  // PLC iQ-F
-  if (subcategory === "PLC iQF") {
-    return "https://www.mitsubishielectric.com/fa/products/cnt/plcf/pmerit/concept/index.html";
-  }
-
-  // PLC iQ-R sub-products
-  if (subcategory === "PLC iQR") {
-    // Check for specific PLC iQ-R sub-products
-    if (titleLower.includes("general control cpu") || filenameLower.includes("general control cpu")) {
-      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/cpu.html";
-    }
-    if (titleLower.includes("analog modules") || filenameLower.includes("analog modules")) {
-      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/analog/";
-    }
-    if (titleLower.includes("io modules") || titleLower.includes("i/o modules") || filenameLower.includes("io modules")) {
-      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/io/";
-    }
-    if (titleLower.includes("motion control cpu") || filenameLower.includes("motion control cpu")) {
-      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/motion.html";
-    }
-    if (titleLower.includes("motion modules") || filenameLower.includes("motion modules")) {
-      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/motion/";
-    }
-    if (titleLower.includes("process control cpu") || titleLower.includes("position control cpu") || filenameLower.includes("process control cpu")) {
-      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/process.html";
-    }
-    if (titleLower.includes("safety control cpu") || filenameLower.includes("safety control cpu")) {
-      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/safety.html";
-    }
-    if (titleLower.includes("network modules") || filenameLower.includes("network modules")) {
-      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/network/";
-    }
-    // Default for PLC iQ-R (General Control CPU)
-    return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/cpu.html";
-  }
-
-  // PLC MELSEC Q Series
-  if (subcategory === "PLC MELSEC Q Series") {
-    return "https://www.mitsubishielectric.com/fa/products/cnt/plcq/pmerit/concept/index.html";
-  }
-
-  // PLC MELSEC F Series
-  if (subcategory === "PLC MELSEC F Series") {
-    return "https://www.mitsubishielectric.com/fa/products/cnt/plc_fx/pmerit/contents/index.html";
-  }
-
-  // PLC MX-R Series
-  if (subcategory === "PLC MXR Series") {
-    return "https://www.mitsubishielectric.com/fa/products/cnt/mxc/items/mxcr/index.html";
-  }
-
-  // AC Servo
+  // AC SERVO
   if (category === "AC Servo") {
+    if (titleUpper.includes("J4") || filenameLower.includes("j4")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/drv/servo/items/mr_j4/index.html";
+    }
+    if (titleUpper.includes("JE") || filenameLower.includes("je")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/drv/servo/items/mr_je/index.html";
+    }
+    if (titleUpper.includes("JET") || filenameLower.includes("jet")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/drv/servo/items/mr_jet/index.html";
+    }
     return "https://www.mitsubishielectric.com/fa/products/drv/servo/";
   }
 
-  // HMI sub-products
-  if (category === "HMI") {
-    if (titleLower.includes("got2000") || titleLower.includes("got 2000") || filenameLower.includes("got 2000")) {
-      return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got2000/index.html";
-    }
-    if (titleLower.includes("got3000") || titleLower.includes("got 3000") || filenameLower.includes("got3000")) {
-      return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got3000/index.html";
-    }
-    if (titleLower.includes("got simple") || titleLower.includes("simple") || filenameLower.includes("simple")) {
-      return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got_simple/index.html";
-    }
-    if (titleLower.includes("softgot") || titleLower.includes("soft got") || filenameLower.includes("softgot")) {
-      return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/sgt/index.html";
-    }
-    // Default for HMI (GOT2000)
-    return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got2000/index.html";
-  }
-
-  // Inverters
-  if (category === "Invertors") {
-    return "https://www.mitsubishielectric.com/fa/products/drv/inv/pmerit/index.html";
-  }
-
-  // Low Voltage Power Distribution
-  if (category === "Low Voltage Power Distribution") {
-    return "https://www.mitsubishielectric.com/fa/in_en/products/lvd/index.html";
-  }
-
-  // Robot
-  if (category === "Robot") {
-    return "https://www.mitsubishielectric.com/fa/products/rbt/robot/";
-  }
-
-  // Integrated HMI
-  if (category === "Integrated HMI") {
-    // Use HMI GOT2000 as fallback for Integrated HMI
-    return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got2000/index.html";
-  }
-
-  // Software
+  // SOFTWARE
   if (category === "Software") {
+    if (titleUpper.includes("FR-CONFIGURATOR") || titleLower.includes("fr-configurator") || filenameLower.includes("fr-configurator")) {
+      return "https://www.mitsubishielectric.com/fa/products/drv/inv/smerit/fr_config/index.html";
+    }
+    if (titleUpper.includes("GT WORKS 3") || titleLower.includes("gt works 3") || filenameLower.includes("gt works 3")) {
+      return "https://www.mitsubishielectric.com/fa/products/hmi/got/smerit/gt_works3/index.html";
+    }
+    if (titleUpper.includes("GX WORKS 2") || titleLower.includes("gx works 2") || filenameLower.includes("gx works 2")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plceng/smerit/gx_works2/";
+    }
+    if (titleUpper.includes("GX WORKS 3") || titleLower.includes("gx works 3") || filenameLower.includes("gx works 3")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plceng/smerit/gx_works3/";
+    }
+    if (titleUpper.includes("MR-CONFIGURATOR") || titleUpper.includes("MR CONFIGURATOR") || titleLower.includes("mr-configurator") || titleLower.includes("mr configurator") || filenameLower.includes("mr configurator")) {
+      return "https://www.mitsubishielectric.com/fa/products/drv/servo/smerit/mr2/index.html";
+    }
+    if (titleUpper.includes("GENESIS 64") || titleLower.includes("genesis 64") || filenameLower.includes("genesis")) {
+      return "https://www.mitsubishielectric.com/fa/products/software/visualisation/genesis64/index.html";
+    }
+    if (titleUpper.includes("VIRTUALIZATION 3D") || titleUpper.includes("3D MELSOFT") || titleLower.includes("virtualization 3d") || titleLower.includes("3d melsoft") || filenameLower.includes("3d")) {
+      return "https://www.mitsubishielectric.com/fa/products/software/simulation-tools/gemini/";
+    }
+    if (titleUpper.includes("MELSOFT RT") || titleUpper.includes("RT TOOLBOX") || titleLower.includes("melsoft rt") || titleLower.includes("rt toolbox") || filenameLower.includes("rt")) {
+      return "https://www.mitsubishielectric.com/fa/products/rbt/robot/smerit/rt3/";
+    }
+    if (titleUpper.includes("MX SHEET") || titleLower.includes("mx sheet") || filenameLower.includes("mx sheet")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plceng/smerit/mx_sheet/";
+    }
     return "https://www.mitsubishielectric.com/fa/products/software/visualisation/genesis64/index.html";
   }
 
-  // Default fallback (should not happen, but safe fallback)
+  // HMI
+  if (category === "HMI") {
+    if (titleUpper.includes("GOT 2000") || titleUpper.includes("GOT2000") || filenameLower.includes("got 2000") || filenameLower.includes("got2000")) {
+      return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got2000/index.html";
+    }
+    if (titleUpper.includes("GOT 3000") || titleUpper.includes("GOT3000") || filenameLower.includes("got 3000") || filenameLower.includes("got3000")) {
+      return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got3000/";
+    }
+    if (titleUpper.includes("GOT SIMPLE") || titleUpper.includes("SIMPLE") || filenameLower.includes("simple")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/hmi/got/items/got_simple/index.html";
+    }
+    if (titleUpper.includes("SOFTGOT") || titleUpper.includes("SOFT GOT") || filenameLower.includes("softgot")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/hmi/got/items/sgt/index.html";
+    }
+    return "https://www.mitsubishielectric.com/fa/products/hmi/got/items/got2000/index.html";
+  }
+
+  // INTEGRATED HMI
+  if (category === "Integrated HMI") {
+    if (titleUpper.includes("GOC 35") || titleUpper.includes("GOC35") || filenameLower.includes("goc 35") || filenameLower.includes("goc35")) {
+      return "https://mitsubishielectric.in/fa/fa-goc-plc-hmi.html";
+    }
+    if (titleUpper.includes("GOC 43") || titleUpper.includes("GOC43") || filenameLower.includes("goc 43") || filenameLower.includes("goc43")) {
+      return "https://mitsubishielectric.in/fa/GOC43/";
+    }
+    return "https://mitsubishielectric.in/fa/fa-goc-plc-hmi.html";
+  }
+
+  // INVERTERS
+  if (category === "Invertors") {
+    if (titleUpper.includes("FR-A800") || titleUpper.includes("FR-A 800") || filenameLower.includes("fr-a800") || filenameLower.includes("fr800") || filenameLower.includes("fr-800")) {
+      return "https://www.mitsubishielectric.com/fa/products/drv/inv/items/fr_a/index.html";
+    }
+    if (titleUpper.includes("FR-CS") || filenameLower.includes("fr-cs")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/drv/inv/items/fr_cs/index.html";
+    }
+    if (titleUpper.includes("FR-D700") || filenameLower.includes("fr-d700")) {
+      return "https://www.mitsubishielectric.com/fa/products/drv/inv/pmerit/fr_d/d707.html";
+    }
+    if (titleUpper.includes("FR-D800") || filenameLower.includes("fr-d800")) {
+      return "https://www.mitsubishielectric.com/fa/products/drv/inv/pmerit/fr_d/d800/";
+    }
+    if (titleUpper.includes("FR-E800") || filenameLower.includes("fr-e800")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/drv/inv/items/fr_e/index.html";
+    }
+    return "https://www.mitsubishielectric.com/fa/products/drv/inv/pmerit/index.html";
+  }
+
+  // PLC – iQ-F
+  if (subcategory === "PLC iQF") {
+    if (titleUpper.includes("FX5S") || filenameLower.includes("fx5s")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcf/pmerit/concept/built_in_function.html";
+    }
+    if (titleUpper.includes("FX5U") && !titleUpper.includes("FX5UC") && !titleUpper.includes("FX5UJ") || (filenameLower.includes("fx5u") && !filenameLower.includes("fx5uc") && !filenameLower.includes("fx5uj"))) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcf/pmerit/cpu/";
+    }
+    if (titleUpper.includes("FX5UC") || filenameLower.includes("fx5uc")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/cnt/plcf/items/index.html";
+    }
+    if (titleUpper.includes("FX5UJ") || filenameLower.includes("fx5uj")) {
+      return "https://www.mitsubishielectric.com/fa/products/faspec/detail.page?kisyu=/plcf&formNm=FX5-_M-E-_FX5UJ-60MT%2FES_3446";
+    }
+    return "https://www.mitsubishielectric.com/fa/products/cnt/plcf/pmerit/concept/index.html";
+  }
+
+  // PLC – iQ-R
+  if (subcategory === "PLC iQR") {
+    if (titleUpper.includes("ANALOG MODULES") || filenameLower.includes("analog")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/analog/";
+    }
+    if (titleUpper.includes("GENERAL CONTROL CPU") || filenameLower.includes("general control cpu")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/cpu.html";
+    }
+    if (titleUpper.includes("IO MODULES") || titleUpper.includes("I/O MODULES") || filenameLower.includes("io modules")) {
+      return "https://mitsubishielectric.in/fa/fa-modular-io.html";
+    }
+    if (titleUpper.includes("MOTION CONTROL CPU") || titleUpper.includes("MOTION MODULES") || filenameLower.includes("motion control cpu") || filenameLower.includes("motion modules")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/cnt/ssc/index.html";
+    }
+    if (titleUpper.includes("PROCESS CONTROL CPU") || filenameLower.includes("process control cpu")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/process.html";
+    }
+    if (titleUpper.includes("SAFETY CONTROL CPU") || filenameLower.includes("safety control cpu")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/safety.html";
+    }
+    return "https://www.mitsubishielectric.com/fa/products/cnt/plcr/pmerit/cpu/cpu.html";
+  }
+
+  // PLC MELSEC F SERIES
+  if (subcategory === "PLC MELSEC F Series") {
+    if (titleUpper.includes("FX3S") || filenameLower.includes("fx3s")) {
+      return "https://dl.mitsubishielectric.com/dl/fa/document/manual/plc_fx/jy997d48601/jy997d48601g.pdf";
+    }
+    if (titleUpper.includes("FX3U") || filenameLower.includes("fx3u")) {
+      return "https://dl.mitsubishielectric.com/dl/fa/document/manual/plc_fx/jy997d16601/jy997d16601r.pdf";
+    }
+    return "https://www.mitsubishielectric.com/fa/products/cnt/plc_fx/pmerit/contents/index.html";
+  }
+
+  // PLC MELSEC Q SERIES
+  if (subcategory === "PLC MELSEC Q Series") {
+    if (titleUpper.includes("ANALOG MODULES") || filenameLower.includes("analog")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcq/pmerit/analog/";
+    }
+    if (titleUpper.includes("CPU MODULES") || filenameLower.includes("cpu modules")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcq/pmerit/cpu/";
+    }
+    if (titleUpper.includes("MOTION MODULES") || filenameLower.includes("motion modules")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcq/pmerit/motion/";
+    }
+    if (titleUpper.includes("NETWORK MODULES") || filenameLower.includes("network modules")) {
+      return "https://www.mitsubishielectric.com/fa/products/cnt/plcq/pmerit/network/";
+    }
+    return "https://www.mitsubishielectric.com/fa/products/cnt/plcq/pmerit/concept/index.html";
+  }
+
+  // PLC MX SERIES
+  if (subcategory === "PLC MXF Series") {
+    return "https://www.mitsubishielectric.com/fa/products/cnt/mxc/items/mxcf/index.html";
+  }
+  if (subcategory === "PLC MXR Series") {
+    return "https://www.mitsubishielectric.com/fa/products/cnt/mxc/items/mxcf/index.html";
+  }
+
+  // ROBOTS
+  if (category === "Robot") {
+    if (titleUpper.includes("VERTICAL") || filenameLower.includes("vertical")) {
+      return "https://www.mitsubishielectric.com/fa/products/rbt/robot/items/vertical/index.html";
+    }
+    if (titleUpper.includes("COLLABORATIVE") || filenameLower.includes("collaborative")) {
+      return "https://www.mitsubishielectric.com/fa/products/rbt/assista/items/assista/index.html";
+    }
+    if (titleUpper.includes("HORIZONTAL") || filenameLower.includes("horizontal")) {
+      return "https://www.mitsubishielectric.com/fa/products/rbt/robot/items/horizontal/index.html";
+    }
+    if (titleUpper.includes("MELFA SMART") || filenameLower.includes("melfa smart") || filenameLower.includes("melfa")) {
+      return "https://www.mitsubishielectric.com/fa/products/rbt/robot/items/frplus/index.html";
+    }
+    return "https://www.mitsubishielectric.com/fa/products/rbt/robot/";
+  }
+
+  // LOW VOLTAGE POWER DISTRIBUTION
+  if (category === "Low Voltage Power Distribution") {
+    if (titleUpper.includes("MCB") || filenameLower.includes("mcb")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/lvd/lvcb/items/mcb/index.html";
+    }
+    if (titleUpper.includes("MCCB") || filenameLower.includes("mccb")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/lvd/lvcb/items/mccb/index.html";
+    }
+    if (titleUpper.includes("ACB") || filenameLower.includes("acb")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/lvd/lvcb/items/acb/index.html";
+    }
+    if (titleUpper.includes("ELCB") || filenameLower.includes("elcb")) {
+      return "https://www.mitsubishielectric.com/fa/in_en/products/lvd/lvcb/items/elcb/index.html";
+    }
+    if (titleUpper.includes("OVERLOAD RELAY") || filenameLower.includes("overload")) {
+      return "https://mitsubishi-electric-eshop.mee.com/mee/FA_IA/en/EUR/Catalogue/LVS/Motor-Control/Overload-Protection-Relays";
+    }
+    if (titleUpper.includes("MPCB") || filenameLower.includes("mpcb")) {
+      return "https://www.mitsubishielectric.com/fa/products/lvd/lvsw/items/mms/index.html";
+    }
+    if (titleUpper.includes("ME96") || filenameLower.includes("me96")) {
+      return "https://dl.mitsubishielectric.com/dl/fa/document/manual/pmd/ib63c46/ib63c46b.pdf";
+    }
+    return "https://www.mitsubishielectric.com/fa/in_en/products/lvd/index.html";
+  }
+
+  // Default fallback
   return "https://www.mitsubishielectric.com/fa/";
 };
 
