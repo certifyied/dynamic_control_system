@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useCanonical } from "@/hooks/useCanonical";
 import Navigation from "@/components/Navigation";
@@ -10,7 +10,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 const clientImages = import.meta.glob<{ default: string }>("/src/assets/Clients/*.{png,jpg,jpeg,webp,svg}", { eager: true });
 
 // Convert to array and extract filenames
-const clients = Object.entries(clientImages).map(([path, module]) => {
+const allClients = Object.entries(clientImages).map(([path, module]) => {
   const filename = path.split("/").pop() || "";
   const nameWithoutExt = filename.replace(/\.[^/.]+$/, "");
   return {
@@ -20,8 +20,20 @@ const clients = Object.entries(clientImages).map(([path, module]) => {
   };
 });
 
+// Fisher-Yates shuffle algorithm for efficient randomization
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 const Clients = () => {
   useCanonical();
+  // Initialize with randomized order using lazy initializer to ensure shuffle happens once
+  const [clients] = useState(() => shuffleArray(allClients));
 
   // Update SEO metadata for Clients page
   useEffect(() => {
@@ -84,7 +96,7 @@ const Clients = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-gradient-to-b from-muted/30 to-background">
+        <section className="pt-32 pb-8 bg-gradient-to-b from-muted/30 to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -103,9 +115,9 @@ const Clients = () => {
         </section>
 
         {/* Clients Grid */}
-        <section className="py-20">
+        <section className="pt-8 pb-20">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
               {clients.map((client, index) => (
                 <motion.div
                   key={client.filename}
