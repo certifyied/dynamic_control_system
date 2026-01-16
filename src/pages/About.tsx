@@ -38,9 +38,9 @@ const About = () => {
       name: "Mr. Saji K. Philip",
       designation: "Founder & Director",
       description: "Driving force behind technical excellence and long-term vision, building DCS as a trusted partner for Mitsubishi Electric in Kochi.",
-      fullDescription: `Mr. Saji K. Philip, Founder of DCS, is the driving force behind the company's technical excellence and long-term vision. A B.Tech graduate from M.A. College of Engineering, Kothamangalam, he gained valuable industry experience at Concast India Pvt. Ltd., Mumbai, before returning with a clear mission to strengthen the industrial automation ecosystem.
-
-With extensive expertise across the electrical and automotive sectors, he has supported numerous industries and machine builders throughout India. His strong focus on continuous learning, practical innovation, and hands-on leadership has been instrumental in building a highly skilled DCS team and establishing DCS as a trusted partner for Mitsubishi Electric in Kochi.`,
+      fullDescription: `Mr. Saji K. Philip, Founder of DCS, is the driving force behind the company’s technical excellence and long-term vision. A B.Tech graduate from M.A. College of Engineering, Kothamangalam, he gained valuable industry experience at Concast India Pvt. Ltd., Mumbai, before returning with a clear mission to strengthen the industrial automation ecosystem.
+With extensive expertise across the electrical and automotive sectors, Mr. Philip has supported numerous industries and machine builders throughout India. His strong focus on continuous learning, practical innovation, and hands-on leadership has been instrumental in building a highly skilled DCS team. Under his guidance, DCS has grown into a trusted automation partner for Mitsubishi Electric in Kochi, delivering reliable and advanced solutions, includingSCADA programming in Kochi , to meet evolving industrial needs
+`,
     },
     {
       id: 2,
@@ -48,9 +48,7 @@ With extensive expertise across the electrical and automotive sectors, he has su
       name: "Mr. Cristo S. Kayyalakam",
       designation: "CEO",
       description: "Leading business strategy and growth, strengthening DCS's position as a trusted partner for Mitsubishi Electric in Kochi.",
-      fullDescription: `Our CEO, Mr. Cristo S. Kayyalakam, brings strong business leadership and strategic insight shaped through his corporate experience, including his tenure at IBM, Bangalore. A B.Tech graduate from M.A. College of Engineering, he returned to the family business with a clear vision to scale operations, expand market presence, and build long-term customer partnerships.
-
-He leads critical functions such as marketing, customer engagement, and business development. Driven by a commitment to nurturing industry-ready talent, he also established an industrial automation training institute, strengthening the talent pipeline and reinforcing DCS's position as a trusted partner for Mitsubishi Electric in Kochi.`,
+      fullDescription: `Our CEO, Mr. Cristo S. Kayyalakam, brings strong business leadership and strategic insight shaped by his corporate experience, including his tenure at IBM, Bangalore. A B.Tech graduate from M.A. College of Engineering, he returned to the family business with a clear vision to scale operations, expand market presence, and build long-term customer partnerships.`,
     },
     {
       id: 3,
@@ -58,11 +56,7 @@ He leads critical functions such as marketing, customer engagement, and business
       name: "Mr. Joe",
       designation: "CTO",
       description: "Leading technical strategy with global expertise, strengthening delivery excellence for Mitsubishi Electric in Kochi.",
-      fullDescription: `Our CTO, Mr. Joe, brings valuable global exposure and advanced technical expertise to DCS. A B.Tech graduate in Electrical & Electronics Engineering from NIT Calicut, he has over eight years of hands-on experience in Electrical, Instrumentation, and Automation.
-
-He began his career in Kerala and later worked in Qatar, where he excelled as an E&I Engineer and Lead Engineer, successfully managing complex EPIC projects across oil & gas, airport operations, and large-scale infrastructure. His expertise covers system design, process automation, testing and commissioning, execution, and large-scale project management.
-
-Since joining DCS in 2023, Joe has been leading the company's technical strategy with strong capabilities in manpower management, advanced troubleshooting, and high-level problem-solving, further strengthening DCS's delivery excellence for Mitsubishi Electric in Kochi.`,
+      fullDescription: `He leads critical functions such as marketing, customer engagement, and business development. Driven by a commitment to nurturing industry-ready talent, he also established an industrial automation training institute. Through his leadership, DCS has strengthened its capabilities and market reach, delivering advanced solutions including SCADA programming in Kochi , and reinforcing its position as a trusted partner for Mitsubishi Electric in Kochi.`,
     },
   ];
 
@@ -81,14 +75,14 @@ Since joining DCS in 2023, Joe has been leading the company's technical strategy
   // Update SEO metadata for About page
   useEffect(() => {
     // Update document title
-    document.title = "Industrial Automation Experts | Mitsubishi Electric in Kochi";
+    document.title = "Experts in SCADA Programming in Kochi";
     
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         "content",
-        "Learn about Dynamic Control Systems, an authorized partner for Mitsubishi Electric in Kochi, delivering advanced industrial automation solutions and expert support."
+        "Learn about Dynamic Control Systems, a trusted name for SCADA programming in Kochi, delivering Mitsubishi Electric automation solutions across industries."
       );
     }
 
@@ -97,7 +91,7 @@ Since joining DCS in 2023, Joe has been leading the company's technical strategy
     if (ogTitle) {
       ogTitle.setAttribute(
         "content",
-        "Industrial Automation Experts | Mitsubishi Electric in Kochi"
+        "Experts in SCADA Programming in Kochi"
       );
     }
 
@@ -105,29 +99,29 @@ Since joining DCS in 2023, Joe has been leading the company's technical strategy
     if (ogDescription) {
       ogDescription.setAttribute(
         "content",
-        "Learn about Dynamic Control Systems, an authorized partner for Mitsubishi Electric in Kochi, delivering advanced industrial automation solutions and expert support."
+        "Learn about Dynamic Control Systems, a trusted name for SCADA programming in Kochi, delivering Mitsubishi Electric automation solutions across industries."
       );
     }
 
     // Cleanup function to restore default meta tags when component unmounts
     return () => {
-      document.title = "Dynamic Control Systems | Mitsubishi Electric in Kochi";
+      document.title = "SCADA Programming in Kochi";
       if (metaDescription) {
         metaDescription.setAttribute(
           "content",
-          "Dynamic Control Systems delivers advanced industrial automation, SCADA, and energy solutions powered by Mitsubishi Electric in Kochi."
+          "Dynamic Control Systems delivers reliable industrial automation and SCADA programming in Kochi with Mitsubishi Electric solutions for diverse industries."
         );
       }
       if (ogTitle) {
         ogTitle.setAttribute(
           "content",
-          "Dynamic Control Systems | Mitsubishi Electric in Kochi"
+          "SCADA Programming in Kochi"
         );
       }
       if (ogDescription) {
         ogDescription.setAttribute(
           "content",
-          "Dynamic Control Systems delivers advanced industrial automation, SCADA, and energy solutions powered by Mitsubishi Electric in Kochi."
+          "Dynamic Control Systems delivers reliable industrial automation and SCADA programming in Kochi with Mitsubishi Electric solutions for diverse industries."
         );
       }
     };
@@ -179,10 +173,10 @@ Since joining DCS in 2023, Joe has been leading the company's technical strategy
                 {/* Description */}
                 <div className="space-y-4 mb-8 max-w-[600px]">
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    We are a team of young, dynamic, and experienced engineers with strong expertise in Electrical, Automation, and Instrumentation Engineering. Over the years, we have successfully delivered a wide range of industrial projects across India, serving major sectors such as Power Generation, Automobiles, Marine & Defence, Pharmaceuticals, and Packaging.
+                  We are a team of young, dynamic, and experienced engineers with strong expertise in Electrical, Automation, and Instrumentation Engineering. Over the years, we have successfully executed a wide range of industrial projects across India, serving key sectors such as Power Generation, Automobiles, Marine & Defence, Pharmaceuticals, and Packaging.
                   </p>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Dynamic Control Systems, an Authorized Channel Partner of Mitsubishi Electric India Private Limited, is a trusted name for Mitsubishi Electric in Kochi, with a strong presence in Vytilla. Under the leadership of Mr. Saji K. Philip, we provide end-to-end sales and service support for Mitsubishi Electric automation solutions, delivering reliable, efficient, and customized industrial automation systems to meet diverse industry requirements.
+                  Dynamic Control Systems, an Authorized Channel Partner of Mitsubishi Electric India Private Limited, is a trusted automation solutions provider based in Kochi, with a strong operational presence in Vytilla. Under the leadership of Mr. Saji K. Philip, we deliver end-to-end sales, service, and technical support for Mitsubishi Electric automation products. Our solutions include PLCs, HMIs, drives, and SCADA programming in Kochi, enabling seamless monitoring, control, and optimization of industrial processes. With proven expertise in SCADA programming in Kochi, we deliver reliable, efficient, and customized industrial automation systems tailored to meet diverse industry requirements.
                   </p>
                 </div>
                 

@@ -6,17 +6,17 @@ const MissionSection = () => {
     {
       icon: Target,
       title: "Our Mission",
-      description: "To contribute to the creation of a vibrant and sustainable society through continuous technological innovation with Mitsubishi Electric in Kochi.",
+      description: "To contribute to a vibrant and sustainable society through continuous technological innovation and SCADA programming in Kochi with Mitsubishi Electric.",
     },
     {
       icon: Users,
       title: "Our Values",
-      description: "Driven by integrity, respect, and teamwork, we collaborate for a greater purpose with Mitsubishi Electric in Kochi.",
+      description: "Driven by integrity, respect, and teamwork, we collaborate for a greater purpose through SCADA automation in Kochi with Mitsubishi Electric.",
     },
     {
       icon: Lightbulb,
       title: "Our Vision",
-      description: "To be a leading global provider of innovative solutions that enhance quality of life worldwide with Mitsubishi Electric in Kochi.",
+      description: "To be a leading global provider of innovative solutions that enhance quality of life worldwide through SCADA programming in Kochi  with Mitsubishi Electric.",
     },
   ];
 
