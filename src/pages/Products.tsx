@@ -132,7 +132,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
   const title = cleanName ? formatProductName(cleanName) : formatProductName(nameWithoutExt);
 
   // Generate description based on category, subcategory, and specific product title
-  const getProductDescription = (productTitle: string, category: string, subcategory?: string, productCleanName: string, productFilename: string): string => {
+  const getProductDescription = (productTitle: string, category: string, productCleanName: string, productFilename: string, subcategory?: string): string => {
     const titleUpper = productTitle.toUpperCase();
     const titleLower = productTitle.toLowerCase();
     const cleanNameLower = productCleanName.toLowerCase();
@@ -190,12 +190,12 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
         return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is engineered for large-scale automation systems, featuring advanced networking and motion control capabilities.";
       }
       if (titleUpper.includes("MOTION MODULES") || cleanNameLower.includes("motion") || filenameLower.includes("motion")) {
-        return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control features.";
+        return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control features including SCADA programming in Kochi, where reliability, scalability, and real-time control are critical.";
       }
       if (titleUpper.includes("NETWORK MODULES") || cleanNameLower.includes("network") || filenameLower.includes("network")) {
-        return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control capabilities.";
+        return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control capabilities including SCADA programming in Kochi, where reliability, scalability, and real-time control are critical.";
       }
-      return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control capabilities.";
+      return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control capabilities including SCADA programming in Kochi, where reliability, scalability, and real-time control are critical.";
     }
 
     // PLC MELSEC F Series specific products
@@ -313,7 +313,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
     return "Industrial automation solution from Mitsubishi Electric in Kochi designed for reliability and performance.";
   };
 
-  const description = getProductDescription(title, category, subcategory, cleanName, nameWithoutExt);
+  const description = getProductDescription(title, category, cleanName, nameWithoutExt, subcategory);
 
   return { title, description };
 };

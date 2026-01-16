@@ -52,7 +52,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-xl text-muted-foreground mb-8 max-w-2xl"
           >
-          Empowering industries in Kochi with smart automation and expert SCADA programming in Kochi, powered by Mitsubishi Electric.
+          Empowering industries in Kochi with smart automation, advanced energy solutions, and expert SCADA programming in Kochi, powered by Mitsubishi Electric.
           </motion.p>
 
           <motion.div
