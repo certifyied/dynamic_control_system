@@ -24,6 +24,7 @@ import blog6Image from "@/assets/blog6.jpg";
 import blog7Image from "@/assets/blog7.jpg";
 import blog8Image from "@/assets/blog8.jpg";
 import blog9Image from "@/assets/blog9.jpg";
+import blog10Image from "@/assets/blog10.jpg";
 
 // Map blog IDs to their specific images
 const blogImageMap: Record<number, string> = {
@@ -36,6 +37,7 @@ const blogImageMap: Record<number, string> = {
   7: blog7Image,
   8: blog8Image,
   9: blog9Image,
+  10: blog10Image,
 };
 
 const Blog = () => {
@@ -705,6 +707,106 @@ SCADA systems integrated with Mitsubishi PLCs provide seamless connectivity, int
 Conclusion
 
 The integration of SCADA systems and Mitsubishi PLCs addresses numerous challenges that industries in Kochi face daily. From reducing downtime and improving quality to enhancing safety and enabling remote monitoring, these automation solutions provide comprehensive benefits that drive operational excellence. As industries continue to evolve and face increasing competition, investing in reliable SCADA and PLC systems becomes not just advantageous but essential for sustainable growth and success.`,
+    },
+    {
+      id: 10,
+      title: "Top 7 Mitsubishi PLC Models Available for Purchase in Kerala | Dynamic Control Systems",
+      excerpt: "If you are planning a Mitsubishi PLC purchase in Kerala for your industrial automation project, choosing the right controller is the first step toward improved productivity and efficiency. At Dynamic Control Systems — a trusted automation solutions partner based in Kochi — we offer a wide range of genuine Mitsubishi PLC models tailored to various applications.",
+      category: "Products",
+      date: "February 28, 2024",
+      readTime: "11 min read",
+      content: `Top 7 Mitsubishi PLC Models Available for Purchase in Kerala | Dynamic Control Systems
+
+If you are planning a Mitsubishi PLC purchase in Kerala for your industrial automation project, choosing the right controller is the first step toward improved productivity and efficiency. At Dynamic Control Systems — a trusted automation solutions partner based in Kochi — we offer a wide range of genuine Mitsubishi PLC models tailored to various applications in manufacturing, process control, packaging, material handling, and more.
+
+Below is your complete guide to the Top 7 Mitsubishi PLC Models recommended for purchase in Kerala, along with ideal use cases and automation benefits.
+
+1. Mitsubishi FX5 Series – Compact & Cost-Effective PLC
+
+The MELSEC FX5 Series is a compact, all-in-one programmable logic controller perfect for small to medium automation tasks. It integrates CPU, power supply, and I/O in a single unit with high-speed control and built-in networking capabilities.
+
+Ideal for:
+✔ Standalone machines
+✔ Small OEM equipment
+✔ Basic process control
+
+Best choice if you're stepping into automation with budget-friendly control systems.
+
+2. Mitsubishi iQ-F Series – Mid-Range Smart PLC
+
+The Mitsubishi iQ-F Series bridges the gap between compact and modular systems. It supports modular I/O expansion, advanced motion control, and multiple communication protocols.
+
+Ideal for:
+✔ Mid-sized production lines
+✔ Packaging machines
+✔ Multi-axis control applications
+
+This series gives you scalability for future expansion without overspending upfront.
+
+3. Mitsubishi Q Series – Modular & Flexible
+
+The MELSEC Q Series is a modular PLC platform for applications requiring extensive I/O count and communication networks. It supports scalable modules and interfaces for complex automation tasks.
+
+Ideal for:
+✔ Large industrial plants
+✔ Distributed control systems
+✔ High-performance applications
+
+Choose this if your project demands modular configuration and future upgrades.
+
+4. Mitsubishi iQ-R Series – High-Performance Automation
+
+The MELSEC iQ-R Series represents Mitsubishi's advanced PLC lineup. It combines high-speed CPU processing, real-time data handling, motion control, safety logic, and IoT connectivity — all in one platform.
+
+Ideal for:
+✔ Industry 4.0 automation
+✔ Smart factory integration
+✔ Redundant and fault-tolerant systems
+
+Best suited for large-scale industries demanding performance, data logging, and analytics.
+
+5. Mitsubishi FX3U PLC – Extended Performance Compact PLC
+
+The FX3U variant enhances processing speed and I/O flexibility within the compact FX family. It's ideal for applications where you need extended control without shifting to a larger platform.
+
+Ideal for:
+✔ Conveyor systems
+✔ Packaging operations
+✔ Simple motion control
+
+Great choice for turnkey compact automation systems.
+
+6. Mitsubishi iQ-F Motion PLC Models
+
+Within the iQ-F Series, motion-ready PLC variants offer built-in motion and positioning control without extra hardware — simplifying machine design and reducing costs.
+
+Ideal for:
+✔ Pick-and-place robotics
+✔ Synchronous motion applications
+✔ Stepper/servo-driven machines
+
+Powerful control with integrated motion capabilities.
+
+7. Modular Controllers for Special Applications
+
+Mitsubishi also offers modular controllers tailored for niche applications such as safety logic, analog control, and distributed I/O systems. These are perfect when standard PLCs need enhanced customization.
+
+Ideal for:
+✔ Safety-integrated systems
+✔ Process automation with analog loops
+✔ Complex multisystem integration
+
+Add these modules where advanced control is required.
+
+Why Choose Dynamic Control Systems for PLC & VFD Needs in Kerala?
+
+At Dynamic Control Systems, we specialize in delivering industrial automation solutions — from Mitsubishi PLC purchase in Kerala to engineering support and after-sales services. Our authorized partnerships ensure you receive genuine Mitsubishi products backed by technical expertise and project support.
+
+Besides PLCs, we also support VFD purchase in Kerala, helping industries optimize motor control, reduce energy consumption, and improve process stability with quality variable frequency drives.
+
+Final Thoughts
+
+Choosing the right Mitsubishi PLC model makes all the difference in automation success — whether you're automating a single machine or a full production line. From FX series compact controllers to the powerful iQ-R architecture, Mitsubishi offers scalable solutions that meet diverse industrial needs in Kerala.`,
     },
   ], []);
 
