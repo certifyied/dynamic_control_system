@@ -47,14 +47,14 @@ const Blog = () => {
   // Update SEO metadata for Blog page
   useEffect(() => {
     // Update document title
-    document.title = "SCADA Automation in Kochi | Industrial Automation Blog";
+    document.title = "HMI Programming in Kochi | Dynamic Control Systems Blog";
     
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         "content",
-        "Read expert articles on industrial trends, Mitsubishi Electric products, and best practices in SCADA automation in Kochi by DCS professionals."
+        "Explore expert tips and insights on HMI programming in Kochi. Stay updated with the latest automation trends at the Dynamic Control Systems blog."
       );
     }
 
@@ -63,7 +63,7 @@ const Blog = () => {
     if (ogTitle) {
       ogTitle.setAttribute(
         "content",
-        "SCADA Automation in Kochi | Industrial Automation Blog"
+        "HMI Programming in Kochi | Dynamic Control Systems Blog"
       );
     }
 
@@ -71,7 +71,7 @@ const Blog = () => {
     if (ogDescription) {
       ogDescription.setAttribute(
         "content",
-        "Read expert articles on industrial trends, Mitsubishi Electric products, and best practices in SCADA automation in Kochi by DCS professionals."
+        "Explore expert tips and insights on HMI programming in Kochi. Stay updated with the latest automation trends at the Dynamic Control Systems blog."
       );
     }
 

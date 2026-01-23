@@ -39,7 +39,7 @@ const About = () => {
       designation: "Founder & Director",
       description: "Driving force behind technical excellence and long-term vision, building DCS as a trusted partner for Mitsubishi Electric in Kochi.",
       fullDescription: `Mr. Saji K. Philip, Founder of DCS, is the driving force behind the company’s technical excellence and long-term vision. A B.Tech graduate from M.A. College of Engineering, Kothamangalam, he gained valuable industry experience at Concast India Pvt. Ltd., Mumbai, before returning with a clear mission to strengthen the industrial automation ecosystem.
-With extensive expertise across the electrical and automotive sectors, Mr. Philip has supported numerous industries and machine builders throughout India. His strong focus on continuous learning, practical innovation, and hands-on leadership has been instrumental in building a highly skilled DCS team. Under his guidance, DCS has grown into a trusted automation partner for Mitsubishi Electric in Kochi, delivering reliable and advanced solutions, includingSCADA programming in Kochi , to meet evolving industrial needs
+With extensive expertise across the electrical and automotive sectors, Mr. Philip has supported numerous industries and machine builders across India. His strong emphasis on continuous learning, practical innovation, and hands-on leadership has played a key role in developing a highly skilled DCS team. Under his guidance, DCS has evolved into a trusted automation partner for Mitsubishi Electric in Kochi, offering end-to-end solutions, including Mitsubishi PLC purchase in Kochi and advanced SCADA programming in Kochi, to meet the growing and evolving needs of modern industries.
 `,
     },
     {
@@ -75,14 +75,14 @@ With extensive expertise across the electrical and automotive sectors, Mr. Phili
   // Update SEO metadata for About page
   useEffect(() => {
     // Update document title
-    document.title = "Experts in SCADA Programming in Kochi";
+    document.title = "About Control Systems | Mitsubishi PLC Purchase in Kochi";
     
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         "content",
-        "Learn about Dynamic Control Systems, a trusted name for SCADA programming in Kochi, delivering Mitsubishi Electric automation solutions across industries."
+        "Learn about Dynamic Control Systems, a trusted automation partner offering sales, service, and Mitsubishi PLC purchase in Kochi with expert SCADA solutions."
       );
     }
 
@@ -173,10 +173,10 @@ With extensive expertise across the electrical and automotive sectors, Mr. Phili
                 {/* Description */}
                 <div className="space-y-4 mb-8 max-w-[600px]">
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                  We are a team of young, dynamic, and experienced engineers with strong expertise in Electrical, Automation, and Instrumentation Engineering. Over the years, we have successfully executed a wide range of industrial projects across India, serving key sectors such as Power Generation, Automobiles, Marine & Defence, Pharmaceuticals, and Packaging.
+                  We are a team of young, dynamic, and experienced engineers with strong expertise in Electrical, Automation, and Instrumentation Engineering. Over the years, we have successfully executed a wide range of industrial projects across India, catering to key sectors such as Power Generation, Automobiles, Marine & Defence, Pharmaceuticals, and Packaging.
                   </p>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                  Dynamic Control Systems, an Authorized Channel Partner of Mitsubishi Electric India Private Limited, is a trusted automation solutions provider based in Kochi, with a strong operational presence in Vytilla. Under the leadership of Mr. Saji K. Philip, we deliver end-to-end sales, service, and technical support for Mitsubishi Electric automation products. Our solutions include PLCs, HMIs, drives, and SCADA programming in Kochi, enabling seamless monitoring, control, and optimization of industrial processes. With proven expertise in SCADA programming in Kochi, we deliver reliable, efficient, and customized industrial automation systems tailored to meet diverse industry requirements.
+                  Dynamic Control Systems, an Authorized Channel Partner of Mitsubishi Electric India Private Limited, is a trusted automation solutions provider based in Kochi, with a strong operational presence in Vytilla. Led by Mr. Saji K. Philip, we offer complete sales, service, and technical support for Mitsubishi Electric automation products, including PLCs, HMIs, and drives. We are a reliable choice for Mitsubishi PLC purchase in Kerala, delivering genuine products backed by expert guidance. Our solutions also include advanced SCADA programming in Kochi, enabling efficient monitoring, control, and optimization of industrial processes. With proven expertise, we deliver reliable, efficient, and customized industrial automation systems tailored to meet diverse industry requirements.
                   </p>
                 </div>
                 
@@ -404,7 +404,7 @@ With extensive expertise across the electrical and automotive sectors, Mr. Phili
                 Our Presence
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Driving innovation to connect industries and communities across regions through Mitsubishi Electric in Kochi
+              Driving innovation to connect industries and communities across regions through Mitsubishi Electric in Kochi, while enabling seamless Mitsubishi PLC purchase in Kochi.
               </p>
             </motion.div>
 
