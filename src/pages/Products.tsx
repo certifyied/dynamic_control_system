@@ -557,16 +557,16 @@ const getProductUrl = (product: Product): string => {
   // LOW VOLTAGE POWER DISTRIBUTION
   if (category === "Low Voltage Power Distribution") {
     if (titleUpper.includes("MCB") || filenameLower.includes("mcb")) {
-      return "https://www.mitsubishielectric.com/fa/in_en/products/lvd/lvcb/items/mcb/index.html";
+      return "https://emea.mitsubishielectric.com/fa/products/lv_distri/lvc-breakers/mcb";
     }
     if (titleUpper.includes("MCCB") || filenameLower.includes("mccb")) {
-      return "https://www.mitsubishielectric.com/fa/in_en/products/lvd/lvcb/items/mccb/index.html";
+      return "https://emea.mitsubishielectric.com/fa/products/lv_distri/lvc-breakers/mccb";
     }
     if (titleUpper.includes("ACB") || filenameLower.includes("acb")) {
-      return "https://www.mitsubishielectric.com/fa/in_en/products/lvd/lvcb/items/acb/index.html";
+      return "https://emea.mitsubishielectric.com/fa/products/lv_distri/lvc-breakers/acb";
     }
     if (titleUpper.includes("ELCB") || filenameLower.includes("elcb")) {
-      return "https://www.mitsubishielectric.com/fa/in_en/products/lvd/lvcb/items/elcb/index.html";
+      return "https://emea.mitsubishielectric.com/fa/products/lv_distri/lvc-breakers/elcb";
     }
     if (titleUpper.includes("OVERLOAD RELAY") || filenameLower.includes("overload")) {
       return "https://mitsubishi-electric-eshop.mee.com/mee/FA_IA/en/EUR/Catalogue/LVS/Motor-Control/Overload-Protection-Relays";
