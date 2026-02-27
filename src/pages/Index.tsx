@@ -11,7 +11,7 @@ import ServicesSection from "@/components/home/ServicesSection";
 const Index = () => {
   useCanonical();
 
-  // Update SEO metadata for Home page
+  // Update SEO metadata for Home page Hello
   useEffect(() => {
     // Update document title
     document.title = "SCADA Programming in Kochi";
