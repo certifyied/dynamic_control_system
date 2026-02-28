@@ -311,7 +311,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
       return "The industrial robot system from Mitsubishi Electric in Kochi is designed for precision automation, assembly, and material handling applications, delivering high repeatability and consistent performance.";
     }
 
-    // Software specific products
+    // Software specific the products
     if (category === "Software") {
       if (titleUpper.includes("GT WORKS 3") || cleanNameLower.includes("gt works 3") || filenameLower.includes("gt works 3")) {
         return "The engineering and visualization software suite from Mitsubishi Electric in Kochi enables efficient system design, programming, monitoring, and configuration of automation systems.";
