@@ -30,7 +30,7 @@ interface Product {
 const getCategoryFromPath = (path: string): { category: string; subcategory?: string } => {
   const pathParts = path.split("/");
   const dynamicProductIndex = pathParts.findIndex(part => part === "dynamic-products");
-  
+
   if (dynamicProductIndex === -1 || dynamicProductIndex === pathParts.length - 1) {
     return { category: "Other" };
   }
@@ -91,7 +91,7 @@ const getCategoryFromPath = (path: string): { category: string; subcategory?: st
 // Generate product title and description
 const generateProductInfo = (filename: string, category: string, subcategory?: string): { title: string; description: string } => {
   const nameWithoutExt = filename.replace(/\.[^/.]+$/, "");
-  
+
   // Remove common category and subcategory prefixes from filename
   const cleanName = nameWithoutExt
     .replace(/^(plc|hmi|robot|servo|invertor|software|invertors)\s*/i, "")
@@ -103,7 +103,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
   // Format the product name: capitalize first letter of each word, preserve acronyms and model numbers
   const formatProductName = (name: string): string => {
     if (!name) return name;
-    
+
     // Split by spaces and format each word
     return name
       .split(" ")
@@ -144,7 +144,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
         return "Mitsubishi Electric in Kochi provides the iQ-F series PLC, a compact and versatile automation solution featuring high-speed processing and extensive I/O capabilities, while also supporting reliable Mitsubishi VFD purchase in Kochi for mid-range automation applications.";
       }
       if ((titleUpper.includes("FX5U") && !titleUpper.includes("FX5UC") && !titleUpper.includes("FX5UJ")) || (filenameLower.includes("fx5u") && !filenameLower.includes("fx5uc") && !filenameLower.includes("fx5uj"))) {
-        return "The cost-effective MELSEC F Series PLC from Mitsubishi Electric in Kochi provides reliable control for small to medium-scale automation applications with a compact and efficient design, while also supporting Mitsubishi VFD purchase in Kochi.";
+        return "The FX5U PLC iQ-F Series from Mitsubishi Electric delivers compact, high-speed, and cost-effective control for small and medium automation systems. It ensures reliable performance, easy expansion, and smooth integration. For Mitsubishi PLC Purchase in India, FX5U is a smart and scalable solution for modern industries.";
       }
       if (titleUpper.includes("FX5UC") || filenameLower.includes("fx5uc")) {
         return "Mitsubishi Electric in Kochi presents the iQ-F series PLC, a compact and versatile solution with high-speed processing and broad I/O support for mid-range automation needs.";
@@ -158,7 +158,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
     // PLC iQ-R Series specific products
     if (subcategory === "PLC iQR") {
       if (titleUpper.includes("ANALOG MODULES") || cleanNameLower.includes("analog") || filenameLower.includes("analog")) {
-        return "The advanced iQ-R series PLC from Mitsubishi Electric in Kochi features a modular architecture, supporting complex control systems with high-performance CPUs and a wide range of module options.";
+        return "The iQ-R Series offers modular design, powerful CPUs, and precision analog modules for complex automation projects. It supports high-speed processing and flexible expansion. Businesses choosing Mitsubishi PLC Purchase in India prefer iQ-R for large-scale and mission-critical applications.";
       }
       if (titleUpper.includes("GENERAL CONTROL CPU") || cleanNameLower.includes("general control cpu") || filenameLower.includes("general control cpu")) {
         return "The advanced iQ-R series PLC from Mitsubishi Electric in Kochi features a modular architecture that supports complex control systems through high-performance CPUs and a wide range of module options, along with dependable support for Mitsubishi VFD purchase in Kochi.";
@@ -190,7 +190,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
         return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control capabilities, along with dependable options for Mitsubishi VFD purchase in Kochi.";
       }
       if (titleUpper.includes("MOTION MODULES") || cleanNameLower.includes("motion") || filenameLower.includes("motion")) {
-        return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control features including SCADA programming in Kochi, where reliability, scalability, and real-time control are critical.";
+        return "The MELSEC Q Series is built for advanced motion control and high-speed networking. It delivers accurate synchronization and real-time control. For reliable Mitsubishi PLC Purchase in India, the Q Series is ideal for demanding manufacturing environments.";
       }
       if (titleUpper.includes("NETWORK MODULES") || cleanNameLower.includes("network") || filenameLower.includes("network")) {
         return "The high-performance MELSEC Q Series PLC from Mitsubishi Electric in Kochi is designed for large-scale automation systems, offering advanced networking and motion control capabilities including SCADA programming in Kochi, where reliability, scalability, and real-time control are critical.";
@@ -204,7 +204,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
         return "The cost-effective MELSEC F Series PLC from Mitsubishi Electric in Kochi delivers reliable control for small to medium-scale automation applications, featuring a compact and efficient design.";
       }
       if (titleUpper.includes("FX3U") || cleanNameLower.includes("fx3u") || filenameLower.includes("fx3u")) {
-        return "The cost-effective MELSEC F Series PLC from Mitsubishi Electric in Kochi delivers reliable control for small to medium-scale automation applications, featuring a compact and efficient design.";
+        return "The FX3U PLC provides dependable and compact automation control with fast processing and flexible configuration. Companies planning Mitsubishi PLC Purchase in India select FX3U for cost-effective and stable operations.";
       }
       return "The cost-effective MELSEC F Series PLC from Mitsubishi Electric in Kochi delivers reliable control for small to medium-scale automation applications, featuring a compact and efficient design.";
     }
@@ -221,22 +221,26 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
 
     // AC Servo specific products
     if (category === "AC Servo") {
+
+      // 🔥 Check JET first (more specific)
+      if (titleUpper.includes("JET") || cleanNameLower.includes("jet") || filenameLower.includes("jet")) {
+        return "The JET Series AC Servo ensures precise positioning, smooth motion, and energy-efficient performance. It is perfect for robotics and packaging systems. For enhanced automation with Mitsubishi PLC Purchase in India, JET Series offers seamless compatibility.";
+      }
+
       if (titleUpper.includes("J4") || cleanNameLower.includes("j4") || filenameLower.includes("j4")) {
         return "The high-performance AC servo motor system from Mitsubishi Electric in Kochi delivers exceptional torque control and precise positioning for advanced automation applications.";
       }
+
       if (titleUpper.includes("JE") || cleanNameLower.includes("je") || filenameLower.includes("je")) {
         return "The high-performance AC servo motor system from Mitsubishi Electric in Kochi delivers exceptional torque control and precise positioning for advanced automation applications.";
       }
-      if (titleUpper.includes("JET") || cleanNameLower.includes("jet") || filenameLower.includes("jet")) {
-        return "The high-performance AC servo motor system from Mitsubishi Electric in Kochi delivers exceptional torque control and precise positioning for advanced automation applications.";
-      }
-      return "The high-performance AC servo motor system from Mitsubishi Electric in Kochi delivers exceptional torque control and precise positioning for advanced automation applications.";
-    }
 
+      return "The JET Series AC Servo ensures precise positioning, smooth motion, and energy-efficient performance. It is perfect for robotics and packaging systems. For enhanced automation with Mitsubishi PLC Purchase in India, JET Series offers seamless compatibility.";
+    }
     // HMI specific products
     if (category === "HMI" || category === "Integrated HMI") {
       if (titleUpper.includes("GOT 2000") || titleUpper.includes("GOT2000") || cleanNameLower.includes("got 2000") || cleanNameLower.includes("got2000") || filenameLower.includes("got 2000") || filenameLower.includes("got2000")) {
-        return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display, enabling seamless operator interaction and real-time system monitoring.";
+        return "The GOT 2000 HMI features an advanced touchscreen for real-time monitoring and easy operator control. It improves productivity and visualization. Businesses opting for Mitsubishi PLC Purchase in India integrate GOT 2000 for efficient automation management.";
       }
       if (titleUpper.includes("GOT 3000") || titleUpper.includes("GOT3000") || cleanNameLower.includes("got 3000") || cleanNameLower.includes("got3000") || filenameLower.includes("got 3000") || filenameLower.includes("got3000")) {
         return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display that enables seamless operator interaction and real-time system monitoring, while also supporting Mitsubishi VFD purchase in Kochi.";
@@ -248,7 +252,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
         return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display, enabling seamless operator interaction and real-time system monitoring.";
       }
       if (titleUpper.includes("GOC 35") || titleUpper.includes("GOC35") || cleanNameLower.includes("goc 35") || filenameLower.includes("goc 35")) {
-        return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display, enabling seamless operator interaction and real-time system monitoring.";
+        return "The GOC 35 HMI provides user-friendly control and clear system monitoring. It supports reliable communication with PLC systems. For smooth integration during Mitsubishi PLC Purchase in India, GOC 35 is a practical choice.";
       }
       if (titleUpper.includes("GOC 43") || titleUpper.includes("GOC43") || cleanNameLower.includes("goc 43") || filenameLower.includes("goc 43")) {
         return "The Human-Machine Interface from Mitsubishi Electric in Kochi features an intuitive touchscreen display, enabling seamless operator interaction and real-time system monitoring.";
@@ -259,7 +263,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
     // Inverters specific products
     if (category === "Invertors") {
       if (titleUpper.includes("FR-D700") || cleanNameLower.includes("fr-d700") || filenameLower.includes("fr-d700")) {
-        return "The variable frequency drive from Mitsubishi Electric in Kochi delivers precise motor control, improved energy efficiency, and smooth operation across a wide range of industrial applications.";
+        return "The S FR-D700 inverter offers accurate motor speed control and energy savings for industrial machines. It is compact and easy to install. Industries considering Mitsubishi PLC Purchase in India use FR-D700 for improved motor efficiency.";
       }
       if (titleUpper.includes("FR-D800") || cleanNameLower.includes("fr-d800") || filenameLower.includes("fr-d800")) {
         return "The variable frequency drive from Mitsubishi Electric in Kochi delivers precise motor control, improved energy efficiency, and smooth operation across a wide range of industrial applications.";
@@ -279,7 +283,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
     // Low Voltage Power Distribution
     if (category === "Low Voltage Power Distribution") {
       if (titleUpper.includes("ACB") || cleanNameLower.includes("acb") || filenameLower.includes("acb")) {
-        return "Low-voltage power distribution products from Mitsubishi Electric in Kochi, including circuit breakers and protection devices, ensure safe, reliable, and efficient electrical systems.";
+        return "Mitsubishi ACB solutions ensure safe and efficient low-voltage power protection. They prevent overloads and short circuits in industrial systems. For secure operations with Mitsubishi PLC Purchase in India, ACB systems add reliability";
       }
       if (titleUpper.includes("ELCB") || cleanNameLower.includes("elcb") || filenameLower.includes("elcb")) {
         return "Low-voltage power distribution products from Mitsubishi Electric in Kochi, such as circuit breakers and protection devices, ensure safe, reliable, and efficient electrical systems, while also supporting Mitsubishi VFD purchase in Kochi.";
@@ -288,7 +292,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
         return "Low-voltage power distribution products from Mitsubishi Electric in Kochi, including circuit breakers and protection devices, deliver safe, reliable, and efficient electrical systems, while also supporting Mitsubishi VFD purchase in Kochi.";
       }
       if (titleUpper.includes("MCB") || titleUpper.includes("MCCB") || titleUpper.includes("MPCB") || titleUpper.includes("OVERLOAD RELAY") || cleanNameLower.includes("mcb") || cleanNameLower.includes("mccb") || cleanNameLower.includes("mpcb") || cleanNameLower.includes("overload") || filenameLower.includes("mcb") || filenameLower.includes("mccb") || filenameLower.includes("mpcb") || filenameLower.includes("overload")) {
-        return "Low-voltage power distribution products from Mitsubishi Electric in Kochi, including circuit breakers and protection devices, ensure safe, reliable, and efficient electrical systems.";
+        return "Mitsubishi Overload Relays protect motors from overheating and electrical damage. They improve safety and equipment life. During Mitsubishi PLC Purchase in India, overload relays ensure better power management.";
       }
       return "Low-voltage power distribution products from Mitsubishi Electric in Kochi, including circuit breakers and protection devices, ensure safe, reliable, and efficient electrical systems.";
     }
@@ -302,7 +306,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
         return "The industrial robot system from Mitsubishi Electric in Kochi is engineered for precision automation, assembly, and material handling applications, delivering high repeatability and consistent performance, while also supporting Mitsubishi VFD purchase in Kochi.";
       }
       if (titleUpper.includes("HORIZONTAL") || titleUpper.includes("MELFA SMART") || cleanNameLower.includes("horizontal") || cleanNameLower.includes("melfa") || filenameLower.includes("horizontal") || filenameLower.includes("melfa")) {
-        return "The industrial robot system from Mitsubishi Electric in Kochi is designed for precision automation, assembly, and material handling applications, delivering high repeatability and consistent performance.";
+        return "Horizontal industrial robots deliver high-speed, precise automation for assembly and material handling. They enhance productivity and accuracy. Companies investing in Mitsubishi PLC Purchase in India integrate robots for smart manufacturing.";
       }
       return "The industrial robot system from Mitsubishi Electric in Kochi is designed for precision automation, assembly, and material handling applications, delivering high repeatability and consistent performance.";
     }
@@ -316,7 +320,7 @@ const generateProductInfo = (filename: string, category: string, subcategory?: s
         return "The engineering and visualization software suite from Mitsubishi Electric in Kochi supports efficient system design, programming, monitoring, and configuration of automation systems, while also enabling reliable Mitsubishi VFD purchase in Kochi.";
       }
       if (titleUpper.includes("GX WORKS 2") || titleUpper.includes("GX WORKS 3") || titleUpper.includes("MR CONFIGURATOR") || titleUpper.includes("GENESIS 64") || titleUpper.includes("VIRTUALIZATION") || cleanNameLower.includes("gx works") || cleanNameLower.includes("mr configurator") || cleanNameLower.includes("genesis") || cleanNameLower.includes("virtualization") || filenameLower.includes("gx works") || filenameLower.includes("mr configurator") || filenameLower.includes("genesis") || filenameLower.includes("virtualization")) {
-        return "The engineering and visualization software suite from Mitsubishi Electric in Kochi enables efficient system design, programming, monitoring, and configuration of automation systems.";
+        return "3D MELSOFT software supports system design, simulation, and PLC programming with advanced visualization tools. It reduces commissioning time and improves accuracy. For complete automation solutions with Mitsubishi PLC Purchase in India, 3D MELSOFT adds powerful engineering support.";
       }
       return "The engineering and visualization software suite from Mitsubishi Electric in Kochi enables efficient system design, programming, monitoring, and configuration of automation systems.";
     }
@@ -592,7 +596,7 @@ const Products = () => {
   useEffect(() => {
     // Update document title
     document.title = "Industrial Automation Products | Mitsubishi VFD Purchase in Kochi – Dynamic Control Systems";
-    
+
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -665,7 +669,7 @@ const Products = () => {
     // Handle PLC category separately
     if (!selectedCategory || selectedCategory === "PLC") {
       const plcProducts = allProducts.filter(p => p.category === "PLC");
-      
+
       if (plcProducts.length > 0) {
         organized.push({
           name: "PLC",
@@ -775,7 +779,7 @@ const Products = () => {
                     {section.products.map((product, index) => {
                       // Check if this is a PLC iQR product
                       const isPlcIqr = product.subcategory === "PLC iQR";
-                      
+
                       return (
                         <motion.div
                           key={`${product.filename}-${index}`}
@@ -818,17 +822,17 @@ const Products = () => {
                               <Badge variant="secondary" className="mb-4">
                                 {product.subcategory || product.category}
                               </Badge>
-                              
+
                               <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
                                 {product.title}
                               </h3>
-                              
+
                               <p className="text-muted-foreground mb-4 text-sm flex-1">
                                 {product.description}
                               </p>
 
-                              <Button 
-                                size="sm" 
+                              <Button
+                                size="sm"
                                 className="w-full"
                                 asChild
                               >
