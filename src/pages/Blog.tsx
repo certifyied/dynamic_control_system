@@ -884,19 +884,19 @@ When planning a Mitsubishi PLC purchase in India, you are investing in reliable 
     <h2>Top Mitsubishi PLC Models Available in India</h2>
 
     <img 
-      src="/public/Picture1.jpg"
+      src="/Picture1.jpg"
       alt="Mitsubishi PLC"
       class="w-full max-w-3xl mx-auto my-6 rounded-lg shadow-lg"
     />
 
     <img 
-      src="/public/Picture2.jpg"
+      src="/Picture2.jpg"
       alt="Mitsubishi PLC"
       class="w-full max-w-3xl mx-auto my-6 rounded-lg shadow-lg"
     />
 
     <img 
-      src="/public/Picture3.png"
+      src="/Picture3.png"
       alt="Mitsubishi PLC"
       class="w-full max-w-3xl mx-auto my-6 rounded-lg shadow-lg"
     />
