@@ -25,6 +25,15 @@ import blog7Image from "@/assets/blog7.jpg";
 import blog8Image from "@/assets/blog8.jpg";
 import blog9Image from "@/assets/blog9.jpg";
 import blog10Image from "@/assets/blog10.jpg";
+import blog11Image from "@/assets/1768279207435.png";
+import blog12Image from "@/assets/CoverofAdvancingCleanTechnologyManufacturing_RowofAdvancedRoboticArmsinsideAutomotivePlantAssembleBatteries_shutterstock_2374437801.avif";
+import blog13Image from "@/assets/cobot-palletiser.jpg";
+import blog14Image from "@/assets/Attracting Manufacturing Labor Without the Wage War – Redpath.jpg";
+import blog15Image from "@/assets/7ZBYC6REU5MMPL4NTQLJYVYUEU.avif";
+import blog16Image from "@/assets/Image-2-scaled.jpg";
+import blog17Image from "@/assets/Blog-Image-1-1024x480.jpg";
+// import blog19Image from "@/assets/17e7dc32351eb655a4ab9e7e324d4db9.jpg";
+
 
 // Map blog IDs to their specific images
 const blogImageMap: Record<number, string> = {
@@ -38,6 +47,14 @@ const blogImageMap: Record<number, string> = {
   8: blog8Image,
   9: blog9Image,
   10: blog10Image,
+  11: blog11Image,
+  12: blog12Image,
+  13: blog13Image,
+  14: blog14Image,
+  15: blog15Image,
+  16: blog16Image,
+  17: blog17Image,
+  // 18: blog19Image,
 };
 
 const Blog = () => {
@@ -48,7 +65,7 @@ const Blog = () => {
   useEffect(() => {
     // Update document title
     document.title = "HMI Programming in Kochi | Dynamic Control Systems Blog";
-    
+
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -714,7 +731,7 @@ The integration of SCADA systems and Mitsubishi PLCs addresses numerous challeng
       excerpt: "If you are planning a Mitsubishi PLC purchase in Kerala for your industrial automation project, choosing the right controller is the first step toward improved productivity and efficiency. At Dynamic Control Systems — a trusted automation solutions partner based in Kochi — we offer a wide range of genuine Mitsubishi PLC models tailored to various applications.",
       category: "Products",
       date: "February 28, 2024",
-      readTime: "11 min read",
+      readTime: "19 min read",
       content: `Top 7 Mitsubishi PLC Models Available for Purchase in Kerala | Dynamic Control Systems
 
 If you are planning a Mitsubishi PLC purchase in Kerala for your industrial automation project, choosing the right controller is the first step toward improved productivity and efficiency. At Dynamic Control Systems — a trusted automation solutions partner based in Kochi — we offer a wide range of genuine Mitsubishi PLC models tailored to various applications in manufacturing, process control, packaging, material handling, and more.
@@ -808,6 +825,232 @@ Final Thoughts
 
 Choosing the right Mitsubishi PLC model makes all the difference in automation success — whether you're automating a single machine or a full production line. From FX series compact controllers to the powerful iQ-R architecture, Mitsubishi offers scalable solutions that meet diverse industrial needs in Kerala.`,
     },
+    {
+      id: 11,
+      title: "How to Choose and Successfully Complete a Mitsubishi PLC Purchase in India",
+      excerpt: "In today's rapidly evolving industrial landscape, factory automation has become essential for improving efficiency, productivity, and safety. Industries in Kochi are increasingly adopting advanced automation technologies to streamline operations.",
+      category: "Products",
+      date: "February 26, 2024",
+      readTime: "5 min read",
+      content: `How to Choose and Successfully Complete a Mitsubishi PLC Purchase in India
+
+Industrial automation is rapidly transforming manufacturing, infrastructure, and process industries across the country. Whether you operate in automotive, food processing, pharmaceuticals, or power systems, selecting the right PLC is critical. If you are planning a Mitsubishi PLC purchase in India, understanding the technical, financial, and service-related aspects will help you make a confident decision.
+This guide explains everything you need to know before investing in a Mitsubishi PLC system.
+`,
+    },
+    {
+      id: 12,
+      title: "What is a Mitsubishi PLC and Why It’s Crucial to Automation 📌",
+      excerpt: "Kochi, the bustling industrial hub of Kerala, is witnessing a major transformation fueled by cutting-edge innovations. As factories look to scale, improve productivity, and reduce manual dependency, industrial automation in Kochi is becoming essential. From manufacturing units to food processing industries, automation is reshaping how factories operate. Companies that embrace these trends are proving to be more competitive, efficient, and sustainable.",
+      category: "Products",
+      date: "February 26, 2024",
+      readTime: "8 min read",
+      content: `What is a Mitsubishi PLC and Why It’s Crucial to Automation 📌
+Mitsubishi Electric PLCs (Programmable Logic Controllers) are advanced industrial computers designed to control machinery, production lines, and automated processes. A Mitsubishi PLC is known for its durability, precision control, and advanced communication capabilities.
+PLCs play a crucial role in:
+●	Controlling motors, conveyors, and robotic systems
+●	Managing temperature, pressure, and process variables
+●	Integrating with SCADA and HMI systems
+●	Improving production efficiency and reducing downtime
+When planning a Mitsubishi PLC purchase in India, you are investing in reliable automation technology that enhances operational accuracy and long-term productivity.
+`,
+    },
+    {
+      id: 13,
+      title: "What is a Mitsubishi PLC and Why It’s Crucial to Automation 📌",
+      excerpt: "Powering industries in Kochi with smart, reliable factory automation solutions that enhance efficiency, accuracy, and operational performance through advanced industrial automation.",
+      category: "Products",
+      date: "February 25, 2024",
+      readTime: "5 min read",
+      content: `What is a Mitsubishi PLC and Why It’s Crucial to Automation 📌
+Mitsubishi Electric PLCs (Programmable Logic Controllers) are advanced industrial computers designed to control machinery, production lines, and automated processes. A Mitsubishi PLC is known for its durability, precision control, and advanced communication capabilities.
+PLCs play a crucial role in:
+●	Controlling motors, conveyors, and robotic systems
+●	Managing temperature, pressure, and process variables
+●	Integrating with SCADA and HMI systems
+●	Improving production efficiency and reducing downtime
+When planning a Mitsubishi PLC purchase in India, you are investing in reliable automation technology that enhances operational accuracy and long-term productivity.
+`,
+    },
+    {
+      id: 14,
+      title: "Top Mitsubishi PLC Models Available in India",
+      excerpt:
+        "In today's fast-growing industrial environment, many factories are shifting from manual processes to modern automated systems. This transformation not only improves productivity but also ensures better quality, reduced downtime, and safer working conditions.",
+      category: "Products",
+      date: "February 23, 2024",
+      readTime: "16 min read",
+      content: `
+    <h2>Top Mitsubishi PLC Models Available in India</h2>
+
+    <img 
+      src="/public/Picture1.jpg"
+      alt="Mitsubishi PLC"
+      class="w-full max-w-3xl mx-auto my-6 rounded-lg shadow-lg"
+    />
+
+    <img 
+      src="/public/Picture2.jpg"
+      alt="Mitsubishi PLC"
+      class="w-full max-w-3xl mx-auto my-6 rounded-lg shadow-lg"
+    />
+
+    <img 
+      src="/public/Picture3.png"
+      alt="Mitsubishi PLC"
+      class="w-full max-w-3xl mx-auto my-6 rounded-lg shadow-lg"
+    />
+
+    <p>
+    Before finalizing your Mitsubishi PLC purchase in India, it’s important to understand the popular models available:
+    </p>
+
+    <h3>1. FX5U Series (Compact & Powerful)</h3>
+    <p>
+    Ideal for small to medium-scale industries, the FX5U offers high-speed processing and built-in networking features.
+    </p>
+
+    <h3>2. Q Series (Modular Control)</h3>
+    <p>
+    Perfect for complex automation projects. The Q Series provides flexibility, large I/O capacity, and high performance.
+    </p>
+
+    <h3>3. L Series (Cost-Effective Modular PLC)</h3>
+    <p>
+    Suitable for mid-sized applications requiring modular expandability.
+    </p>
+
+    <h3>4. iQ-R Series (Advanced Automation)</h3>
+    <p>
+    Designed for large industrial systems with integrated motion, safety, and process control.
+    </p>
+
+    <p>
+    Choosing the right model is a key step in ensuring a successful Mitsubishi PLC purchase in India.
+    </p>
+  `
+    },
+    {
+      id: 15,
+      title: "Important Criteria to Evaluate Before Purchase",
+      excerpt: "In today's rapidly evolving industrial landscape, factory automation has become essential for improving efficiency, productivity, and safety. Industries in Kochi are increasingly adopting advanced automation technologies to streamline operations.",
+      category: "Products",
+      date: "February 18, 2024",
+      readTime: "15 min read",
+      content: `
+  <h2>Important Criteria to Evaluate Before Purchase</h2>
+
+  <p>
+  When considering a Mitsubishi PLC purchase in India, evaluate the following factors carefully:
+  </p>
+
+  <h3>1. Application Requirements</h3>
+  <p>Understand your industry needs:</p>
+  <ul>
+    <li>Number of input/output (I/O) points</li>
+    <li>Communication protocols (Ethernet/IP, Modbus, CC-Link)</li>
+    <li>Motion control requirements</li>
+    <li>Future expansion possibilities</li>
+  </ul>
+
+  <h3>2. Technical Specifications</h3>
+  <p>Check:</p>
+  <ul>
+    <li>CPU processing speed</li>
+    <li>Memory capacity</li>
+    <li>Compatibility with SCADA and HMI systems</li>
+    <li>Programming software support</li>
+  </ul>
+
+  <p>
+  A well-planned Mitsubishi PLC purchase in India should match both current and future operational demands.
+  </p>
+
+  <h3>3. Supplier Credibility</h3>
+  <p>Always buy from an authorized and experienced automation supplier. Verify:</p>
+  <ul>
+    <li>Product authenticity</li>
+    <li>Technical expertise</li>
+    <li>Industry experience</li>
+    <li>Customer testimonials</li>
+  </ul>
+
+  <h3>4. Warranty & Service Support</h3>
+  <p>Reliable after-sales support is crucial. Confirm:</p>
+  <ul>
+    <li>Warranty coverage</li>
+    <li>Availability of spare parts</li>
+    <li>On-site installation support</li>
+    <li>Troubleshooting assistance</li>
+  </ul>
+
+  <h3>5. Budget & ROI</h3>
+  <p>
+  While pricing matters, focus on long-term value rather than just upfront cost. 
+  A strategic Mitsubishi PLC purchase in India should improve productivity, reduce downtime, and deliver measurable ROI.
+  </p>
+`
+    },
+    {
+      id: 16,
+      title: "Mitsubishi PLC Purchase in India — Tips to Avoid Common Mistakes",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      category: "Products",
+      date: "February 15, 2024",
+      readTime: "9 min read",
+      content: `Many buyers make costly errors due to insufficient planning. Here’s how to avoid them:
+❌ Ignoring Future Expansion
+Choose a scalable PLC model to prevent replacement costs later.
+❌ Overlooking Compatibility
+Ensure the PLC integrates seamlessly with existing systems.
+❌ Choosing Only Based on Price
+Low-cost options may lack support or reliability. A smart Mitsubishi PLC purchase in India balances price and performance.
+❌ Skipping Technical Consultation
+Consult automation experts before finalizing specifications.
+❌ Not Checking Programming Support
+Confirm availability of trained engineers for programming and commissioning.
+Taking these precautions ensures your Mitsubishi PLC purchase in India is smooth and successful.
+` },
+    {
+      id: 17,
+      title: "How Dynamic Control Systems Helps with Selection & Procurement",
+      excerpt: "In today's rapidly evolving industrial landscape, factory automation has become essential for improving efficiency, productivity, and safety. Industries in Kochi are increasingly adopting advanced automation technologies to streamline operations.",
+      category: "Products",
+      date: "February 16, 2024",
+      readTime: "10 min read",
+      content: `
+  <h2>Why Choose Dynamic Control Systems?</h2>
+
+  <p>
+  Dynamic Control Systems specializes in industrial automation solutions, including PLC supply, panel integration, and system commissioning.
+  </p>
+
+  <p>
+  Here’s how they simplify your Mitsubishi PLC purchase in India:
+  </p>
+
+  <ul>
+    <li>🔹 Expert consultation to identify the right PLC model</li>
+    <li>🔹 Genuine Mitsubishi PLC supply</li>
+    <li>🔹 Control panel design and integration</li>
+    <li>🔹 PLC programming and SCADA integration</li>
+    <li>🔹 After-sales technical support</li>
+  </ul>
+
+  <p>
+  With professional guidance, your Mitsubishi PLC purchase in India becomes a streamlined and efficient process.
+  </p>
+` },
+    {
+      id: 3,
+      title: "Conclusion",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      date: "January 22, 2024",
+      readTime: "5 min read",
+      content: `Choosing the right automation controller requires technical clarity, supplier reliability, and long-term planning. A well-executed Mitsubishi PLC purchase in India ensures improved productivity, operational stability, and scalable growth for your industrial operations.
+By evaluating technical specifications, verifying supplier credibility, and seeking expert consultation, you can confidently complete your Mitsubishi PLC purchase in India without risks or unnecessary delays.
+If you are planning a Mitsubishi PLC purchase in India, partnering with experienced automation professionals will ensure you make the right investment for your business success.
+` },
   ], []);
 
   const openDialog = (blogId: number) => {
@@ -835,7 +1078,7 @@ Choosing the right Mitsubishi PLC model makes all the difference in automation s
               className="max-w-3xl mx-auto text-center"
             >
               <h1 className="font-display text-5xl md:text-6xl font-bold mb-0">
-              Our Case-Studies
+                Our Case-Studies
               </h1>
             </motion.div>
           </div>
@@ -878,20 +1121,20 @@ Choosing the right Mitsubishi PLC model makes all the difference in automation s
                           <span>{blog.readTime}</span>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
                         <Calendar size={14} />
                         <span>{blog.date}</span>
                       </div>
-                      
+
                       <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
                         {blog.title}
                       </h3>
-                      
+
                       <p className="text-muted-foreground mb-4 line-clamp-3">
                         {blog.excerpt}
                       </p>
-                      
+
                       <Button variant="ghost" size="sm" className="p-0 h-auto group/btn">
                         Read more
                         <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
@@ -931,7 +1174,7 @@ Choosing the right Mitsubishi PLC model makes all the difference in automation s
                   </DialogDescription>
                 </DialogHeader>
                 <div className="mt-6 space-y-4">
-                  <div 
+                  <div
                     className="prose prose-sm max-w-none text-muted-foreground leading-relaxed"
                     dangerouslySetInnerHTML={{ __html: currentBlog.content }}
                     style={{
