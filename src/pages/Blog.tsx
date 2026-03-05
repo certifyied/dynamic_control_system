@@ -32,7 +32,15 @@ import blog14Image from "@/assets/Attracting Manufacturing Labor Without the Wag
 import blog15Image from "@/assets/7ZBYC6REU5MMPL4NTQLJYVYUEU.avif";
 import blog16Image from "@/assets/Image-2-scaled.jpg";
 import blog17Image from "@/assets/Blog-Image-1-1024x480.jpg";
-// import blog19Image from "@/assets/17e7dc32351eb655a4ab9e7e324d4db9.jpg";
+import blog18Image from "@/assets/impact-of-technology-worker-safety.jpg";
+import blog19Image from "@/assets/2.27.25-Workforce-Development-.jpg";
+import blog20Image from "@/assets/43021-scaled-e1762178508783.jpg";
+import blog21Image from "@/assets/engineering-maint-and-facil-prop-svcs-apac.png";
+import blog22Image from "@/assets/GettyImages-1388264093.webp";
+import blog23Image from "@/assets/aug-worker-maint-1.jpg";
+import blog24Image from "@/assets/Wood-Technologist.jpg";
+import blog25Image from "@/assets/443d9a39-4d40-4863-9e00-599e3da8c8f1.png";
+import blog26Image from "@/assets/DSC03712Edited.webp";
 
 
 // Map blog IDs to their specific images
@@ -54,7 +62,15 @@ const blogImageMap: Record<number, string> = {
   15: blog15Image,
   16: blog16Image,
   17: blog17Image,
-  // 18: blog19Image,
+  18: blog18Image,
+  19: blog19Image,
+  20: blog20Image,
+  21: blog21Image,
+  22: blog22Image,
+  23: blog23Image,
+  24: blog24Image,
+  25: blog25Image,
+  26: blog26Image
 };
 
 const Blog = () => {
@@ -729,7 +745,7 @@ The integration of SCADA systems and Mitsubishi PLCs addresses numerous challeng
       id: 10,
       title: "Top 7 Mitsubishi PLC Models Available for Purchase in Kerala | Dynamic Control Systems",
       excerpt: "If you are planning a Mitsubishi PLC purchase in Kerala for your industrial automation project, choosing the right controller is the first step toward improved productivity and efficiency. At Dynamic Control Systems — a trusted automation solutions partner based in Kochi — we offer a wide range of genuine Mitsubishi PLC models tailored to various applications.",
-      category: "Products",
+      category: "Case Study",
       date: "February 28, 2024",
       readTime: "19 min read",
       content: `Top 7 Mitsubishi PLC Models Available for Purchase in Kerala | Dynamic Control Systems
@@ -829,7 +845,7 @@ Choosing the right Mitsubishi PLC model makes all the difference in automation s
       id: 11,
       title: "How to Choose and Successfully Complete a Mitsubishi PLC Purchase in India",
       excerpt: "In today's rapidly evolving industrial landscape, factory automation has become essential for improving efficiency, productivity, and safety. Industries in Kochi are increasingly adopting advanced automation technologies to streamline operations.",
-      category: "Products",
+      category: "Technology",
       date: "February 26, 2024",
       readTime: "5 min read",
       content: `How to Choose and Successfully Complete a Mitsubishi PLC Purchase in India
@@ -842,7 +858,7 @@ This guide explains everything you need to know before investing in a Mitsubishi
       id: 12,
       title: "What is a Mitsubishi PLC and Why It’s Crucial to Automation 📌",
       excerpt: "Kochi, the bustling industrial hub of Kerala, is witnessing a major transformation fueled by cutting-edge innovations. As factories look to scale, improve productivity, and reduce manual dependency, industrial automation in Kochi is becoming essential. From manufacturing units to food processing industries, automation is reshaping how factories operate. Companies that embrace these trends are proving to be more competitive, efficient, and sustainable.",
-      category: "Products",
+      category: "Automation",
       date: "February 26, 2024",
       readTime: "8 min read",
       content: `What is a Mitsubishi PLC and Why It’s Crucial to Automation 📌
@@ -859,7 +875,7 @@ When planning a Mitsubishi PLC purchase in India, you are investing in reliable 
       id: 13,
       title: "What is a Mitsubishi PLC and Why It’s Crucial to Automation 📌",
       excerpt: "Powering industries in Kochi with smart, reliable factory automation solutions that enhance efficiency, accuracy, and operational performance through advanced industrial automation.",
-      category: "Products",
+      category: "Automation",
       date: "February 25, 2024",
       readTime: "5 min read",
       content: `What is a Mitsubishi PLC and Why It’s Crucial to Automation 📌
@@ -877,7 +893,7 @@ When planning a Mitsubishi PLC purchase in India, you are investing in reliable 
       title: "Top Mitsubishi PLC Models Available in India",
       excerpt:
         "In today's fast-growing industrial environment, many factories are shifting from manual processes to modern automated systems. This transformation not only improves productivity but also ensures better quality, reduced downtime, and safer working conditions.",
-      category: "Products",
+      category: "Technology",
       date: "February 23, 2024",
       readTime: "16 min read",
       content: `
@@ -934,7 +950,7 @@ When planning a Mitsubishi PLC purchase in India, you are investing in reliable 
       id: 15,
       title: "Important Criteria to Evaluate Before Purchase",
       excerpt: "In today's rapidly evolving industrial landscape, factory automation has become essential for improving efficiency, productivity, and safety. Industries in Kochi are increasingly adopting advanced automation technologies to streamline operations.",
-      category: "Products",
+      category: "Technology",
       date: "February 18, 2024",
       readTime: "15 min read",
       content: `
@@ -995,8 +1011,8 @@ When planning a Mitsubishi PLC purchase in India, you are investing in reliable 
       id: 16,
       title: "Mitsubishi PLC Purchase in India — Tips to Avoid Common Mistakes",
       excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
-      category: "Products",
-      date: "February 15, 2024",
+      category: "Automation",
+      date: "February 16, 2024",
       readTime: "9 min read",
       content: `Many buyers make costly errors due to insufficient planning. Here’s how to avoid them:
 ❌ Ignoring Future Expansion
@@ -1015,8 +1031,8 @@ Taking these precautions ensures your Mitsubishi PLC purchase in India is smooth
       id: 17,
       title: "How Dynamic Control Systems Helps with Selection & Procurement",
       excerpt: "In today's rapidly evolving industrial landscape, factory automation has become essential for improving efficiency, productivity, and safety. Industries in Kochi are increasingly adopting advanced automation technologies to streamline operations.",
-      category: "Products",
-      date: "February 16, 2024",
+      category: "Technology",
+      date: "February 15, 2024",
       readTime: "10 min read",
       content: `
   <h2>Why Choose Dynamic Control Systems?</h2>
@@ -1045,11 +1061,174 @@ Taking these precautions ensures your Mitsubishi PLC purchase in India is smooth
       id: 3,
       title: "Conclusion",
       excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
-      date: "January 22, 2024",
-      readTime: "5 min read",
+      category: "Conclusion",
+      date: "February 15, 2024",
+      readTime: "9 min read",
       content: `Choosing the right automation controller requires technical clarity, supplier reliability, and long-term planning. A well-executed Mitsubishi PLC purchase in India ensures improved productivity, operational stability, and scalable growth for your industrial operations.
 By evaluating technical specifications, verifying supplier credibility, and seeking expert consultation, you can confidently complete your Mitsubishi PLC purchase in India without risks or unnecessary delays.
 If you are planning a Mitsubishi PLC purchase in India, partnering with experienced automation professionals will ensure you make the right investment for your business success.
+` },
+    {
+      id: 18,
+      title: "Enhancing Industrial Productivity with Advanced PLC Programming Solutions",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      category: "Technology",
+      date: "February 13, 2024",
+      readTime: "5 min read",
+      content: `In today’s competitive industrial landscape, automation plays a vital role in improving productivity, precision, and profitability. Industries across India are increasingly investing in smart control systems to streamline operations and reduce downtime. At the core of this transformation is the Programmable Logic Controller (PLC). For businesses exploring mitsubhishi plc purchase in india, the focus is not only on buying hardware but also on implementing efficient and scalable automation strategies.
+One of the trusted automation solution providers supporting industries in this journey is Dynamic Control Systems. With strong expertise in PLC-based automation, the company delivers reliable and customized solutions for diverse industrial sectors.
+` },
+    {
+      id: 19,
+      title: "The Role of PLC Programming in Industrial Automation",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      category: "Technology",
+      date: "February 12, 2024",
+      readTime: "6 min read",
+      content: `A PLC is more than just a control device; it is the intelligence behind automated systems. However, the real power of a PLC lies in its programming. Proper PLC programming ensures smooth machine coordination, accurate timing sequences, and safety interlocks that protect both equipment and personnel.
+
+When companies search for Mitsubishi PLC purchase in India, they often need guidance on programming, system configuration, and integration with existing machinery.
+
+A well-programmed PLC system can:
+
+● Increase operational efficiency  
+● Reduce manual errors  
+● Improve energy management  
+● Enable remote monitoring  
+● Simplify troubleshooting  
+
+Without professional integration, even the best PLC hardware cannot deliver optimal performance.
+` },
+    {
+      id: 20,
+      title: "Why Mitsubishi PLCs Are Ideal for Indian Industries",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      category: "Automation",
+      date: "February 11, 2024",
+      readTime: "5 min read",
+      content: `Globally recognized for their reliability and advanced features, Mitsubishi Electric PLCs are widely used in industrial automation. Their MELSEC series is known for durability, high-speed processing, and flexible configuration options.
+Mitsubishi PLC systems are suitable for:
+●	Machine automation
+
+●	Process control
+
+●	Motion control applications
+
+●	Complex production line management
+
+●	Smart factory integration
+
+Because of their consistent performance and compatibility with modern automation technologies, demand for mitsubhishi plc purchase in india continues to grow steadily.
+` },
+    {
+      id: 21,
+      title: "Common Challenges in PLC Implementation",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      category: "Case Study",
+      date: "February 11, 2024",
+      readTime: "5 min read",
+      content: `While investing in PLC technology is a smart move, industries may face challenges such as:
+●	Selecting the correct PLC model
+
+●	Ensuring compatibility with existing systems
+
+●	Designing proper control panels
+
+●	Integrating SCADA and HMI systems
+
+●	Providing staff training
+
+This is where experienced automation partners become essential. Businesses exploring mitsubhishi plc purchase in india should always look for solution providers who offer end-to-end services rather than just product supply.
+` },
+    {
+      id: 22,
+      title: "How Dynamic Control Systems Adds Value",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      category: "Automation",
+      date: "February 10, 2024",
+      readTime: "8 min read",
+      content: `Dynamic Control Systems supports industries with complete automation services, including PLC selection, panel design, installation, programming, and commissioning. Their technical team ensures that every mitsubhishi plc purchase in india results in a fully optimized control system tailored to the client’s operational needs.
+Their services include:
+●	PLC panel manufacturing
+
+●	Industrial automation project execution
+
+●	SCADA system development
+
+●	Factory and process automation
+
+●	On-site technical support
+
+By combining practical experience with advanced PLC expertise, they help industries reduce downtime and improve system reliability.
+` },
+    {
+      id: 23,
+      title: "Industries Driving PLC Demand in India",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      category: "Case Study",
+      date: "February 09, 2024",
+      readTime: "10 min read",
+      content: `Several sectors are contributing to the rising interest in mitsubhishi plc purchase in india, including:
+1. Manufacturing
+Automated assembly lines rely on PLC systems for precise machine coordination.
+2. Food & Beverage
+PLC automation ensures hygienic and accurate production processes.
+3. Pharmaceuticals
+Controlled environments and batch processing require high-precision PLC systems.
+4. Water Treatment Plants
+PLC-based monitoring improves efficiency and reduces operational costs.
+5. Textile & Packaging
+High-speed automation demands reliable control systems for smooth production.
+As automation adoption increases, PLC technology becomes a long-term investment for sustainable growth.
+` },
+    {
+      id: 24,
+      title: "Key Benefits of Choosing the Right Automation Partner",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      category: "Automation",
+      date: "February 08, 2024",
+      readTime: "16 min read",
+      content: `When planning a mitsubhishi plc purchase in india, industries should prioritize professional support and technical reliability. The right automation partner provides:
+●	Genuine Mitsubishi PLC products
+
+●	Proper system design and architecture
+
+●	Efficient PLC programming
+
+●	Quick troubleshooting support
+
+●	Future-ready scalability
+
+This comprehensive approach ensures that the PLC system delivers maximum return on investment.
+` },
+    {
+      id: 25,
+      title: "The Future of Mitsubishi PLC Automation in India",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      category: "Technology",
+      date: "February 07, 2024",
+      readTime: "7 min read",
+      content: `India’s industrial sector is rapidly transitioning toward smart factories and Industry 4.0 integration. Mitsubishi PLC systems support advanced features such as:
+●	Real-time data monitoring
+
+●	IoT integration
+
+●	Energy management systems
+
+●	Predictive maintenance solutions
+
+As industries modernize, the search for mitsubhishi plc purchase in india will continue to expand, particularly among businesses aiming for digital transformation and operational excellence.
+` },
+    {
+      id: 26,
+      title: "Conclusion",
+      excerpt: "In 2025, India's manufacturing sector is changing faster than ever. With rising competition, strict deadlines, and a global move toward smart factories, one thing is clear — factory automation is no longer a choice, it's a necessity.",
+      category: "Conclusion",
+      date: "February 06, 2024",
+      readTime: "5 min read",
+      content: `Investing in PLC automation is a strategic decision that directly impacts productivity, quality, and efficiency. However, success depends on selecting the right hardware, proper programming, and expert system integration.
+For companies considering mitsubhishi plc purchase in india, working with experienced automation specialists like Dynamic Control Systems ensures smooth implementation, reliable operation, and long-term industrial growth.
+With the right PLC solution and professional support, industries can confidently move toward smarter, safer, and more efficient automation systems.
 ` },
   ], []);
 
